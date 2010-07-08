@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SVN-ID: $Id$ -->
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/options.xsd">
+	<import>
+		<categories>
+			<category name="offline.general">
+				<!-- com.woltlab.wcf -->
+				<parent>general.offline</parent>
+			</category>
+		</categories>
+		
+		<options>
+			<!-- offline -->
+			<option name="offline">
+				<categoryname>offline.general</categoryname>
+				<optiontype>boolean</optiontype>
+			 	<enableoptions><![CDATA[offline_message,offline_message_allow_html]]></enableoptions>
+			</option>
+			<option name="offline_message">
+				<categoryname>offline.general</categoryname>
+				<optiontype>textarea</optiontype>
+			</option>
+			<option name="offline_message_allow_html">
+				<categoryname>offline.general</categoryname>
+				<optiontype>boolean</optiontype>
+			</option>
+			<!-- /offline -->
+			
+			<!-- general.page -->
+			<option name="page_title">
+				<!-- com.woltlab.wcf.data.page -->
+				<categoryname>general.page</categoryname>
+				<optiontype>text</optiontype>
+				<showorder>1</showorder>
+				<defaultvalue>Icy Tracker</defaultvalue>
+			</option>
+			<option name="page_description">
+				<!-- com.woltlab.wcf.data.page -->
+				<categoryname>general.page</categoryname>
+				<optiontype>text</optiontype>
+				<showorder>2</showorder>
+			</option>
+			<option name="page_url">
+				<!-- com.woltlab.wcf.data.page -->
+				<categoryname>general.page</categoryname>
+				<optiontype>text</optiontype>
+				<showorder>3</showorder>
+			</option>
+			<option name="page_urls">
+				<!-- com.woltlab.wcf.data.page -->
+				<categoryname>general.page</categoryname>
+				<optiontype>textarea</optiontype>
+				<showorder>4</showorder>
+			</option>
+			<option name="show_version_number">
+				<categoryname>general.page</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<!-- /general.page -->
+			
+			<!-- general.cookie -->
+			<option name="cookie_path">
+				<!-- com.woltlab.wcf -->
+				<categoryname>general.http.cookie</categoryname>
+				<optiontype>text</optiontype>
+				<defaultvalue></defaultvalue>
+			</option>
+			<!-- /general.cookie-->
+			
+			<!-- general -->
+			<option name="install_date">
+				<categoryname>general</categoryname>
+				<optiontype>integer</optiontype>
+				<hidden>1</hidden>
+			</option>
+			<!-- /general -->
+		</options>
+	</import>
+</data>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SVN-ID: $Id$ -->
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="en">
+	<category name="it.acp">
+		<item name="it.acp.jumpToTracker"><![CDATA[Go to Tracker]]></item>
+	</category>
+	<category name="it.acp.index">
+		<item name="it.acp.index"><![CDATA[Icy Tracker Administration Control Panel]]></item>
+		<item name="it.acp.index.credits"><![CDATA[About Icy Tracker]]></item>
+		<item name="it.acp.index.credits.contributor"><![CDATA[Contributor]]></item>
+		<item name="it.acp.index.credits.designer"><![CDATA[Design]]></item>
+		<item name="it.acp.index.credits.developedBy"><![CDATA[Software developed by]]></item>
+		<item name="it.acp.index.credits.developer"><![CDATA[Development]]></item>
+		<item name="it.acp.index.credits.productManager"><![CDATA[Project management]]></item>
+		<item name="it.acp.index.credits.translators"><![CDATA[Translation]]></item>
+		<item name="it.acp.index.news"><![CDATA[News]]></item>
+		<item name="it.acp.index.searchUsers"><![CDATA[Quick search for users]]></item>
+		<item name="it.acp.index.stat"><![CDATA[Statistics]]></item>
+		<item name="it.acp.index.stat.attachments"><![CDATA[Attachments]]></item>
+		<item name="it.acp.index.stat.database.entries"><![CDATA[Database entries]]></item>
+		<item name="it.acp.index.stat.database.size"><![CDATA[Database size]]></item>
+		<item name="it.acp.index.stat.members"><![CDATA[Members]]></item>
+		<item name="it.acp.index.stat.usersOnline"><![CDATA[Users online]]></item>
+		<item name="it.acp.index.system"><![CDATA[System]]></item>
+		<item name="it.acp.index.system.cache"><![CDATA[Cache]]></item>
+		<item name="it.acp.index.system.exportInformation"><![CDATA[Download system information]]></item>
+		<item name="it.acp.index.system.installationDate"><![CDATA[Installation date]]></item>
+		<item name="it.acp.index.system.load"><![CDATA[Current UNIX Load]]></item>
+		<item name="it.acp.index.system.os"><![CDATA[Operating System]]></item>
+		<item name="it.acp.index.system.php"><![CDATA[PHP Version]]></item>
+		<item name="it.acp.index.system.server"><![CDATA[Server]]></item>
+		<item name="it.acp.index.system.software"><![CDATA[Software]]></item>
+		<item name="it.acp.index.system.sql.type"><![CDATA[Database Type]]></item>
+		<item name="it.acp.index.system.sql.version"><![CDATA[MySQL Version]]></item>
+		<item name="it.acp.index.system.it.version"><![CDATA[Icy Tracker Version]]></item>
+		<item name="it.acp.index.system.wcf.version"><![CDATA[Community Framework&trade; Version]]></item>
+		<item name="it.acp.index.system.webserver"><![CDATA[Webserver]]></item>
+		<item name="it.acp.index.updates"><![CDATA[Updates]]></item>
+		<item name="it.acp.index.updates.description"><![CDATA[The following updates are currently available.]]></item>
+		<item name="it.acp.index.updates.startUpdate"><![CDATA[Start Update]]></item>
+		<item name="it.acp.index.updates.update"><![CDATA[{$update.packageName}{if $update.instanceNo > 1} (#{$update.instanceNo}){/if} Version {$update.version.packageVersion}]]></item>
+	</category>
+	<category name="it.global">
+		<item name="it.global.copyright"><![CDATA[<a href="http://roul.codingcorner.info">Issuetracking Software: <strong>Icy Tracker{if SHOW_VERSION_NUMBER} {@PACKAGE_VERSION}{/if}</strong>, developed by <strong>Markus Bartz</strong></a>]]></item>
+		<item name="it.global.offline"><![CDATA[The Tracker is currently offline{if OFFLINE_MESSAGE != ''} for the following reason(s):{else}.{/if}]]></item>
+	</category>
+	<category name="it.header">
+		<item name="it.header.menu.tracker"><![CDATA[Tracker]]></item>
+	</category>
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.admin.tracker"><![CDATA[Tracker]]></item>
+		<item name="wcf.acp.group.option.category.admin.tracker.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.tracker"><![CDATA[Tracker]]></item>
+		<item name="wcf.acp.group.option.category.user.tracker.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline"><![CDATA[Can view tracker in offline mode]]></item>
+		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline.description"><![CDATA[Members of this usergroup can view the tracker even if it is disabled.]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.offline.general"><![CDATA[Disable tracker temporarily]]></item>
+		<item name="wcf.acp.option.category.offline.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.offline"><![CDATA[Disable tracker]]></item>
+		<item name="wcf.acp.option.offline.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.offline_message"><![CDATA[Deactivation note]]></item>
+		<item name="wcf.acp.option.offline_message.description"><![CDATA[This message is displayed while the tracker is disabled.]]></item>
+		<item name="wcf.acp.option.offline_message_allow_html"><![CDATA[Use HTML code]]></item>
+		<item name="wcf.acp.option.offline_message_allow_html.description"><![CDATA[By enabling this option you can use HTML code in the deactivation note.]]></item>
+		<item name="wcf.acp.option.show_clock"><![CDATA[Show current time in page footer]]></item>
+		<item name="wcf.acp.option.show_clock.description"><![CDATA[By enabling this option the current time will be displayed in the page footer.]]></item>
+		<item name="wcf.acp.option.show_version_number"><![CDATA[Show tracker version number in copyright note]]></item>
+		<item name="wcf.acp.option.show_version_number.description"><![CDATA[By enabling this option the tracker version number will be displayed in the copyright note.]]></item>
+	</category>
+	<category name="wcf.acp.stats">
+	</category>
+</language>

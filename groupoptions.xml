@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SVN-ID: $Id$ -->
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/group-options.xsd">
+	<import>
+		<categories>
+			<category name="user.tracker">
+				<parent>user</parent>
+			</category>
+			<category name="admin.tracker">
+				<parent>admin</parent>
+				<showorder>1</showorder>
+			</category>
+			<category name="admin.tracker.project">
+				<parent>admin.tracker</parent>
+				<showorder>1</showorder>
+			</category>
+		</categories>
+		
+		<options>
+			<!-- admin.tracker.project -->
+			<option name="admin.project.canAddProject">
+				<categoryname>admin.tracker.project</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+
+			<option name="admin.tracker.canDeleteProject">
+				<categoryname>admin.tracker.project</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+
+			<option name="admin.project.canEditProject">
+				<categoryname>admin.tracker.project</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<!-- /admin.tracker.project -->
+		</options>
+	</import>
+</data>
