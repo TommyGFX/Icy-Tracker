@@ -40,6 +40,11 @@
 		<item name="it.acp.index.updates.startUpdate"><![CDATA[Start Update]]></item>
 		<item name="it.acp.index.updates.update"><![CDATA[{$update.packageName}{if $update.instanceNo > 1} (#{$update.instanceNo}){/if} Version {$update.version.packageVersion}]]></item>
 	</category>
+	<category name="it.acp.menu">
+		<item name="it.acp.menu.link.content.project"><![CDATA[Projects]]></item>
+		<item name="it.acp.menu.link.content.project.view"><![CDATA[List projects]]></item>
+		<item name="it.acp.menu.link.content.project.add"><![CDATA[Add new project]]></item>
+	</category>
 	<category name="it.global">
 		<item name="it.global.copyright"><![CDATA[<a href="http://roul.codingcorner.info">Issuetracking Software: <strong>Icy Tracker{if SHOW_VERSION_NUMBER} {@PACKAGE_VERSION}{/if}</strong>, developed by <strong>Markus Bartz</strong></a>]]></item>
 		<item name="it.global.offline"><![CDATA[The Tracker is currently offline{if OFFLINE_MESSAGE != ''} for the following reason(s):{else}.{/if}]]></item>
@@ -52,6 +57,14 @@
 		<item name="wcf.acp.group.option.category.admin.tracker.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.category.user.tracker"><![CDATA[Tracker]]></item>
 		<item name="wcf.acp.group.option.category.user.tracker.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.admin.tracker.project"><![CDATA[Projects]]></item>
+		<item name="wcf.acp.group.option.category.admin.tracker.project.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.admin.project.canAddProject"><![CDATA[Can add projects]]></item>
+		<item name="wcf.acp.group.option.admin.project.canAddProject.description"><![CDATA[Members of this usergroup can add projects.]]></item>
+		<item name="wcf.acp.group.option.admin.project.canDeleteProject"><![CDATA[Can delete projects]]></item>
+		<item name="wcf.acp.group.option.admin.project.canDeleteProject.description"><![CDATA[Members of this usergroup can delete projects.]]></item>
+		<item name="wcf.acp.group.option.admin.project.canEditProject"><![CDATA[Can edit projects]]></item>
+		<item name="wcf.acp.group.option.admin.project.canEditProject.description"><![CDATA[Members of this usergroup can edit projects.]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline"><![CDATA[Can view tracker in offline mode]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline.description"><![CDATA[Members of this usergroup can view the tracker even if it is disabled.]]></item>
 	</category>

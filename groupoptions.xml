@@ -24,13 +24,13 @@
 				<defaultvalue>0</defaultvalue>
 			</option>
 
-			<option name="admin.tracker.canDeleteProject">
+			<option name="admin.project.canEditProject">
 				<categoryname>admin.tracker.project</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 			</option>
 
-			<option name="admin.project.canEditProject">
+			<option name="admin.project.canDeleteProject">
 				<categoryname>admin.tracker.project</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>

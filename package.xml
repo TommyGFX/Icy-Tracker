@@ -18,16 +18,16 @@
 	<requiredpackages>
 		<!-- basics -->
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.tar">com.woltlab.wcf</requiredpackage>
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.cronjobs.tar">com.woltlab.wcf.data.cronjobs</requiredpackage>-->
-<!--		<requiredpackage minversion="1.0.3" file="requirements/com.woltlab.wcf.data.feed.reader.tar">com.woltlab.wcf.data.feed.reader</requiredpackage>-->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.image.tar">com.woltlab.wcf.data.image</requiredpackage>-->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.cronjobs.tar">com.woltlab.wcf.data.cronjobs</requiredpackage>
+		<requiredpackage minversion="1.0.3" file="requirements/com.woltlab.wcf.data.feed.reader.tar">com.woltlab.wcf.data.feed.reader</requiredpackage> <!-- com.woltlab.wcf.data.cronjobs -->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.image.tar">com.woltlab.wcf.data.image</requiredpackage>
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.image.captcha.tar">com.woltlab.wcf.data.image.captcha</requiredpackage>-->
 <!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.imageViewer.tar">com.woltlab.wcf.imageViewer</requiredpackage>-->
-<!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.acp.sysinfoxmlexport.tar">com.woltlab.wcf.acp.sysinfoxmlexport</requiredpackage>-->
+		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.acp.sysinfoxmlexport.tar">com.woltlab.wcf.acp.sysinfoxmlexport</requiredpackage>
 		
 		<!-- page system -->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.page.headerMenu.tar">com.woltlab.wcf.data.page.headerMenu</requiredpackage>-->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.system.style.tar">com.woltlab.wcf.system.style</requiredpackage>-->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.page.headerMenu.tar">com.woltlab.wcf.data.page.headerMenu</requiredpackage>
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.system.style.tar">com.woltlab.wcf.system.style</requiredpackage>
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.page.tar">com.woltlab.wcf.data.page</requiredpackage> <!-- com.woltlab.wcf.data.page.headerMenu, com.woltlab.wcf.system.style => com.woltlab.wcf.data.image -->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.help.tar">com.woltlab.wcf.data.help</requiredpackage>		-->
 		
@@ -36,7 +36,6 @@
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.attachment.tar">com.woltlab.wcf.data.message.attachment</requiredpackage>-->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.bbcode.tar">com.woltlab.wcf.data.message.bbcode</requiredpackage>-->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.wysiwyg.tar">com.woltlab.wcf.form.message.wysiwyg</requiredpackage>-->
-<!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.tagging.tar">com.woltlab.wcf.tagging</requiredpackage>-->
 		
 		<!-- user profile -->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.user.tar">com.woltlab.wcf.form.user</requiredpackage>-->
@@ -48,7 +47,6 @@
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.tar">com.woltlab.wcf.form.message</requiredpackage>-->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.search.tar">com.woltlab.wcf.data.message.search</requiredpackage>-->
 <!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.message.sidebar.tar">com.woltlab.wcf.message.sidebar</requiredpackage>-->
-<!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.data.message.search.tagging.tar">com.woltlab.wcf.data.message.search.tagging</requiredpackage>-->
 	</requiredpackages>
 	
 	<excludedpackages>
@@ -60,7 +58,7 @@
 		<files>files.tar</files>
 <!--		<templates>templates.tar</templates>-->
 		<acptemplates>acptemplates.tar</acptemplates>
-<!--		<sql>install.sql</sql>-->
+		<sql>install.sql</sql>
 		<script>acp/install.php</script>
 		
 		<!-- config -->
@@ -70,13 +68,12 @@
 <!--		<pagelocation>pagelocation.xml</pagelocation>-->
 <!--		<eventlistener>eventlistener.xml</eventlistener>-->
 <!--		<useroptions>useroptions.xml</useroptions>-->
-<!--		<groupoptions>groupoptions.xml</groupoptions>-->
+		<groupoptions>groupoptions.xml</groupoptions>
 <!--		<usercpmenu>usercpmenu.xml</usercpmenu>-->
 		<options>options.xml</options>
 <!--		<cronjobs>cronjobs.xml</cronjobs>-->
-<!--		<acpmenu>acpmenu.xml</acpmenu>-->
+		<acpmenu>acpmenu.xml</acpmenu>
 <!--		<help>help.xml</help>-->
-<!--		<taggable>taggable.xml</taggable>-->
 		
 		<!-- languages -->
 		<languages languagecode="de">language/de.xml</languages>

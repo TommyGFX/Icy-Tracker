@@ -12,7 +12,7 @@
 			<showorder>1</showorder>
 			<link>index.php?page=ProjectList</link>
 			<icon>icon/projectM.png</icon>
-			<permissions>admin.project.canEditProject,admin.tracker.canDeleteProject</permissions> 
+			<permissions>admin.project.canEditProject,admin.project.canDeleteProject</permissions> 
 		</acpmenuitem>
 		
 		<acpmenuitem name="it.acp.menu.link.content.project.add">

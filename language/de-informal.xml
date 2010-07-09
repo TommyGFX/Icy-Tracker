@@ -40,6 +40,11 @@
 		<item name="it.acp.index.updates.startUpdate"><![CDATA[Update jetzt durchführen]]></item>
 		<item name="it.acp.index.updates.update"><![CDATA[{$update.packageName}{if $update.instanceNo > 1} (#{$update.instanceNo}){/if} Version {$update.version.packageVersion}]]></item>
 	</category>
+	<category name="it.acp.menu">
+		<item name="it.acp.menu.link.content.project"><![CDATA[Projekte]]></item>
+		<item name="it.acp.menu.link.content.project.view"><![CDATA[Projekte auflisten]]></item>
+		<item name="it.acp.menu.link.content.project.add"><![CDATA[Projekt hinzufügen]]></item>
+	</category>
 	<category name="it.global">
 		<item name="it.global.copyright"><![CDATA[<a href="http://roul.codingcorner.info">Issuetracking Software: <strong>Icy Tracker{if SHOW_VERSION_NUMBER} {@PACKAGE_VERSION}{/if}</strong>, entwickelt von <strong>Markus Bartz</strong></a>]]></item>
 		<item name="it.global.offline"><![CDATA[Der Tracker befindet sich zur Zeit {if OFFLINE_MESSAGE != ''}aus folgenden Gründen im Wartungsmodus:{else}im Wartungsmodus.{/if}]]></item>
@@ -52,6 +57,14 @@
 		<item name="wcf.acp.group.option.category.admin.tracker.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.category.user.tracker"><![CDATA[Tracker]]></item>
 		<item name="wcf.acp.group.option.category.user.tracker.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.admin.tracker.project"><![CDATA[Projekte]]></item>
+		<item name="wcf.acp.group.option.category.admin.tracker.project.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.admin.project.canAddProject"><![CDATA[Kann Projekte hinzufügen]]></item>
+		<item name="wcf.acp.group.option.admin.project.canAddProject.description"><![CDATA[Mitglieder dieser Benutzergruppen können Projekte anlegen.]]></item>
+		<item name="wcf.acp.group.option.admin.project.canDeleteProject"><![CDATA[Kann Projekte löschen]]></item>
+		<item name="wcf.acp.group.option.admin.project.canDeleteProject.description"><![CDATA[Mitglieder dieser Benutzergruppen können Projekte löschen.]]></item>
+		<item name="wcf.acp.group.option.admin.project.canEditProject"><![CDATA[Kann Projekte bearbeiten]]></item>
+		<item name="wcf.acp.group.option.admin.project.canEditProject.description"><![CDATA[Mitglieder dieser Benutzergruppe können Projekte bearbeiten.]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline"><![CDATA[Kann Tracker im Offline-Modus sehen]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline.description"><![CDATA[Mitglieder dieser Benutzergruppe können den Tracker auch dann sehen, wenn er sich gerade im Offline-Modus befindet.]]></item>
 	</category>
