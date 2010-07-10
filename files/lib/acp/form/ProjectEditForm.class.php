@@ -61,7 +61,7 @@ class ProjectEditForm extends ProjectAddForm {
 		$this->project->addShowOrder(($this->showOrder ? $this->showOrder : null));
 		
 		// reset cache
-		$this->resetCache();
+		Project::resetCache();
 		$this->saved();
 		
 		// show success message
