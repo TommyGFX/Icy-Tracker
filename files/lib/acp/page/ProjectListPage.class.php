@@ -83,6 +83,7 @@ class ProjectListPage extends AbstractPage {
 	 */
 	protected function makeProjectList() {
 		$i = 0; $projects = count($this->projectStructure);
+		
 		foreach ($this->projectStructure as $projectID) {
 			$project = $this->projects[$projectID];
 			

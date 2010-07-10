@@ -9,7 +9,7 @@ require_once(IT_DIR.'lib/data/project/Project.class.php');
  * @copyright	%COPYRIGHT%
  * @license		%LICENSE%
  * @package		info.codingcorner.it
- * @subpackage	lib.data
+ * @subpackage	lib.data.project
  * @category 	Icy Tracker
  * @version		$Id$
  */
@@ -39,6 +39,20 @@ class ProjectEditor extends Project {
 		// delete project
 		$sql = "DELETE FROM	it".IT_N."_project
 			WHERE		projectID = ".$this->projectID;
+		WCF::getDB()->sendQuery($sql);
+		
+		$this->removeShowOrder();
+	}
+	
+	/**
+	 * Removes a projects showOrder from project order.
+	 */
+	public function removeShowOrder() {
+		// unshift projects
+		$sql = "UPDATE	it".IT_N."_project
+			SET	position = position - 1
+			WHERE 	showOrder > ".$this->showOrder;
+		WCF::getDB()->sendQuery($sql);
 	}
 	
 	/**
@@ -103,8 +117,39 @@ class ProjectEditor extends Project {
 		// get project
 		$project = new ProjectEditor($projectID, null, null, false);
 		
+		// add showOrder
+		$project->addShowOrder($showOrder);
+		
 		// return new project
 		return $project;
+	}
+	
+	/**
+	 * Adds a project to a specific position in the project order.
+	 * 
+	 * @param	integer	$showOrder
+	 */
+	public function addShowOrder($showOrder = null) {
+		// shift projects
+		if ($showOrder !== null) {
+			$sql = "UPDATE	it".IT_N."_project
+				SET		showOrder = showOrder + 1
+				WHERE	showOrder >= ".$showOrder;
+			WCF::getDB()->sendQuery($sql);
+		}
+		
+		// get final showOrder
+		$sql = "SELECT 	IFNULL(MAX(showOrder), 0) + 1 AS showOrder
+			FROM	it".IT_N."_project
+			".($showOrder ? "WHERE showOrder <= ".$showOrder : '');
+		$row = WCF::getDB()->getFirstRow($sql);
+		$showOrder = $row['showOrder'];
+		
+		// save showOrder
+		$sql = "UPDATE	it".IT_N."_project
+			SET		showOrder = ".$showOrder."
+			WHERE	projectID = ".$this->projectID;
+		WCF::getDB()->sendQuery($sql);
 	}
 	
 	/**
@@ -142,10 +187,11 @@ class ProjectEditor extends Project {
 				'".escapeString($description)."',
 				'".escapeString($image)."',
 				".intval($ownerID).",
-				".intval($showOrder)."
+				0
 				".$values."
 			)";
 		WCF::getDB()->sendQuery($sql);
+		
 		return WCF::getDB()->getInsertID();
 	}
 }

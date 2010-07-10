@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @copyright	%COPYRIGHT%
  * @license		%LICENSE%
  * @package		info.codingcorner.it
- * @subpackage	lib.data
+ * @subpackage	lib.data.project
  * @category 	Icy Tracker
  * @version		$Id$
  */
