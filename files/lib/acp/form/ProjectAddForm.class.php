@@ -147,7 +147,7 @@ class ProjectAddForm extends ACPForm {
 			'title' => $this->title,
 			'description' => $this->description,
 			'image' => $this->image,
-			'ownerID' => $this->ownerID,
+			'ownername' => $this->ownername,
 			'showOrder' => $this->showOrder,
 		));
 	}
