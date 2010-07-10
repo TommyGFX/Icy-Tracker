@@ -1,5 +1,5 @@
 <?php
-require_once(WCF_DIR.'lib/acp/form/ProjectAddForm.class.php');
+require_once(IT_DIR.'lib/acp/form/ProjectAddForm.class.php');
 
 /**
  * Shows the project edit form.
@@ -24,10 +24,10 @@ class ProjectEditForm extends ProjectAddForm {
 	public function readParameters() {
 		parent::readParameters();
 		
-		// get board id
+		// get project id
 		if (isset($_REQUEST['projectID'])) $this->projectID = intval($_REQUEST['projectID']);
 		
-		// get board
+		// get project
 		$this->project = new ProjectEditor($this->projectID);
 	}
 	
@@ -76,8 +76,8 @@ class ProjectEditForm extends ProjectAddForm {
 		
 		if (!count($_POST)) {
 			// get values
-			$this->title = $this->board->title;
-			$this->description = $this->board->description;
+			$this->title = $this->project->title;
+			$this->description = $this->project->description;
 			$this->image = $this->project->image;
 			$this->ownername = $this->project->getOwner()->username;
 			$this->showOrder = $this->project->showOrder;
