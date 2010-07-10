@@ -45,6 +45,29 @@
 		<item name="it.acp.menu.link.content.project.view"><![CDATA[Projekte auflisten]]></item>
 		<item name="it.acp.menu.link.content.project.add"><![CDATA[Projekt hinzufügen]]></item>
 	</category>
+	<category name="it.acp.project">
+		<item name="it.acp.project"><![CDATA[Projekt]]></item>
+		<item name="it.acp.project.add"><![CDATA[Projekt hinzufügen]]></item>
+		<item name="it.acp.project.add.success"><![CDATA[Das neue Projekt wurde erfolgreich gespeichert.]]></item>
+		<item name="it.acp.project.delete"><![CDATA[Projekt löschen]]></item>
+		<item name="it.acp.project.delete.success"><![CDATA[Das Projekt wurde erfolgreich gelöscht.]]></item>
+		<item name="it.acp.project.delete.sure"><![CDATA[Willst du dieses Projekt wirklich löschen?]]></item>
+		<item name="it.acp.project.description"><![CDATA[Beschreibung]]></item>
+		<item name="it.acp.project.description.description"><![CDATA[Hier kannst du eine Beschreibung für das Projekt festlegen.]]></item>
+		<item name="it.acp.project.edit"><![CDATA[Projekt bearbeiten]]></item>
+		<item name="it.acp.project.edit.success"><![CDATA[Deine Änderungen wurden erfolgreich gespeichert.]]></item>
+		<item name="it.acp.project.error.title.notUnique"><![CDATA[Es existiert bereits ein Projekt mit diesem Namen.]]></item>
+		<item name="it.acp.project.general"><![CDATA[Projekt]]></item>
+		<item name="it.acp.project.image"><![CDATA[Bild]]></item>
+		<item name="it.acp.project.image.description"><![CDATA[Hier kannst du die URL eines Bildes für das Projekt angeben.]]></item>
+		<item name="it.acp.project.list"><![CDATA[Projekte]]></item>
+		<item name="it.acp.project.ownername"><![CDATA[Projektleiter]]></item>
+		<item name="it.acp.project.ownername.description"><![CDATA[Gib hier hier den Projektleiter für das Projekt an.]]></item>
+		<item name="it.acp.project.showOrder"><![CDATA[Reihenfolge]]></item>
+		<item name="it.acp.project.showOrder.description"><![CDATA[Hier kannst du eine Ordnungsnummer angeben. Diese Nummer gibt an, wie das Projekt in Bezug auf andere Projekte sortiert werden soll.]]></item>
+		<item name="it.acp.project.title"><![CDATA[Projektname]]></item>
+		<item name="it.acp.project.title.description"><![CDATA[Gib hier den Namen des Projekts an.]]></item>
+	</category>
 	<category name="it.global">
 		<item name="it.global.copyright"><![CDATA[<a href="http://roul.codingcorner.info">Issuetracking Software: <strong>Icy Tracker{if SHOW_VERSION_NUMBER} {@PACKAGE_VERSION}{/if}</strong>, entwickelt von <strong>Markus Bartz</strong></a>]]></item>
 		<item name="it.global.offline"><![CDATA[Der Tracker befindet sich zur Zeit {if OFFLINE_MESSAGE != ''}aus folgenden Gründen im Wartungsmodus:{else}im Wartungsmodus.{/if}]]></item>

@@ -15,7 +15,7 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{if $action == 'add'}{lang}it.acp.project.add.success{/lang}{else}{lang}it.acp.project.edit.success{/lang}{/if}</p>
+	<p class="success">{lang}it.acp.project.{@$action}.success{/lang}</p>
 {/if}
 
 <script type="text/javascript">
@@ -112,7 +112,7 @@
 						{if $errorField == 'ownername'}
 							<p class="innerError">
 								{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-								{if $errorType == 'notValid'}{lang}it.acp.project.error.ownername.notValid{/lang}{/if}
+								{if $errorType == 'notValid'}{lang username=$ownername}wcf.user.error.username.notFound{/lang}{/if}
 							</p>
 						{/if}
 					</div>

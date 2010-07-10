@@ -45,6 +45,29 @@
 		<item name="it.acp.menu.link.content.project.view"><![CDATA[List projects]]></item>
 		<item name="it.acp.menu.link.content.project.add"><![CDATA[Add new project]]></item>
 	</category>
+	<category name="it.acp.project">
+		<item name="it.acp.project"><![CDATA[Project]]></item>
+		<item name="it.acp.project.add"><![CDATA[Add new Project]]></item>
+		<item name="it.acp.project.add.success"><![CDATA[The new project has been saved successfully]]></item>
+		<item name="it.acp.project.delete"><![CDATA[Delete Project]]></item>
+		<item name="it.acp.project.delete.success"><![CDATA[The project has been successfully deleted.]]></item>
+		<item name="it.acp.project.delete.sure"><![CDATA[Du you really want to delete this project?]]></item>
+		<item name="it.acp.project.description"><![CDATA[Description]]></item>
+		<item name="it.acp.project.description.description"><![CDATA[Here you can enter a description for the project.]]></item>
+		<item name="it.acp.project.edit"><![CDATA[Edit Project]]></item>
+		<item name="it.acp.project.edit.success"><![CDATA[Your changes have been saved successfully.]]></item>
+		<item name="it.acp.project.error.title.notUnique"><![CDATA[There is already a project with this name.]]></item>
+		<item name="it.acp.project.general"><![CDATA[Projekt]]></item>
+		<item name="it.acp.project.image"><![CDATA[Image]]></item>
+		<item name="it.acp.project.image.description"><![CDATA[Here you can enter the URL to an image for your project.]]></item>
+		<item name="it.acp.project.list"><![CDATA[Projects]]></item>
+		<item name="it.acp.project.ownername"><![CDATA[Project manager]]></item>
+		<item name="it.acp.project.ownername.description"><![CDATA[Enter the name of the project manager here.]]></item>
+		<item name="it.acp.project.showOrder"><![CDATA[Display order]]></item>
+		<item name="it.acp.project.showOrder.description"><![CDATA[Enter a sort order number for this project here to change the sort order. ]]></item>
+		<item name="it.acp.project.title"><![CDATA[Projectname]]></item>
+		<item name="it.acp.project.title.description"><![CDATA[Enter the name of the project.]]></item>
+	</category>
 	<category name="it.global">
 		<item name="it.global.copyright"><![CDATA[<a href="http://roul.codingcorner.info">Issuetracking Software: <strong>Icy Tracker{if SHOW_VERSION_NUMBER} {@PACKAGE_VERSION}{/if}</strong>, developed by <strong>Markus Bartz</strong></a>]]></item>
 		<item name="it.global.offline"><![CDATA[The Tracker is currently offline{if OFFLINE_MESSAGE != ''} for the following reason(s):{else}.{/if}]]></item>
