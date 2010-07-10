@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
+
 <svg
    xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -19,15 +20,15 @@
    enable-background="new 0 0 128 128"
    xml:space="preserve"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
+   inkscape:version="0.47 r22583"
    sodipodi:docname="project.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="E:\Development\Aptana\workspace_34\info.codingcorner.ccbt\files\icon\projectM.png"
-   inkscape:export-xdpi="16.879999"
-   inkscape:export-ydpi="16.879999"><metadata
+   inkscape:export-filename="G:\Development\PHP\Workspace\info.codingcorner.it\files\icon\projectS.png"
+   inkscape:export-xdpi="11.36"
+   inkscape:export-ydpi="11.36"><metadata
    id="metadata195"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
    id="defs193"><inkscape:perspective
    sodipodi:type="inkscape:persp3d"
    inkscape:vp_x="0 : 64 : 1"
@@ -4298,8 +4299,8 @@
    y1="110.9103"
    x2="69.015182"
    y2="59.5075" /></defs><sodipodi:namedview
-   inkscape:window-height="1004"
-   inkscape:window-width="1280"
+   inkscape:window-height="988"
+   inkscape:window-width="1680"
    inkscape:pageshadow="2"
    inkscape:pageopacity="0.0"
    guidetolerance="10.0"
@@ -4311,11 +4312,12 @@
    id="base"
    inkscape:zoom="4"
    inkscape:cx="64.71064"
-   inkscape:cy="32.571066"
-   inkscape:window-x="1672"
-   inkscape:window-y="-8"
+   inkscape:cy="62.571066"
+   inkscape:window-x="-8"
+   inkscape:window-y="32"
    inkscape:current-layer="layer1"
-   showgrid="false" />
+   showgrid="false"
+   inkscape:window-maximized="1" />
 <linearGradient
    id="XMLID_13_"
    gradientUnits="userSpaceOnUse"
