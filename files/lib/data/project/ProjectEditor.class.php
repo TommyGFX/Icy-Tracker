@@ -50,7 +50,7 @@ class ProjectEditor extends Project {
 	public function removeShowOrder() {
 		// unshift projects
 		$sql = "UPDATE	it".IT_N."_project
-			SET	position = position - 1
+			SET	showOrder = showOrder - 1
 			WHERE 	showOrder > ".$this->showOrder;
 		WCF::getDB()->sendQuery($sql);
 	}
