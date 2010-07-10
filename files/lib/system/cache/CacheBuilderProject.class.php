@@ -1,14 +1,12 @@
 <?php
-// wbb imports
-require_once(WBB_DIR.'lib/data/board/Project.class.php');
+// it imports
+require_once(IT_DIR.'lib/data/project/Project.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
-require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
-require_once(WCF_DIR.'lib/data/user/User.class.php');
 
 /**
- * Caches all project and the order of boards.
+ * Caches all project and the order of projects.
  * 
  * @author		Markus Bartz
  * @copyright	%COPYRIGHT%
@@ -26,12 +24,12 @@ class CacheBuilderProject implements CacheBuilder {
 		$data = array('projects' => array(), 'projectStructure' => array());
 		
 		$sql = "SELECT		*
-			FROM 		it".IT_N."_board
+			FROM 		it".IT_N."_project
 			ORDER BY	showOrder";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
-			$data['projects'][$row['boardID']] = new Project(null, $row);
-			$data['projectStructure'][] = $row['boardID'];
+			$data['projects'][$row['projectID']] = new Project(null, $row);
+			$data['projectStructure'][] = $row['projectID'];
 		}
 		
 		return $data;
