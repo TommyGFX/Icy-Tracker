@@ -8,6 +8,7 @@ CREATE TABLE it1_1_project (
   description mediumtext NOT NULL,
   image varchar(255) NOT NULL,
   ownerID int(10) unsigned NOT NULL,
+  showOrder int(10) unsigned NOT NULL,
   PRIMARY KEY (projectID),
   UNIQUE KEY title (title)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

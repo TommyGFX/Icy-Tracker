@@ -15,6 +15,21 @@ require_once(IT_DIR.'lib/data/project/Project.class.php');
  */
 class ProjectEditor extends Project {
 	/**
+	 * Creates a new ProjectEditor object.
+	 * @see Project::__construct()
+	 */
+	public function __construct($projectID, $row = null, $cacheObject = null, $useCache = true) {
+		if ($useCache) parent::__construct($projectID, $row, $cacheObject);
+		else {
+			$sql = "SELECT	*
+				FROM	it".IT_N."_project
+				WHERE	projectID = ".$projectID;
+			$row = WCF::getDB()->getFirstRow($sql);
+			parent::__construct(null, $row);
+		}
+	}
+	
+	/**
 	 * Deletes this project.
 	 */
 	public function delete() {
@@ -33,15 +48,17 @@ class ProjectEditor extends Project {
 	 * @param	string	$description
 	 * @param	string	$image
 	 * @param	integer	$ownerID
+	 * @param	integer	showOrder
 	 * @param	array	$additionalFields
 	 */
-	public function update($title = null, $description = null, $image = null, $ownerID = null, $additionalFields = array()) {
+	public function update($title = null, $description = null, $image = null, $ownerID = null, $showOrder = null, $additionalFields = array()) {
 		$fields = array();
 		if ($title !== null) $fields['title'] = $title;
 		if ($description !== null) $fields['description'] = $description;
 		if ($image !== null) $fields['image'] = $image;
 		if ($ownerID !== null) $fields['ownerID'] = $ownerID;
-				
+		if ($showOrder !== null) $fields['showOrder'] = $showOrder;
+		
 		$this->updateData(array_merge($fields, $additionalFields));
 	}
 	
@@ -74,13 +91,14 @@ class ProjectEditor extends Project {
 	 * @param	string	$description
 	 * @param	string	$image
 	 * @param	integer	$ownerID
+	 * @param	integer	showOrder
 	 * @param	array	$additionalFields
 	 * 
 	 * @return	ProjectEditor
 	 */
-	public static function create($title, $description, $image, $ownerID, $additionalFields = array()) {
+	public static function create($title, $description, $image, $ownerID, $showOrder, $additionalFields = array()) {
 		// save data
-		$projectID = self::insert($title, $description, $image, $ownerID, $additionalFields);
+		$projectID = self::insert($title, $description, $image, $ownerID, $showOrder, $additionalFields);
 		
 		// get project
 		$project = new ProjectEditor($projectID, null, null, false);
@@ -96,11 +114,12 @@ class ProjectEditor extends Project {
 	 * @param	string	$description
 	 * @param	string	$image
 	 * @param	integer	$ownerID
+	 * @param	integer	showOrder
 	 * @param	array	$additionalFields
 	 * 
 	 * @return	integer
 	 */
-	public static function insert($title, $description, $image, $ownerID, $additionalFields = array()) { 
+	public static function insert($title, $description, $image, $ownerID, $showOrder, $additionalFields = array()) { 
 		$keys = $values = '';
 		foreach ($additionalFields as $key => $value) {
 			$keys .= ','.$key;
@@ -113,7 +132,8 @@ class ProjectEditor extends Project {
 				title,
 				description,
 				image,
-				ownerID
+				ownerID,
+				showOrder
 				".$keys."
 			)
 			VALUES
@@ -121,7 +141,8 @@ class ProjectEditor extends Project {
 				'".escapeString($title)."',
 				'".escapeString($description)."',
 				'".escapeString($image)."',
-				".intval($ownerID)."
+				".intval($ownerID).",
+				".intval($showOrder)."
 				".$values."
 			)";
 		WCF::getDB()->sendQuery($sql);

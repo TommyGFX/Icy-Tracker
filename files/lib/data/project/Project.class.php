@@ -13,19 +13,46 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @version		$Id$
  */
 class Project extends DatabaseObject {
+	protected static $projects = null;
+	
 	/**
 	 * Creates a new Project object.
 	 *
 	 * @param	integer	$projectID
 	 * @param	array	$row
+	 * @param	Project	$cacheObject
 	 */
-	public function __construct($projectID, $row = null) {
-		if ($projectID !== null) {
-			$sql = "SELECT	*
-				FROM	it".IT_N."_project";
-			$row = WCF::getDB()->getFirstRow($sql);
+	public function __construct($projectID, $row = null, $cacheObject = null) {
+		if ($projectID !== null) $cacheObject = self::getProject($projectID);
+		if ($row != null) parent::__construct($row);
+		if ($cacheObject != null) parent::__construct($cacheObject->data);
+		
+//		if ($projectID !== null) {
+//			$sql = "SELECT	*
+//				FROM	it".IT_N."_project
+//				WHERE	projectID = ".$projectID;
+//			$row = WCF::getDB()->getFirstRow($sql);
+//		}
+//		parent::__construct($row);
+	}
+
+	/**
+	 * Gets the project with the given project id from cache.
+	 *
+	 * @param	integer		$projectID
+	 * 
+	 * @return	Project
+	 */
+	public static function getProject($projectID) {
+		if (self::$projects === null) {
+			self::$projects = WCF::getCache()->get('project', 'projects');
 		}
-		parent::__construct($row);
+
+		if (!isset(self::$projects[$projectID])) {
+			throw new IllegalLinkException();
+		}
+
+		return self::$projects[$projectID];
 	}
 	
 	/**
@@ -33,7 +60,9 @@ class Project extends DatabaseObject {
 	 */
 	public static function resetCache() {
 		// reset cache
-//		WCF::getCache()->clearResource('project');
+		WCF::getCache()->clearResource('project');
+		
+		self::$projects = null;
 	}
 }
 ?>

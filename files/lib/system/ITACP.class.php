@@ -67,6 +67,7 @@ class ITACP extends WCFACP {
 	 * Can be called statically from other applications or plugins.
 	 */
 	public static function loadDefaultITCacheResources() {
+		WCF::getCache()->addResource('project', IT_DIR.'cache/cache.project.php', IT_DIR.'lib/system/cache/CacheBuilderProject.class.php');
 	}
 }
 ?>
