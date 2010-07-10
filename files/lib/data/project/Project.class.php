@@ -14,6 +14,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  */
 class Project extends DatabaseObject {
 	protected static $projects = null;
+	protected $owner = null;
 	
 	/**
 	 * Creates a new Project object.
@@ -63,6 +64,16 @@ class Project extends DatabaseObject {
 		WCF::getCache()->clearResource('project');
 		
 		self::$projects = null;
+	}
+	
+	public function getOwner() {
+		if ($this->owner == null) {
+			if ($this->ownerID) {
+				$this->owner = new User($this->ownerID);
+			}
+		}
+		
+		return $this->owner;
 	}
 }
 ?>

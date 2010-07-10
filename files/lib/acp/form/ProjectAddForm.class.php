@@ -39,7 +39,7 @@ class ProjectAddForm extends ACPForm {
 	public $ownername = '';
 	public $owner = null;
 	public $ownerID = 0;
-	public $showOrder = 0;
+	public $showOrder = '';
 	
 	/**
 	 * @see Page::readParameters()
@@ -59,8 +59,8 @@ class ProjectAddForm extends ACPForm {
 		if (isset($_POST['title'])) $this->title = StringUtil::trim($_POST['title']);
 		if (isset($_POST['description'])) $this->description = StringUtil::trim($_POST['description']);
 		if (isset($_POST['image'])) $this->image = StringUtil::trim($_POST['image']);
-		if (!empty($_POST['showOrder'])) $this->showOrder = intval($_POST['showOrder']);
-		if (!empty($_POST['ownername'])) $this->ownername = intval($_POST['ownername']);
+		if (!empty($_POST['showOrder'])) $this->showOrder = $_POST['showOrder'];
+		if (!empty($_POST['ownername'])) $this->ownername = StringUtil::trim($_POST['ownername']);
 	}
 
 	/**
@@ -116,17 +116,15 @@ class ProjectAddForm extends ACPForm {
 		parent::save();
 		
 		// save project
-		if (WCF::getUser()->getPermission('admin.project.canEditProject')) {
-			$this->project = ProjectEditor::create($this->title, $this->description, $this->image, $this->ownerID, $this->showOrder, $this->additionalFields);
-		}
+		$this->project = ProjectEditor::create($this->title, $this->description, $this->image, $this->ownerID, intval($this->showOrder), $this->additionalFields);
 		
 		// reset cache
 		Project::resetCache();
 		$this->saved();
 		
 		// reset values
-		$this->ownerID = $this->showOrder = 0;
-		$this->title = $this->description = $this->image = $this->ownername = '';
+		$this->ownerID = 0;
+		$this->title = $this->description = $this->image = $this->ownername = $this->showOrder = '';
 		$this->additionalFields = array();
 		$this->owner = null;
 		
@@ -149,6 +147,7 @@ class ProjectAddForm extends ACPForm {
 			'image' => $this->image,
 			'ownername' => $this->ownername,
 			'showOrder' => $this->showOrder,
+			'action' => 'add',
 		));
 	}
 }

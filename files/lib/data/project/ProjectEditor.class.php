@@ -65,13 +65,12 @@ class ProjectEditor extends Project {
 	 * @param	integer	showOrder
 	 * @param	array	$additionalFields
 	 */
-	public function update($title = null, $description = null, $image = null, $ownerID = null, $showOrder = null, $additionalFields = array()) {
+	public function update($title = null, $description = null, $image = null, $ownerID = null, $additionalFields = array()) {
 		$fields = array();
 		if ($title !== null) $fields['title'] = $title;
 		if ($description !== null) $fields['description'] = $description;
 		if ($image !== null) $fields['image'] = $image;
 		if ($ownerID !== null) $fields['ownerID'] = $ownerID;
-		if ($showOrder !== null) $fields['showOrder'] = $showOrder;
 		
 		$this->updateData(array_merge($fields, $additionalFields));
 	}
@@ -112,7 +111,7 @@ class ProjectEditor extends Project {
 	 */
 	public static function create($title, $description, $image, $ownerID, $showOrder, $additionalFields = array()) {
 		// save data
-		$projectID = self::insert($title, $description, $image, $ownerID, $showOrder, $additionalFields);
+		$projectID = self::insert($title, $description, $image, $ownerID, $additionalFields);
 		
 		// get project
 		$project = new ProjectEditor($projectID, null, null, false);
@@ -164,7 +163,7 @@ class ProjectEditor extends Project {
 	 * 
 	 * @return	integer
 	 */
-	public static function insert($title, $description, $image, $ownerID, $showOrder, $additionalFields = array()) { 
+	public static function insert($title, $description, $image, $ownerID, $additionalFields = array()) { 
 		$keys = $values = '';
 		foreach ($additionalFields as $key => $value) {
 			$keys .= ','.$key;

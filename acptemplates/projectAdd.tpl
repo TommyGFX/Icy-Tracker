@@ -38,8 +38,8 @@
 	<div class="border content">
 		<div class="container-1">
 			<fieldset>
-				<legend>{lang}it.acp.project.data.general{/lang}</legend>
-				<div class="formElement{if $errorField == 'title'} formError{/if}">
+				<legend>{lang}it.acp.project.general{/lang}</legend>
+				<div id="titleDiv" class="formElement{if $errorField == 'title'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="title">{lang}it.acp.project.title{/lang}</label>
 					</div>
@@ -96,8 +96,8 @@
 					//]]>
 				</script>
 
-				<div id="ownernameDiv" class="formElement">
-					<div class="formElement{if $errorField == 'ownername'} formError{/if}">
+				<div id="ownernameDiv" class="formElement{if $errorField == 'ownername'} formError{/if}">
+					<div class="formFieldLabel">
 						<label for="ownername">{lang}it.acp.project.ownername{/lang}</label>
 					</div>
 					<div class="formField">
