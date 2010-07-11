@@ -20,7 +20,8 @@ require_once(WCF_DIR.'lib/page/SortablePage.class.php');
 class ProjectViewPage extends SortablePage {
 	// system
 	public $templateName = 'projectView';
-	public $deletedVersionID = 0;
+	public $actionVersionID = 0;
+	public $actionType = '';
 	public $defaultSortField = 'version';
 	
 	public $projectID = 0;
@@ -33,7 +34,8 @@ class ProjectViewPage extends SortablePage {
 	public function readParameters() {
 		parent::readParameters();
 		
-		if (isset($_REQUEST['deletedVersionID'])) $this->deletedVersionID = intval($_REQUEST['deletedVersionID']);
+		if (isset($_REQUEST['actionVersionID'])) $this->actionVersionID = intval($_REQUEST['actionVersionID']);
+		if (isset($_REQUEST['actionType'])) $this->actionType = StringUtil::trim($_REQUEST['actionType']);
 		if (isset($_REQUEST['projectID'])) $this->projectID = intval($_REQUEST['projectID']);
 		$this->project = Project::getProject($this->projectID);
 	}
@@ -100,7 +102,8 @@ class ProjectViewPage extends SortablePage {
 		WCF::getTPL()->assign(array(
 			'project' => $this->project,
 			'versions' => $this->versions,
-			'deletedVersionID' => $this->deletedVersionID
+			'actionVersionID' => $this->actionVersionID,
+			'actionType' => $this->actionType,
 		));
 	}
 	

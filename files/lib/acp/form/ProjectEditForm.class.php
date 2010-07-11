@@ -56,7 +56,7 @@ class ProjectEditForm extends ProjectAddForm {
 		AbstractForm::save();
 		
 		// save project
-		$this->project->update($this->title, $this->description, $this->image, intval($this->ownerID));
+		$this->project->update($this->title, $this->description, $this->image, intval($this->ownerID), $this->additionalFields);
 		$this->project->removeShowOrder();
 		$this->project->addShowOrder(($this->showOrder ? $this->showOrder : null));
 		

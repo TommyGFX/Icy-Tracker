@@ -20,8 +20,8 @@
 	{if $additionalFields|isset}{@$additionalFields}{/if}
 </fieldset>
 
-{if $deletedVersionID}
-	<p class="success">{lang}it.acp.project.version.delete.success{/lang}</p>	
+{if $actionVersionID}
+	<p class="success">{lang}it.acp.project.version.{$actionType}.success{/lang}</p>	
 {/if}
 
 <div class="contentHeader">
