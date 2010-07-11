@@ -23,25 +23,8 @@ class ProjectViewPage extends SortablePage {
 	public $deletedVersionID = 0;
 	public $defaultSortField = 'version';
 	
-	/**
-	 * Project id
-	 * 
-	 * var		integer
-	 */
 	public $projectID = 0;
-	
-	/**
-	 * Project
-	 * 
-	 * @var		Project
-	 */
 	public $project = null;
-	
-	/**
-	 * List of versions from this project
-	 * 
-	 * @var		array
-	 */
 	public $versions = array();
 	
 	/**
@@ -52,6 +35,7 @@ class ProjectViewPage extends SortablePage {
 		
 		if (isset($_REQUEST['deletedVersionID'])) $this->deletedVersionID = intval($_REQUEST['deletedVersionID']);
 		if (isset($_REQUEST['projectID'])) $this->projectID = intval($_REQUEST['projectID']);
+		$this->project = Project::getProject($this->projectID);
 	}
 	
 	/**
@@ -60,7 +44,6 @@ class ProjectViewPage extends SortablePage {
 	public function readData() {
 		parent::readData();
 		
-		$this->project = Project::getProject($this->projectID);
 		$this->readVersions();
 	}
 	
@@ -119,7 +102,7 @@ class ProjectViewPage extends SortablePage {
 	 */
 	public function show() {
 		// enable menu item
-		WCFACP::getMenu()->setActiveMenuItem('it.acp.menu.link.project.view');
+		WCFACP::getMenu()->setActiveMenuItem('it.acp.menu.link.content.project.view');
 		
 		// check permission
 		WCF::getUser()->checkPermission(array('admin.project.canEditProject', 'admin.project.canDeleteProject', 'admin.project.canAddVersion', 'admin.project.canEditVersion', 'admin.project.canDeleteVersion'));

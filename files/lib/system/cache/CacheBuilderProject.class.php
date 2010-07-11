@@ -22,7 +22,7 @@ class CacheBuilderProject implements CacheBuilder {
 	 * @see CacheBuilder::getData()
 	 */
 	public function getData($cacheResource) {
-		$data = array('projects' => array(), 'projectStructure' => array(), 'versions' => array(), 'projectToVersions');
+		$data = array('projects' => array(), 'projectStructure' => array(), 'versions' => array(), 'projectToVersions' => array());
 		
 		// projects and projectStructure
 		$sql = "SELECT		*

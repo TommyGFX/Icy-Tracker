@@ -88,9 +88,9 @@ class VersionEditor extends Version {
 	 * 
 	 * @return	ProjectEditor
 	 */
-	public static function create($projectID, $version, $published, $additionalFields = array()) {
+	public static function create($projectID, $version, $additionalFields = array()) {
 		// save data
-		$versionID = self::insert($projectID, $version, $published, $additionalFields);
+		$versionID = self::insert($projectID, $version, $additionalFields);
 		
 		// get version
 		$version = new VersionEditor($versionID, null, null, false);
@@ -109,7 +109,7 @@ class VersionEditor extends Version {
 	 * 
 	 * @return	integer
 	 */
-	public static function insert($projectID, $version, $published, $additionalFields = array()) { 
+	public static function insert($projectID, $version, $additionalFields = array()) { 
 		$keys = $values = '';
 		foreach ($additionalFields as $key => $value) {
 			$keys .= ','.$key;
@@ -120,15 +120,13 @@ class VersionEditor extends Version {
 		$sql = "INSERT INTO	it".IT_N."_project_version
 			(
 				projectID,
-				version,
-				published
+				version
 				".$keys."
 			)
 			VALUES
 			(
 				'".intval($projectID)."',
-				'".escapeString($version)."',
-				'".intval($published)."'
+				'".escapeString($version)."'
 				".$values."
 			)";
 		WCF::getDB()->sendQuery($sql);

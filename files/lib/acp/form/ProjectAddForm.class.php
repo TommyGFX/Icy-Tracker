@@ -42,19 +42,10 @@ class ProjectAddForm extends ACPForm {
 	public $showOrder = '';
 	
 	/**
-	 * @see Page::readParameters()
-	 */
-	public function readParameters() {
-		parent::readParameters();
-	}
-	
-	/**
 	 * @see Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
-		
-		$this->closed = $this->countUserPosts = $this->invisible = $this->allowDescriptionHtml = 0;
 		
 		if (isset($_POST['title'])) $this->title = StringUtil::trim($_POST['title']);
 		if (isset($_POST['description'])) $this->description = StringUtil::trim($_POST['description']);

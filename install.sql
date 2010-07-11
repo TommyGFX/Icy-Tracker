@@ -20,7 +20,7 @@ CREATE TABLE it1_1_project_version (
   versionID int(10) unsigned NOT NULL AUTO_INCREMENT,
   projectID int(10) unsigned NOT NULL,
   version varchar(255) NOT NULL,
-  published tinyint(1) NOT NULL,
+  published tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (versionID),
   UNIQUE KEY version (projectID,version),
   KEY projectID (projectID)
