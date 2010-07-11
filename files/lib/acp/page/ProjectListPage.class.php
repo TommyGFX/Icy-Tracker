@@ -60,7 +60,7 @@ class ProjectListPage extends AbstractPage {
 		WCFACP::getMenu()->setActiveMenuItem('it.acp.menu.link.content.project.view');
 		
 		// check permission
-		WCF::getUser()->checkPermission(array('admin.project.canEditProject', 'admin.project.canDeleteProject'));
+		WCF::getUser()->checkPermission(array('admin.project.canEditProject', 'admin.project.canDeleteProject', 'admin.project.canAddVersion', 'admin.project.canEditVersion', 'admin.project.canDeleteVersion'));
 		
 		parent::show();
 	}

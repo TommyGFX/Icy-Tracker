@@ -10,8 +10,9 @@ CREATE TABLE it1_1_project (
   ownerID int(10) unsigned NOT NULL,
   showOrder int(10) unsigned NOT NULL,
   PRIMARY KEY (projectID),
-  UNIQUE KEY title (title)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  UNIQUE KEY title (title),
+  KEY showOrder (showOrder)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- Project versions
 DROP TABLE IF EXISTS it1_1_project_version;

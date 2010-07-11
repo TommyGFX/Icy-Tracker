@@ -1,5 +1,6 @@
 <?php
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
+require_once(IT_DIR.'lib/data/project/Version.class.php');
 
 /**
  * Represents a project in the tracker.
@@ -14,7 +15,9 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  */
 class Project extends DatabaseObject {
 	protected static $projects = null;
+	protected static $projectToVersions = null;
 	protected $owner = null;
+	protected $versions = null;
 	
 	/**
 	 * Creates a new Project object.
@@ -66,6 +69,11 @@ class Project extends DatabaseObject {
 		self::$projects = null;
 	}
 	
+	/**
+	 * Gets the user object of the owner of this project.
+	 * 
+	 * @return	User
+	 */
 	public function getOwner() {
 		if ($this->owner == null) {
 			if ($this->ownerID) {
@@ -74,6 +82,28 @@ class Project extends DatabaseObject {
 		}
 		
 		return $this->owner;
+	}
+	
+	/**
+	 * Gets all versions of this project.
+	 * 
+	 * @return	array<Version>
+	 */
+	public function getVersions() {
+		if ($this->versions == null) {
+			if (self::$projectToVersions === null) {
+				self::$projectToVersions = WCF::getCache()->get('project', 'projectToVersions');
+			}
+			
+			$this->versions = array();
+			if (isset(self::$projectToVersions[$this->projectID])) {
+				$versionIDs = self::$projectToVersions[$this->projectID];
+				foreach ($versionIDs as $versionID) {
+					$this->versions[] = Version::getVersion($versionID);
+				}
+			}
+		}
+		return $this->versions;
 	}
 }
 ?>

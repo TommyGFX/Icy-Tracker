@@ -53,8 +53,8 @@
 									</select>
 								{/if}
 								
-								{if $this->user->getPermission('admin.project.canEditProject')}
-									ID-{@$project->projectID} <a href="index.php?form=ProjectEdit&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}{$project->title}{/lang}</a>
+								{if $this->user->getPermission('admin.project.canEditProject') || $this->user->getPermission('admin.project.canDeleteProject') || $this->user->getPermission('admin.project.canAddVersion') || $this->user->getPermission('admin.project.canEditVersion') || $this->user->getPermission('admin.project.canDeleteVersion')}
+									ID-{@$project->projectID} <a href="index.php?form=ProjectView&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{lang}{$project->title}{/lang}</a>
 								{else}
 									ID-{@$project->projectID} {lang}{$project->title}{/lang}
 								{/if}

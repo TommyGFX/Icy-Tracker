@@ -34,7 +34,7 @@ class ProjectEditor extends Project {
 	 */
 	public function delete() {
 		// empty project
-		// TODO: implement ticket & version cleanup
+		// TODO: implement ticket & version cleanup -- RouL
 		
 		// delete project
 		$sql = "DELETE FROM	it".IT_N."_project
@@ -76,7 +76,7 @@ class ProjectEditor extends Project {
 	}
 	
 	/**
-	 * Updates the data of a project.
+	 * Updates the data of this project.
 	 *
 	 * @param	array	$fields
 	 */
