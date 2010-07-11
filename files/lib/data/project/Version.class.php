@@ -23,7 +23,7 @@ class Version extends DatabaseObject {
 	 * @param	Version	$cacheObject
 	 */
 	public function __construct($versionID, $row = null, $cacheObject = null) {
-		if ($projectID !== null) $cacheObject = self::getProject($versionID);
+		if ($versionID !== null) $cacheObject = self::getVersion($versionID);
 		if ($row != null) parent::__construct($row);
 		if ($cacheObject != null) parent::__construct($cacheObject->data);
 	}
@@ -44,7 +44,7 @@ class Version extends DatabaseObject {
 			throw new IllegalLinkException();
 		}
 
-		return self::$projects[$versionID];
+		return self::$versions[$versionID];
 	}
 }
 ?>

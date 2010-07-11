@@ -81,6 +81,13 @@ class ProjectViewPage extends SortablePage {
 	public function countItems() {
 		parent::countItems();
 		
+//		echo "<pre>";
+//		$versions = $this->project->getVersions();
+//		var_dump($versions);
+//		$test = count($versions);
+//		var_dump($test);
+//		echo "</pre>";
+//		die();
 		return count($this->project->getVersions());
 	}
 	

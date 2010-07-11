@@ -36,7 +36,7 @@
 	</div>
 </div>
 
-{if $versions|count}
+{if $versions|count}{#$versions|count}
 	<div class="border titleBarPanel">
 		<div class="containerHead"><h3>{lang}it.acp.project.version.view.count{/lang}</h3></div>
 	</div>
@@ -82,7 +82,7 @@
 					<td class="columnVersionID columnID">{@$version->versionID}</td>
 					<td class="columnVersion columnText">
 						{if $this->user->getPermission('admin.project.canEditVersion')}
-							<a href="index.php?form=VersionEdit&amp;versionID={@$version.versionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$version->version}</a>
+							<a href="index.php?form=VersionEdit&amp;versionID={@$version->versionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$version->version}</a>
 						{else}
 							{$version->version}
 						{/if}
@@ -101,7 +101,7 @@
 		<div class="largeButtons">
 			<ul><li><a href="index.php?page=ProjectList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}it.acp.menu.link.content.project.view{/lang}"><img src="{@RELATIVE_IT_DIR}icon/projectM.png" alt="" /> <span>{lang}it.acp.menu.link.content.project.view{/lang}</span></a></li></ul>
 			{if $this->user->getPermission('admin.project.canDeleteProject')}<ul><li><a onclick="return confirm('{lang}it.acp.project.delete.sure{/lang}')" href="index.php?action=ProjectDelete&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_IT_DIR}icon/projectDeleteM.png" alt="" title="{lang}it.acp.project.delete{/lang}" /> <span>{lang}it.acp.project.delete{/lang}</span></a></li></ul>{/if}
-			{if $this->user->getPermission('admin.project.canEditProject')}<ul><li><a href="index.php?form=ProjectEdit&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_IR_DIR}icon/projectEditM.png" alt="" title="{lang}it.acp.project.edit{/lang}" /> <span>{lang}it.acp.project.edit{/lang}</span></a></li></ul>{/if}
+			{if $this->user->getPermission('admin.project.canEditProject')}<ul><li><a href="index.php?form=ProjectEdit&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_IT_DIR}icon/projectEditM.png" alt="" title="{lang}it.acp.project.edit{/lang}" /> <span>{lang}it.acp.project.edit{/lang}</span></a></li></ul>{/if}
 			{if $this->user->getPermission('admin.project.canAddVersion')}<ul><li><a href="index.php?form=VersionAdd&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_IT_DIR}icon/versionAddM.png" alt="" title="{lang}it.acp.project.version.add{/lang}" /> <span>{lang}it.acp.project.version.add{/lang}</span></a></li></ul>{/if}
 			{if $additionalLargeButtons|isset}{@$additionalLargeButtons}{/if}
 		</div>

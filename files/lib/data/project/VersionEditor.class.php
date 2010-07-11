@@ -22,7 +22,7 @@ class VersionEditor extends Version {
 		if ($useCache) parent::__construct($versionID, $row, $cacheObject);
 		else {
 			$sql = "SELECT	*
-				FROM	it".IT_N."_project
+				FROM	it".IT_N."_project_version
 				WHERE	versionID = ".$versionID;
 			$row = WCF::getDB()->getFirstRow($sql);
 			parent::__construct(null, $row);

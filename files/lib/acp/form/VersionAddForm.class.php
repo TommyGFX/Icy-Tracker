@@ -76,8 +76,8 @@ class VersionAddForm extends ACPForm {
 		}
 		
 		$sql = "SELECT	COUNT(*) AS count
-			FROM	it".IT_N."_project
-			WHERE	title = '".escapeString($this->versionname)."'
+			FROM	it".IT_N."_project_version
+			WHERE	version = '".escapeString($this->versionname)."'
 			AND		projectID = ".$this->projectID;
 		$row = WCF::getDB()->getFirstRow($sql);
 		if ($row['count']) {

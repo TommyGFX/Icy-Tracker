@@ -61,7 +61,7 @@
 		<input type="hidden" name="packageID" value="{@PACKAGE_ID}" />
  		{@SID_INPUT_TAG}
  		{if $versionID|isset}<input type="hidden" name="versionID" value="{@$versionID}" />{/if}
- 		<input type="hidden" name="projectID" value="{@$projectID}" />
+ 		<input type="hidden" name="projectID" value="{@$project->projectID}" />
  	</div>
 </form>
 
