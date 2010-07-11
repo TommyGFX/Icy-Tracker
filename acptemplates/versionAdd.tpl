@@ -5,7 +5,7 @@
 	<img src="{@RELATIVE_IT_DIR}icon/version{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">
 		<h2>{lang}it.acp.project.version.{@$action}{/lang}</h2>
-		<p>{lang}{$project->title}{/lang}{if $versionID|isset}{$version->version}{/if}</p>
+		<p>{lang}{$project->title}{/lang}{if $versionID|isset} - {$version->version}{/if}</p>
 	</div>
 </div>
 
@@ -19,7 +19,7 @@
 
 <div class="contentHeader">
 	<div class="largeButtons">
-		<ul><li><a href="index.php?page=ProjectView&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}it.acp.menu.link.content.project.view{/lang}"><img src="{@RELATIVE_IT_DIR}icon/projectM.png" alt="" /> <span>{lang}it.acp.project.view{/lang}</span></a></li></ul>
+		<ul><li><a href="index.php?page=ProjectView&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}it.acp.project.view{/lang}"><img src="{@RELATIVE_IT_DIR}icon/projectM.png" alt="" /> <span>{lang}it.acp.project.view{/lang}</span></a></li></ul>
 	</div>
 </div>
 <form method="post" action="index.php?form=Version{@$action|ucfirst}">

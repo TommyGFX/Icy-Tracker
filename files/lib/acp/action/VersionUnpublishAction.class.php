@@ -1,5 +1,5 @@
 <?php
-require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
+require_once(IT_DIR.'lib/acp/action/AbstractVersionAction.class.php');
 
 /**
  * Unpublishes a version.
@@ -12,12 +12,12 @@ require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
  * @category 	Icy Tracker
  * @version		$Id$
  */
-class VersionUnpublishAction extends AbstractAction {
+class VersionUnpublishAction extends AbstractVersionAction {
 	public $neededPermissions = 'admin.project.canEditVersion';
 	public $action = 'unpublish';
 
 	/**
-	 * @see Action::execute()
+	 * Unpublishes the version.
 	 */
 	public function action() {
 		$this->version->unpublish();

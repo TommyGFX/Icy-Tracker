@@ -38,7 +38,7 @@ abstract class AbstractVersionAction extends AbstractAction {
 		// unpublish version
 		require_once(IT_DIR.'lib/data/project/VersionEditor.class.php');
 		$this->version = new VersionEditor($this->versionID);
-		$this->projectID = $version->projectID;
+		$this->projectID = $this->version->projectID;
 		
 		$this->action();
 		

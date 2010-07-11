@@ -54,6 +54,7 @@
 		<item name="it.acp.project.delete.sure"><![CDATA[Willst du dieses Projekt wirklich löschen?]]></item>
 		<item name="it.acp.project.description"><![CDATA[Beschreibung]]></item>
 		<item name="it.acp.project.description.description"><![CDATA[Hier kannst du eine Beschreibung für das Projekt festlegen.]]></item>
+		<item name="it.acp.project.details"><![CDATA[Projektdetails]]></item>
 		<item name="it.acp.project.edit"><![CDATA[Projekt bearbeiten]]></item>
 		<item name="it.acp.project.edit.success"><![CDATA[Deine Änderungen wurden erfolgreich gespeichert.]]></item>
 		<item name="it.acp.project.error.title.notUnique"><![CDATA[Es existiert bereits ein Projekt mit diesem Namen.]]></item>
@@ -67,6 +68,24 @@
 		<item name="it.acp.project.showOrder.description"><![CDATA[Hier kannst du eine Ordnungsnummer angeben. Diese Nummer gibt an, wie das Projekt in Bezug auf andere Projekte sortiert werden soll.]]></item>
 		<item name="it.acp.project.title"><![CDATA[Projektname]]></item>
 		<item name="it.acp.project.title.description"><![CDATA[Gib hier den Namen des Projekts an.]]></item>
+		<item name="it.acp.project.version"><![CDATA[Version]]></item>
+		<item name="it.acp.project.version.add"><![CDATA[Version hinzufügen]]></item>
+		<item name="it.acp.project.version.add.success"><![CDATA[Die neue Version wurde erfolgreich gespeichert.]]></item>
+		<item name="it.acp.project.version.delete"><![CDATA[Version löschen]]></item>
+		<item name="it.acp.project.version.delete.success"><![CDATA[Die Version wurde erfolgreich gelöscht.]]></item>
+		<item name="it.acp.project.version.delete.sure"><![CDATA[Willst du diese Version wirklich löschen?]]></item>
+		<item name="it.acp.project.version.description"><![CDATA[Gib hier die Version an.]]></item>
+		<item name="it.acp.project.version.edit"><![CDATA[Version bearbeiten]]></item>
+		<item name="it.acp.project.version.edit.success"><![CDATA[Deine Änderungen wurden erfolgreich gespeichert.]]></item>
+		<item name="it.acp.project.version.error.versionname.notUnique"><![CDATA[Diese Version existiert bereits.]]></item>
+		<item name="it.acp.project.version.general"><![CDATA[Version]]></item>
+		<item name="it.acp.project.version.publish"><![CDATA[Version veröffentlichen]]></item>
+		<item name="it.acp.project.version.publish.success"><![CDATA[Die Version wurde erfolgreich veröffentlicht.]]></item>
+		<item name="it.acp.project.version.unpublish"><![CDATA[Version zurückziehen]]></item>
+		<item name="it.acp.project.version.unpublish.success"><![CDATA[Die Version wurde erfolgreich zurückgezogen.]]></item>
+		<item name="it.acp.project.version.versionID"><![CDATA[Versions-ID]]></item>
+		<item name="it.acp.project.version.view.count"><![CDATA[Es gibt insgesamt {if $items == 1}eine Version{else}{#$items} Versionen{/if}.]]></item>
+		<item name="it.acp.project.view"><![CDATA[Projekt anzeigen]]></item>
 	</category>
 	<category name="it.global">
 		<item name="it.global.copyright"><![CDATA[<a href="http://roul.codingcorner.info">Issuetracking Software: <strong>Icy Tracker{if SHOW_VERSION_NUMBER} {@PACKAGE_VERSION}{/if}</strong>, entwickelt von <strong>Markus Bartz</strong></a>]]></item>
@@ -84,10 +103,16 @@
 		<item name="wcf.acp.group.option.category.admin.tracker.project.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.admin.project.canAddProject"><![CDATA[Kann Projekte hinzufügen]]></item>
 		<item name="wcf.acp.group.option.admin.project.canAddProject.description"><![CDATA[Mitglieder dieser Benutzergruppen können Projekte anlegen.]]></item>
+		<item name="wcf.acp.group.option.admin.project.canAddVersion"><![CDATA[Kann Version hinzufügen]]></item>
+		<item name="wcf.acp.group.option.admin.project.canAddVersion.description"><![CDATA[Mitglieder dieser Benutzergruppen können Versionen anlegen.]]></item>
 		<item name="wcf.acp.group.option.admin.project.canDeleteProject"><![CDATA[Kann Projekte löschen]]></item>
-		<item name="wcf.acp.group.option.admin.project.canDeleteProject.description"><![CDATA[Mitglieder dieser Benutzergruppen können Projekte löschen.]]></item>
+		<item name="wcf.acp.group.option.admin.project.canDeleteProject.description"><![CDATA[Mitglieder dieser Benutzergruppe können Projekte löschen.]]></item>
+		<item name="wcf.acp.group.option.admin.project.canDeleteVersion"><![CDATA[Kann Versionen löschen]]></item>
+		<item name="wcf.acp.group.option.admin.project.canDeleteVersion.description"><![CDATA[Mitglieder dieser Benutzergruppe können Versionen löschen.]]></item>
 		<item name="wcf.acp.group.option.admin.project.canEditProject"><![CDATA[Kann Projekte bearbeiten]]></item>
 		<item name="wcf.acp.group.option.admin.project.canEditProject.description"><![CDATA[Mitglieder dieser Benutzergruppe können Projekte bearbeiten.]]></item>
+		<item name="wcf.acp.group.option.admin.project.canEditVersion"><![CDATA[Kann Versionen bearbeiten]]></item>
+		<item name="wcf.acp.group.option.admin.project.canEditVersion.description"><![CDATA[Mitglieder dieser Benutzergruppe können Versionen bearbeiten.]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline"><![CDATA[Kann Tracker im Offline-Modus sehen]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline.description"><![CDATA[Mitglieder dieser Benutzergruppe können den Tracker auch dann sehen, wenn er sich gerade im Offline-Modus befindet.]]></item>
 	</category>

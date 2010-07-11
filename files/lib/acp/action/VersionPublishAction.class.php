@@ -1,5 +1,5 @@
 <?php
-require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
+require_once(IT_DIR.'lib/acp/action/AbstractVersionAction.class.php');
 
 /**
  * Publishes a version.
@@ -12,12 +12,12 @@ require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
  * @category 	Icy Tracker
  * @version		$Id$
  */
-class VersionPublishAction extends AbstractAction {
+class VersionPublishAction extends AbstractVersionAction {
 	public $neededPermissions = 'admin.project.canEditVersion';
 	public $action = 'publish';
 
 	/**
-	 * @see Action::execute()
+	 * Publishes the version.
 	 */
 	public function action() {
 		$this->version->publish();

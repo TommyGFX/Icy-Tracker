@@ -1,5 +1,5 @@
 <?php
-require_once(IT_DIR.'lib/action/AbstractVersionAction.class.php');
+require_once(IT_DIR.'lib/acp/action/AbstractVersionAction.class.php');
 
 /**
  * Deletes a version.
@@ -17,7 +17,7 @@ class VersionDeleteAction extends AbstractVersionAction {
 	public $action = 'delete';
 
 	/**
-	 * @see Action::execute()
+	 * Deletes the version.
 	 */
 	public function action() {
 		$this->version->delete();

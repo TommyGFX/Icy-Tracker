@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -14,14 +15,13 @@
    height="128"
    id="svg2606"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
+   inkscape:version="0.47 r22583"
    version="1.0"
    sodipodi:docname="projectVersionEdit.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   sodipodi:docbase="/home/david/Progetti/sandbox/svg/mimetypes"
-   inkscape:export-filename="C:\Dokumente und Einstellungen\RouL\Eigene Dateien\Eigene Bilder\Icons\projectVersionEditS.png"
-   inkscape:export-xdpi="11.25"
-   inkscape:export-ydpi="11.25">
+   inkscape:export-filename="G:\Development\PHP\Workspace\info.codingcorner.it\files\icon\versionEditL.png"
+   inkscape:export-xdpi="33.75"
+   inkscape:export-ydpi="33.75">
   <defs
      id="defs2608">
     <radialGradient
@@ -3091,8 +3091,9 @@
      inkscape:guide-bbox="true"
      inkscape:window-width="890"
      inkscape:window-height="809"
-     inkscape:window-x="1709"
-     inkscape:window-y="51">
+     inkscape:window-x="60"
+     inkscape:window-y="87"
+     inkscape:window-maximized="0">
     <inkscape:grid
        id="GridFromPre046Settings"
        type="xygrid"
@@ -3116,6 +3117,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -3363,11 +3365,11 @@
          sodipodi:cy="7.4622769"
          sodipodi:rx="47.495197"
          sodipodi:ry="0.97142172"
-         d="M 82.172836,7.4622769 A 47.495197,0.97142172 0 1 1 -12.817558,7.4622769 A 47.495197,0.97142172 0 1 1 82.172836,7.4622769 z"
+         d="m 82.172836,7.4622769 c 0,0.5365014 -21.264324,0.9714218 -47.495197,0.9714218 -26.2308731,0 -47.495197,-0.4349204 -47.495197,-0.9714218 0,-0.5365014 21.2643239,-0.9714217 47.495197,-0.9714217 26.230873,0 47.495197,0.4349203 47.495197,0.9714217 z"
          transform="matrix(0.713012,-0.771216,-1.464327,-1.358495,70.16317,75.51535)" />
       <path
          transform="matrix(0.5904,-0.64083,-1.060653,-0.987999,64.57362,78.67065)"
-         d="M 106.56087,7.4622769 A 71.883232,0.4230493 0 1 1 106.52539,7.448987"
+         d="m 106.56087,7.4622769 c 0,0.2336437 -32.183218,0.4230493 -71.883231,0.4230493 -39.7000129,0 -71.883232,-0.1894056 -71.883232,-0.4230493 0,-0.2336436 32.1832191,-0.4230493 71.883232,-0.4230493 38.820834,0 70.628211,0.1814027 71.847751,0.4097594"
          sodipodi:ry="0.4230493"
          sodipodi:rx="71.883232"
          sodipodi:cy="7.4622769"

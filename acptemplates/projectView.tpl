@@ -36,7 +36,7 @@
 	</div>
 </div>
 
-{if $versions|count}{#$versions|count}
+{if $versions|count}
 	<div class="border titleBarPanel">
 		<div class="containerHead"><h3>{lang}it.acp.project.version.view.count{/lang}</h3></div>
 	</div>
@@ -61,7 +61,7 @@
 								<a href="index.php?action=VersionPublish&amp;versionID={@$version->versionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/disabledS.png" alt="" title="{lang}it.acp.project.version.publish{/lang}" /></a>
 							{/if}
 							
-							<a href="index.php?form=VersionEdit&amp;versionID={@$version->versionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}it.acp.project.version.edit{/lang}" /></a>
+							<a href="index.php?form=VersionEdit&amp;versionID={@$version->versionID}&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}it.acp.project.version.edit{/lang}" /></a>
 						{else}
 							{if $version->published}
 								<img src="{@RELATIVE_WCF_DIR}icon/enabledDisabledS.png" alt="" title="{lang}it.acp.project.version.unpublish{/lang}" />
@@ -82,7 +82,7 @@
 					<td class="columnVersionID columnID">{@$version->versionID}</td>
 					<td class="columnVersion columnText">
 						{if $this->user->getPermission('admin.project.canEditVersion')}
-							<a href="index.php?form=VersionEdit&amp;versionID={@$version->versionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$version->version}</a>
+							<a href="index.php?form=VersionEdit&amp;versionID={@$version->versionID}&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}">{$version->version}</a>
 						{else}
 							{$version->version}
 						{/if}
