@@ -8,9 +8,6 @@
 	<a id="top"></a>
 	<div id="userPanel" class="userPanel">
 		<div class="userPanelInner">
-			<p style="display: none;" id="userAvatar">
-				{if $this->user->userID && $this->user->getAvatar()}<a href="index.php?page=User&amp;userID={@$this->user->userID}{@SID_ARG_2ND}">{@$this->user->getAvatar()}</a>{else}<img src="{@RELATIVE_WCF_DIR}images/avatars/avatar-default.png" alt="" />{/if}
-			</p>
 			<p id="userNote">
 				{if $this->user->userID != 0}{lang}it.header.userNote.user{/lang}{else}{lang}it.header.userNote.guest{/lang}{/if}
 			</p>
