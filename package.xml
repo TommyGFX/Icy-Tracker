@@ -21,7 +21,7 @@
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.cronjobs.tar">com.woltlab.wcf.data.cronjobs</requiredpackage>
 		<requiredpackage minversion="1.0.3" file="requirements/com.woltlab.wcf.data.feed.reader.tar">com.woltlab.wcf.data.feed.reader</requiredpackage> <!-- com.woltlab.wcf.data.cronjobs -->
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.image.tar">com.woltlab.wcf.data.image</requiredpackage>
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.image.captcha.tar">com.woltlab.wcf.data.image.captcha</requiredpackage>-->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.image.captcha.tar">com.woltlab.wcf.data.image.captcha</requiredpackage>
 <!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.imageViewer.tar">com.woltlab.wcf.imageViewer</requiredpackage>-->
 		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.acp.sysinfoxmlexport.tar">com.woltlab.wcf.acp.sysinfoxmlexport</requiredpackage>
 		
@@ -29,7 +29,7 @@
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.page.headerMenu.tar">com.woltlab.wcf.data.page.headerMenu</requiredpackage>
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.system.style.tar">com.woltlab.wcf.system.style</requiredpackage>
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.page.tar">com.woltlab.wcf.data.page</requiredpackage> <!-- com.woltlab.wcf.data.page.headerMenu, com.woltlab.wcf.system.style => com.woltlab.wcf.data.image -->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.help.tar">com.woltlab.wcf.data.help</requiredpackage>		-->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.help.tar">com.woltlab.wcf.data.help</requiredpackage>		
 		
 		<!-- message -->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.tar">com.woltlab.wcf.data.message</requiredpackage>-->
@@ -38,7 +38,7 @@
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.wysiwyg.tar">com.woltlab.wcf.form.message.wysiwyg</requiredpackage>-->
 		
 		<!-- user profile -->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.user.tar">com.woltlab.wcf.form.user</requiredpackage>-->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.user.tar">com.woltlab.wcf.form.user</requiredpackage> <!-- com.woltlab.wcf.data.image.captcha.tar, com.woltlab.wcf.data.help -->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.page.user.profile.tar">com.woltlab.wcf.page.user.profile</requiredpackage>-->
 		
 		<!-- messages -->
@@ -56,13 +56,13 @@
 	<instructions type="install">
 		<!-- files -->
 		<files>files.tar</files>
-<!--		<templates>templates.tar</templates>-->
+		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
 		<sql>install.sql</sql>
 		<script>acp/install.php</script>
 		
 		<!-- config -->
-<!--		<pagemenu>pagemenu.xml</pagemenu>-->
+		<pagemenu>pagemenu.xml</pagemenu>
 <!--		<searchablemessagetypes>smt.xml</searchablemessagetypes>-->
 <!--		<attachmentcontainertype>act.xml</attachmentcontainertype>-->
 <!--		<pagelocation>pagelocation.xml</pagelocation>-->

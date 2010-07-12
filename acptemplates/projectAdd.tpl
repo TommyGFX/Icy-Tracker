@@ -133,7 +133,7 @@
 					<div class="formField">
 						<input type="text" class="inputText" id="showOrder" name="showOrder" value="{$showOrder}" />
 					</div>
-					<div class="formFieldDesc hidden" id="descriptionHelpMessage">
+					<div class="formFieldDesc hidden" id="showOrderHelpMessage">
 						{lang}it.acp.project.showOrder.description{/lang}
 					</div>
 				</div>

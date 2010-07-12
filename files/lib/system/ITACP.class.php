@@ -49,7 +49,7 @@ class ITACP extends WCFACP {
 		parent::assignDefaultTemplateVariables();
 		
 		self::getTPL()->assign(array(
-			'additionalHeaderButtons' => '<li><a href="'.RELATIVE_IT_DIR.'index.php?page=Index"><img src="'.RELATIVE_IT_DIR.'icon/trackerS.png" alt="" /> <span>'.WCF::getLanguage()->get('it.acp.jumpToTracker').'</span></a></li>',
+			'additionalHeaderButtons' => '<li><a href="'.RELATIVE_IT_DIR.'index.php?page=Index"><img src="'.RELATIVE_IT_DIR.'icon/indexS.png" alt="" /> <span>'.WCF::getLanguage()->get('it.acp.jumpToTracker').'</span></a></li>',
 			'pageTitle' => WCF::getLanguage()->get(StringUtil::encodeHTML(PAGE_TITLE)) . ' - ' . StringUtil::encodeHTML(PACKAGE_NAME . ' ' . PACKAGE_VERSION)
 		));
 	}

@@ -16,10 +16,9 @@ require_once(WCF_DIR.'lib/system/style/StyleManager.class.php');
  * @category 	Icy Tracker
  * @version		$Id$
  */
-class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, UserProfileMenuContainer {
+class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer {
 	protected static $pageMenuObj = null;
 	protected static $userCPMenuObj = null;
-	protected static $userProfileMenuObj = null;
 	public static $availablePagesDuringOfflineMode = array(
 		'page' => array('Captcha', 'LegalNotice'),
 		'form' => array('UserLogin'),
@@ -58,10 +57,6 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 				exit;
 			}
 		}
-		
-		//if (self::getUser()->banned && (!isset($_REQUEST['page']) || $_REQUEST['page'] != 'LegalNotice')) {
-		//	throw new NamedUserException(WCF::getLanguage()->getDynamicVariable('wcf.user.banned'));
-		//}
 	}
 	
 	/**
@@ -84,8 +79,9 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 	 * Can be called statically from other applications or plugins.
 	 */
 	public static function loadDefaultITCacheResources() {
-		WCF::getCache()->addResource('bbcodes', WCF_DIR.'cache/cache.bbcodes.php', WCF_DIR.'lib/system/cache/CacheBuilderBBCodes.class.php');
-		WCF::getCache()->addResource('smileys', WCF_DIR.'cache/cache.smileys.php', WCF_DIR.'lib/system/cache/CacheBuilderSmileys.class.php');
+		WCF::getCache()->addResource('project', IT_DIR.'cache/cache.project.php', IT_DIR.'lib/system/cache/CacheBuilderProject.class.php');
+//		WCF::getCache()->addResource('bbcodes', WCF_DIR.'cache/cache.bbcodes.php', WCF_DIR.'lib/system/cache/CacheBuilderBBCodes.class.php');
+//		WCF::getCache()->addResource('smileys', WCF_DIR.'cache/cache.smileys.php', WCF_DIR.'lib/system/cache/CacheBuilderSmileys.class.php');
 		WCF::getCache()->addResource('cronjobs-'.PACKAGE_ID, WCF_DIR.'cache/cache.cronjobs-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderCronjobs.class.php');
 		WCF::getCache()->addResource('help-'.PACKAGE_ID, WCF_DIR.'cache/cache.help-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderHelp.class.php');
 	}
@@ -108,14 +104,6 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 	}
 	
 	/**
-	 * Initialises the user profile menu.
-	 */
-	protected static function initUserProfileMenu() {
-		require_once(WCF_DIR.'lib/page/util/menu/UserProfileMenu.class.php');
-		self::$userProfileMenuObj = UserProfileMenu::getInstance();
-	}
-	
-	/**
 	 * @see WCF::getOptionsFilename()
 	 */
 	protected function getOptionsFilename() {
@@ -126,11 +114,7 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 	 * Initialises the style system.
 	 */
 	protected function initStyle() {
-		//if (isset($_GET['styleID'])) {
-		//	self::getSession()->setStyleID(intval($_GET['styleID']));
-		//}
-		//
-		//StyleManager::changeStyle(self::getSession()->getStyleID());
+		StyleManager::changeStyle(0);
 	}
 	
 	/**
@@ -145,14 +129,6 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 	}
 	
 	/**
-	 * @see PageMenuContainer::getPageMenu()
-	 * @deprecated
-	 */
-	public static final function getHeaderMenu() {
-		return self::getPageMenu();
-	}
-	
-	/**
 	 * @see UserCPMenuContainer::getUserCPMenu()
 	 */
 	public static final function getUserCPMenu() {
@@ -161,17 +137,6 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 		}
 		
 		return self::$userCPMenuObj;
-	}
-	
-	/**
-	 * @see UserProfileMenuContainer::getUserProfileMenu()
-	 */
-	public static final function getUserProfileMenu() {
-		if (self::$userProfileMenuObj === null) {
-			self::initUserProfileMenu();
-		}
-		
-		return self::$userProfileMenuObj;
 	}
 	
 	/**
