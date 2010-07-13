@@ -19,9 +19,9 @@
 	
 	{if $userMessages|isset}{@$userMessages}{/if}
 	
-</div>
+	{include file='projectList'}
 
-{include file='projectList'}
+</div>
 
 {include file='footer' sandbox=false}
 
