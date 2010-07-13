@@ -13,6 +13,8 @@
 				<p class="projectDescription">Projektbeschreibung</p>
 			</div>
 		</div>
+	</li>
+	<li class="border">
 		<div class="container-2 projectListInner project-2">
 			<div class="containerIcon">
 				<a href="index.php?page=Project&amp;projectID=2{@SID_ARG_2ND}">
@@ -26,6 +28,8 @@
 				<p class="projectDescription">Projektbeschreibung</p>
 			</div>
 		</div>
+	</li>
+	<li class="border">
 		<div class="container-1 projectListInner project-3">
 			<div class="containerIcon">
 				<a href="index.php?page=Project&amp;projectID=3{@SID_ARG_2ND}">
@@ -39,6 +43,8 @@
 				<p class="projectDescription">Projektbeschreibung</p>
 			</div>
 		</div>
+	</li>
+	<li class="border">
 		<div class="container-2 projectListInner project-4">
 			<div class="containerIcon">
 				<a href="index.php?page=Project&amp;projectID=4{@SID_ARG_2ND}">

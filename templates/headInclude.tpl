@@ -12,7 +12,7 @@
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/AjaxRequest.class.js"></script>
 
 <!-- it styles -->
-<!--<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_IT_DIR}style/icyTracker.css" />-->
+<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_IT_DIR}style/icyTracker.css" />
 
 {if $specialStyles|isset}
 	<!-- special styles -->
