@@ -5,7 +5,7 @@
 		<packagename>Icy Tracker</packagename>
 		<packagedescription></packagedescription>
 		<standalone>1</standalone>
-		<version>1.0.0 Dev</version> <!-- codename: Gennam -->
+		<version>1.0.0 Dev ($Rev$)</version> <!-- codename: Gennam -->
 		<date>2010-07-08</date>
 		<packageurl>http://roul.codingcorner.info/wiki/it/</packageurl>
 	</packageinformation>
