@@ -105,6 +105,9 @@
 		<item name="it.header.userNote.guest"><![CDATA[Sie sind nicht angemeldet.]]></item>
 		<item name="it.header.userNote.user"><![CDATA[Angemeldet als {$this->user->username}.]]></item>
 	</category>
+	<category name="it.index">
+		<item name="it.index.title"><![CDATA[Startseite]]></item>
+	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.admin.tracker"><![CDATA[Tracker]]></item>
 		<item name="wcf.acp.group.option.category.admin.tracker.description"><![CDATA[]]></item>
