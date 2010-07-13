@@ -93,7 +93,17 @@
 		<item name="it.global.offline"><![CDATA[Der Tracker befindet sich zur Zeit {if OFFLINE_MESSAGE != ''}aus folgenden Gründen im Wartungsmodus:{else}im Wartungsmodus.{/if}]]></item>
 	</category>
 	<category name="it.header">
+		<item name="it.header.login.useCookies"><![CDATA[Dauerhaft angemeldet bleiben?]]></item>
 		<item name="it.header.menu.tracker"><![CDATA[Tracker]]></item>
+		<item name="it.header.search.extended"><![CDATA[Erweiterte Suche]]></item>
+		<item name="it.header.search.query"><![CDATA[Suchen...]]></item>
+		<item name="it.header.userMenu.acp"><![CDATA[Administration]]></item>
+		<item name="it.header.userMenu.login"><![CDATA[Anmelden]]></item>
+		<item name="it.header.userMenu.logout"><![CDATA[Abmelden]]></item>
+		<item name="it.header.userMenu.profile"><![CDATA[Profil bearbeiten]]></item>
+		<item name="it.header.userMenu.register"><![CDATA[Registrieren]]></item>
+		<item name="it.header.userNote.guest"><![CDATA[Sie sind nicht angemeldet.]]></item>
+		<item name="it.header.userNote.user"><![CDATA[Angemeldet als {$this->user->username}.]]></item>
 	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.admin.tracker"><![CDATA[Tracker]]></item>

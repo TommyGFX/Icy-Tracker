@@ -92,7 +92,17 @@
 		<item name="it.global.offline"><![CDATA[The Tracker is currently offline{if OFFLINE_MESSAGE != ''} for the following reason(s):{else}.{/if}]]></item>
 	</category>
 	<category name="it.header">
+		<item name="it.header.login.useCookies"><![CDATA[Remember me?]]></item>
 		<item name="it.header.menu.tracker"><![CDATA[Tracker]]></item>
+		<item name="it.header.search.extended"><![CDATA[Advanced Search]]></item>
+		<item name="it.header.search.query"><![CDATA[Search...]]></item>
+		<item name="it.header.userMenu.acp"><![CDATA[Administration]]></item>
+		<item name="it.header.userMenu.login"><![CDATA[Login]]></item>
+		<item name="it.header.userMenu.logout"><![CDATA[Logout]]></item>
+		<item name="it.header.userMenu.profile"><![CDATA[Edit Profile]]></item>
+		<item name="it.header.userMenu.register"><![CDATA[Register]]></item>
+		<item name="it.header.userNote.guest"><![CDATA[You are not logged in.]]></item>
+		<item name="it.header.userNote.user"><![CDATA[Welcome {$this->user->username}.]]></item>
 	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.admin.tracker"><![CDATA[Tracker]]></item>
