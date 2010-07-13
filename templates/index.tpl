@@ -21,6 +21,8 @@
 	
 </div>
 
+{include file='projectList'}
+
 {include file='footer' sandbox=false}
 
 </body>
