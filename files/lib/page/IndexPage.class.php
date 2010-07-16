@@ -30,7 +30,7 @@ class IndexPage extends AbstractPage {
 	public function readData() {
 		parent::readData();
 		
-		$this->projectStructure = WCF::getCache()->get('projects', 'projectStructure');
+		$this->projectStructure = WCF::getCache()->get('project', 'projectStructure');
 	}
 	
 	/**
