@@ -58,7 +58,7 @@
 		<item name="it.acp.project.edit"><![CDATA[Edit Project]]></item>
 		<item name="it.acp.project.edit.success"><![CDATA[Your changes have been saved successfully.]]></item>
 		<item name="it.acp.project.error.title.notUnique"><![CDATA[There is already a project with this name.]]></item>
-		<item name="it.acp.project.general"><![CDATA[Projekt]]></item>
+		<item name="it.acp.project.general"><![CDATA[Project]]></item>
 		<item name="it.acp.project.image"><![CDATA[Image]]></item>
 		<item name="it.acp.project.image.description"><![CDATA[Here you can enter the URL to an image for your project.]]></item>
 		<item name="it.acp.project.list"><![CDATA[Projects]]></item>
@@ -106,6 +106,10 @@
 	</category>
 	<category name="it.index">
 		<item name="it.index.title"><![CDATA[Home]]></item>
+	</category>
+	<category name="it.project">
+		<item name="it.project.owner"><![CDATA[Project manager]]></item>
+		<item name="it.project.description"><![CDATA[Description]]></item>
 	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.admin.tracker"><![CDATA[Tracker]]></item>

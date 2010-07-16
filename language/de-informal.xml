@@ -107,6 +107,10 @@
 	<category name="it.index">
 		<item name="it.index.title"><![CDATA[Startseite]]></item>
 	</category>
+	<category name="it.project">
+		<item name="it.project.owner"><![CDATA[Projektleiter]]></item>
+		<item name="it.project.description"><![CDATA[Beschreibung]]></item>
+	</category>
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.option.category.admin.tracker"><![CDATA[Tracker]]></item>
 		<item name="wcf.acp.group.option.category.admin.tracker.description"><![CDATA[]]></item>

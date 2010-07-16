@@ -8,7 +8,7 @@
 				<div class="container-{cycle name='projectListCycle'} projectListInner project{@$projectID}">
 					<div class="containerIcon">
 						<a href="index.php?page=Project&amp;projectID={@$projectID}{@SID_ARG_2ND}">
-							<img alt="{lang}{$project->title}{/lang}" src="{icon}{if $project->image|empty}projectXL.png{else}{/if}$project->image{/icon}" />
+							<img alt="{lang}{$project->title}{/lang}" src="{icon}{if $project->image|empty}projectXL.png{else}$project->image{/if}{/icon}" />
 						</a>
 					</div>
 					<div class="containerContent">
