@@ -27,9 +27,9 @@ CREATE TABLE it1_1_project_version (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Tickets
-DROP TABLE IF EXISTS it1_1_ticket;
+DROP TABLE IF EXISTS it1_1_issue;
 CREATE TABLE it1_1_ticket (
-  ticketID int(10) unsigned NOT NULL AUTO_INCREMENT,
+  issueID int(10) unsigned NOT NULL AUTO_INCREMENT,
   projectID int(10) unsigned NOT NULL,
   userID int(10) unsigned NOT NULL,
   agentID int(10) NOT NULL,
@@ -57,18 +57,27 @@ CREATE TABLE it1_1_ticket (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Ticket affected versions
-DROP TABLE IF EXISTS it1_1_ticket_version;
+DROP TABLE IF EXISTS it1_1_issue_version;
 CREATE TABLE it1_1_ticket_version (
-  ticketID int(10) unsigned NOT NULL,
+  issueID int(10) unsigned NOT NULL,
   versionID int(10) unsigned NOT NULL,
   PRIMARY KEY (ticketID,versionID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- Ticket relations
+DROP TABLE IF EXISTS it1_1_issue_relation;
+CREATE TABLE it1_1_ticket_relation (
+  parentID int(10) unsigned NOT NULL,
+  relation tinyint(1) unsigned NOT NULL,
+  childID int(10) unsigned NOT NULL,
+  PRIMARY KEY (parentID,childID)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 -- Ticket comments
-DROP TABLE IF EXISTS it1_1_ticket_comment;
+DROP TABLE IF EXISTS it1_1_issue_comment;
 CREATE TABLE it1_1_ticket_comment (
   commentID int(10) unsigned NOT NULL AUTO_INCREMENT,
-  ticketID int(10) unsigned NOT NULL,
+  issueID int(10) unsigned NOT NULL,
   userID int(10) unsigned NOT NULL,
   hidden tinyint(1) NOT NULL,
   username varchar(255) NOT NULL,
