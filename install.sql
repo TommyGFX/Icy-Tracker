@@ -28,7 +28,7 @@ CREATE TABLE it1_1_project_version (
 
 -- Tickets
 DROP TABLE IF EXISTS it1_1_issue;
-CREATE TABLE it1_1_ticket (
+CREATE TABLE it1_1_issue (
   issueID int(10) unsigned NOT NULL AUTO_INCREMENT,
   projectID int(10) unsigned NOT NULL,
   userID int(10) unsigned NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE it1_1_ticket (
   enableHtml tinyint(1) NOT NULL,
   enableBBCodes tinyint(1) NOT NULL,
   ipAddress varchar(15) NOT NULL,
-  PRIMARY KEY (ticketID),
+  PRIMARY KEY (issueID),
   KEY projectID (projectID),
   FULLTEXT KEY `subject` (`subject`,message)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
