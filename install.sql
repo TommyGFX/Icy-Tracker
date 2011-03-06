@@ -26,7 +26,7 @@ CREATE TABLE it1_1_project_version (
   KEY projectID (projectID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Tickets
+-- Issues
 DROP TABLE IF EXISTS it1_1_issue;
 CREATE TABLE it1_1_issue (
   issueID int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -56,26 +56,26 @@ CREATE TABLE it1_1_issue (
   FULLTEXT KEY `subject` (`subject`,message)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Ticket affected versions
+-- Issues affected versions
 DROP TABLE IF EXISTS it1_1_issue_version;
-CREATE TABLE it1_1_ticket_version (
+CREATE TABLE it1_1_issue_version (
   issueID int(10) unsigned NOT NULL,
   versionID int(10) unsigned NOT NULL,
-  PRIMARY KEY (ticketID,versionID)
+  PRIMARY KEY (issueID,versionID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Ticket relations
+-- Issues relations
 DROP TABLE IF EXISTS it1_1_issue_relation;
-CREATE TABLE it1_1_ticket_relation (
+CREATE TABLE it1_1_issue_relation (
   parentID int(10) unsigned NOT NULL,
   relation tinyint(1) unsigned NOT NULL,
   childID int(10) unsigned NOT NULL,
   PRIMARY KEY (parentID,childID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Ticket comments
+-- Issues comments
 DROP TABLE IF EXISTS it1_1_issue_comment;
-CREATE TABLE it1_1_ticket_comment (
+CREATE TABLE it1_1_issue_comment (
   commentID int(10) unsigned NOT NULL AUTO_INCREMENT,
   issueID int(10) unsigned NOT NULL,
   userID int(10) unsigned NOT NULL,
@@ -90,6 +90,6 @@ CREATE TABLE it1_1_ticket_comment (
   enableBBCodes tinyint(1) NOT NULL,
   ipAddress varchar(15) NOT NULL,
   PRIMARY KEY (commentID),
-  KEY ticketID (ticketID),
+  KEY issueID (issueID),
   FULLTEXT KEY `subject` (`subject`,message)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
