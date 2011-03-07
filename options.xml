@@ -7,9 +7,27 @@
 				<!-- com.woltlab.wcf -->
 				<parent>general.offline</parent>
 			</category>
+			<category name="tracker">
+			</category>
+			<category name="tracker.issues">
+				<parent>tracker</parent>
+			</category>
 		</categories>
 		
 		<options>
+			<!-- tracker.issues -->
+			<option name="issue_default_priority">
+				<categoryname>tracker.issues</categoryname>
+				<optiontype>select</optiontype>
+				<selectoptions><![CDATA[1:wcf.acp.option.issue_default_priority.critical
+2:wcf.acp.option.issue_default_priority.high
+3:wcf.acp.option.issue_default_priority.normal
+4:wcf.acp.option.issue_default_priority.low
+5:wcf.acp.option.issue_default_priority.no_priority]]></selectoptions>
+				<defaultvalue>3</defaultvalue>
+			</option>
+			<!-- /tracker.issues -->
+			
 			<!-- offline -->
 			<option name="offline">
 				<categoryname>offline.general</categoryname>

@@ -24,9 +24,10 @@ class Issue extends DatabaseObject {
 	// issue status constants
 	const STATUS_NEW = 1;
 	const STATUS_CONFIRMED = 2;
-	const STATUS_ACTIVE = 3;
-	const STATUS_SOLVED = 4;
-	const STATUS_CLOSED = 5; // TODO: better put this in an extra fied in the table. -- RouL
+	const STATUS_OPEN = 3;
+	const STATUS_REOPENED = 4;
+	const STATUS_ACTIVE = 5;
+	const STATUS_SOLVED = 6;
 	
 	// issue solution constants
 	const SOLUTION_SOLVED = 1;

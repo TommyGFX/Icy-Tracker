@@ -37,6 +37,7 @@ CREATE TABLE it1_1_issue (
   `status` tinyint(1) unsigned NOT NULL,
   priority tinyint(1) unsigned NOT NULL,
   solution tinyint(1) unsigned NOT NULL,
+  closed tinyint(1) unsigned NOT NULL,
   solvedVersionID int(10) unsigned NOT NULL,
   hidden tinyint(1) NOT NULL,
   username varchar(255) NOT NULL,
@@ -53,6 +54,7 @@ CREATE TABLE it1_1_issue (
   ipAddress varchar(15) NOT NULL,
   PRIMARY KEY (issueID),
   KEY projectID (projectID),
+  KEY closed (projectID,closed),
   FULLTEXT KEY `subject` (`subject`,message)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

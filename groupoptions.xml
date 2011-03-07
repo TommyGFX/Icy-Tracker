@@ -3,9 +3,27 @@
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/group-options.xsd">
 	<import>
 		<categories>
+			<!-- user -->
 			<category name="user.tracker">
 				<parent>user</parent>
+				<showorder>1</showorder>
 			</category>
+			<category name="user.tracker.issues">
+				<parent>user.tracker</parent>
+				<showorder>2</showorder>
+			</category>
+			
+			<!-- mod -->
+			<category name="mod.tracker">
+				<parent>mod</parent>
+				<showorder>1</showorder>
+			</category>
+			<category name="mod.tracker.issues">
+				<parent>mod.tracker</parent>
+				<showorder>1</showorder>
+			</category>
+			
+			<!-- admin -->
 			<category name="admin.tracker">
 				<parent>admin</parent>
 				<showorder>1</showorder>
@@ -22,44 +40,88 @@
 				<categoryname>user.tracker</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
+				<showorder>1</showorder>
 			</option>
 			<!-- /user.tracker -->
+			
+			<!-- user.tracker.issues -->
+			<option name="user.issues.canCreateBug">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<showorder>1</showorder>
+			</option>
+			<option name="user.issues.canCreateFeatureRequest">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<showorder>2</showorder>
+			</option>
+			<option name="user.issues.canCreateTask">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<showorder>3</showorder>
+			</option>
+			<!-- /user.tracker.issues -->
+			
+			<!-- mod.tracker.issues -->
+			<option name="mod.issues.canSetPriorities">
+				<categoryname>mod.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<showorder>1</showorder>
+			</option>
+			
+			<option name="mod.issues.canConfirmIssues">
+				<categoryname>mod.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<showorder>2</showorder>
+			</option>
+			<!-- /mod.tracker.issues -->
 			
 			<!-- admin.tracker.project -->
 			<option name="admin.project.canAddProject">
 				<categoryname>admin.tracker.project</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
+				<showorder>1</showorder>
 			</option>
-
+			
 			<option name="admin.project.canEditProject">
 				<categoryname>admin.tracker.project</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
+				<showorder>2</showorder>
 			</option>
-
+			
 			<option name="admin.project.canDeleteProject">
 				<categoryname>admin.tracker.project</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
+				<showorder>3</showorder>
 			</option>
-
+			
 			<option name="admin.project.canAddVersion">
 				<categoryname>admin.tracker.project</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
+				<showorder>4</showorder>
 			</option>
-
+			
 			<option name="admin.project.canEditVersion">
 				<categoryname>admin.tracker.project</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
+				<showorder>5</showorder>
 			</option>
-
+			
 			<option name="admin.project.canDeleteVersion">
 				<categoryname>admin.tracker.project</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
+				<showorder>6</showorder>
 			</option>
 			<!-- /admin.tracker.project -->
 		</options>
