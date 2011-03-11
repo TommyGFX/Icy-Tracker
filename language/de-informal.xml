@@ -106,17 +106,30 @@
 	<category name="it.index">
 		<item name="it.index.title"><![CDATA[Startseite]]></item>
 	</category>
+	<category name="it.issue.priority">
+		<item name="it.issue.priority.critical"><![CDATA[kritisch]]></item>
+		<item name="it.issue.priority.high"><![CDATA[hoch]]></item>
+		<item name="it.issue.priority.normal"><![CDATA[normal]]></item>
+		<item name="it.issue.priority.low"><![CDATA[gering]]></item>
+		<item name="it.issue.priority.no_priority"><![CDATA[keine]]></item>
+	</category>
 	<category name="it.project">
 		<item name="it.project.owner"><![CDATA[Projektleiter]]></item>
 		<item name="it.project.description"><![CDATA[Beschreibung]]></item>
 	</category>
 	<category name="wcf.acp.group">
-		<item name="wcf.acp.group.option.category.admin.tracker"><![CDATA[Tracker]]></item>
+		<item name="wcf.acp.group.option.category.admin.tracker"><![CDATA[Issue Tracker]]></item>
 		<item name="wcf.acp.group.option.category.admin.tracker.description"><![CDATA[]]></item>
-		<item name="wcf.acp.group.option.category.user.tracker"><![CDATA[Tracker]]></item>
-		<item name="wcf.acp.group.option.category.user.tracker.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.category.admin.tracker.project"><![CDATA[Projekte]]></item>
 		<item name="wcf.acp.group.option.category.admin.tracker.project.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.mod.tracker"><![CDATA[Issue Tracker]]></item>
+		<item name="wcf.acp.group.option.category.mod.tracker.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.mod.tracker.issues"><![CDATA[Vorgänge]]></item>
+		<item name="wcf.acp.group.option.category.mod.tracker.issues.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.tracker"><![CDATA[Issue Tracker]]></item>
+		<item name="wcf.acp.group.option.category.user.tracker.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.tracker.issues"><![CDATA[Vorgänge]]></item>
+		<item name="wcf.acp.group.option.category.user.tracker.issues.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.admin.project.canAddProject"><![CDATA[Kann Projekte hinzufügen]]></item>
 		<item name="wcf.acp.group.option.admin.project.canAddProject.description"><![CDATA[Mitglieder dieser Benutzergruppen können Projekte anlegen.]]></item>
 		<item name="wcf.acp.group.option.admin.project.canAddVersion"><![CDATA[Kann Version hinzufügen]]></item>
@@ -129,12 +142,30 @@
 		<item name="wcf.acp.group.option.admin.project.canEditProject.description"><![CDATA[Mitglieder dieser Benutzergruppe können Projekte bearbeiten.]]></item>
 		<item name="wcf.acp.group.option.admin.project.canEditVersion"><![CDATA[Kann Versionen bearbeiten]]></item>
 		<item name="wcf.acp.group.option.admin.project.canEditVersion.description"><![CDATA[Mitglieder dieser Benutzergruppe können Versionen bearbeiten.]]></item>
+		<item name="wcf.acp.group.option.mod.issues.canCloseIssue"><![CDATA[Kann Vorgang schließen]]></item>
+		<item name="wcf.acp.group.option.mod.issues.canCloseIssue.description"><![CDATA[Mitglieder dieser Benutzergruppe können Vorgänge schließen.]]></item>
+		<item name="wcf.acp.group.option.mod.issues.canConfirmIssue"><![CDATA[Kann Vorgang bestätigen]]></item>
+		<item name="wcf.acp.group.option.mod.issues.canConfirmIssue.description"><![CDATA[Mitglieder dieser Benutzergruppe können Vorgänge bestätigen.]]></item>
+		<item name="wcf.acp.group.option.mod.issues.canSetPriority"><![CDATA[Kann Priorität setzen]]></item>
+		<item name="wcf.acp.group.option.mod.issues.canSetPriority.description"><![CDATA[Mitglieder dieser Benutzergruppe können Prioritäten setzen.]]></item>
+		<item name="wcf.acp.group.option.user.issues.canCreateBug"><![CDATA[Kann Fehler melden]]></item>
+		<item name="wcf.acp.group.option.user.issues.canCreateBug.description"><![CDATA[Mitglieder dieser Benutzergruppe können Fehler melden.]]></item>
+		<item name="wcf.acp.group.option.user.issues.canCreateFeatureRequest"><![CDATA[Kann "Feature Request" anlegen]]></item>
+		<item name="wcf.acp.group.option.user.issues.canCreateFeatureRequest.description"><![CDATA[Mitglieder dieser Benutzergruppe können "Feature Requests" anlegen.]]></item>
+		<item name="wcf.acp.group.option.user.issues.canCreateTask"><![CDATA[Kann Aufgabe anlegen]]></item>
+		<item name="wcf.acp.group.option.user.issues.canCreateTask.description"><![CDATA[Mitglieder dieser Benutzergruppe können Aufgaben anlegen.]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline"><![CDATA[Kann Tracker im Offline-Modus sehen]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canViewTrackerOffline.description"><![CDATA[Mitglieder dieser Benutzergruppe können den Tracker auch dann sehen, wenn er sich gerade im Offline-Modus befindet.]]></item>
 	</category>
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.category.offline.general"><![CDATA[Tracker temporär deaktivieren]]></item>
 		<item name="wcf.acp.option.category.offline.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.tracker"><![CDATA[Issue Tracker]]></item>
+		<item name="wcf.acp.option.category.tracker.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.tracker.issues"><![CDATA[Vorgänge]]></item>
+		<item name="wcf.acp.option.category.tracker.issues.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.issue_default_priority"><![CDATA[Standard Priorität]]></item>
+		<item name="wcf.acp.option.issue_default_priority.description"><![CDATA[Legt die Priorität fest, unter welcher Vorgänge standardmäßig angelegt werden.]]></item>
 		<item name="wcf.acp.option.offline"><![CDATA[Tracker deaktivieren]]></item>
 		<item name="wcf.acp.option.offline.description"><![CDATA[Hier kann der Tracker vorübergehend deaktiviert werden (z.B. für Wartungsarbeiten).]]></item>
 		<item name="wcf.acp.option.offline_message"><![CDATA[Deaktivierungshinweis]]></item>
