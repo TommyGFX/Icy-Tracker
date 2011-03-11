@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- SVN-ID: $Id$ -->
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="en">
 	<category name="it.acp">
 		<item name="it.acp.jumpToTracker"><![CDATA[Go to Tracker]]></item>

@@ -1,5 +1,4 @@
 {include file='header'}
-{* SVN-ID: $Id$ *}
 <div class="mainHeadline">
 	<img src="{@RELATIVE_IT_DIR}icon/projectL.png" alt="" />
 	<div class="headlineContainer">

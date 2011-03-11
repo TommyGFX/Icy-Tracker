@@ -11,12 +11,11 @@ require_once(WCF_DIR.'lib/data/user/User.class.php');
  * Shows the version add form.
  * 
  * @author		Markus Bartz
- * @copyright	%COPYRIGHT%
- * @license		%LICENSE%
+ * @copyright	2011 Markus Bartz
+ * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
  * @package		info.codingcorner.it
  * @subpackage	acp.form
  * @category 	Icy Tracker
- * @version		$Id$
  */
 class VersionAddForm extends ACPForm {
 	// system

@@ -1,9 +1,8 @@
 <?php
 /**
  * @author		Markus Bartz
- * @copyright	%COPYRIGHT%
- * @license		%LICENSE%
- * @version		$Id$
+ * @copyright	2011 Markus Bartz
+ * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
  */
 $packageID = $this->installation->getPackageID();
 

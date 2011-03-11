@@ -7,12 +7,11 @@ require_once(WCF_DIR.'lib/system/exception/IllegalLinkException.class.php');
  * Sorts the order of projects.
  * 
  * @author		Markus Bartz
- * @copyright	%COPYRIGHT%
- * @license		%LICENSE%
+ * @copyright	2011 Markus Bartz
+ * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
  * @package		info.codingcorner.it
  * @subpackage	acp.action
  * @category 	Icy Tracker
- * @version		$Id$
  */
 class ProjectSortAction extends AbstractAction {
 	public $showOrder = array();

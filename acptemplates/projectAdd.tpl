@@ -1,5 +1,4 @@
 {include file='header'}
-{* SVN-ID: $Id$ *}
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Suggestion.class.js"></script>
 
 <div class="mainHeadline">

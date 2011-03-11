@@ -1,5 +1,3 @@
--- SVN-ID: $Id$
-
 -- Projects
 DROP TABLE IF EXISTS it1_1_project;
 CREATE TABLE it1_1_project (

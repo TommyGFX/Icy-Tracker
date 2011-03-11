@@ -1,5 +1,4 @@
 {include file="documentHeader"}
-{* SVN-ID: $Id$ *}
 <head>
 	<title>{lang}wcf.global.error.title{/lang} - {lang}{PAGE_TITLE}{/lang}</title>
 	{include file='headInclude' sandbox=false}
