@@ -1,6 +1,5 @@
 <?php
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
-//require_once(IT_DIR.'lib/data/project/Version.class.php');
 
 /**
  * Represents an issue in the tracker.
