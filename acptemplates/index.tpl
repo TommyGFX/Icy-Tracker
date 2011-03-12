@@ -227,7 +227,7 @@
 		
 		<div class="formElement">
 			<p class="formFieldLabel">{lang}it.acp.index.credits.developedBy{/lang}</p>
-			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://roul.codingcorner.info"|rawurlencode}" class="externalURL">Markus Bartz</a></p>
+			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://codingcorner.info"|rawurlencode}" class="externalURL">Markus Bartz</a></p>
 		</div>
 		
 		{*<div class="formElement">
