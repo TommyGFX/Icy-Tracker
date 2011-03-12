@@ -61,9 +61,8 @@ class IssueEditor extends Issue {
 		
 		// update attachments
 		if ($attachments != null) {
-			$mergedDescriptions = implode(' ', $descriptions);
 			$attachments->updateContainerID($projectID);
-			$attachments->findEmbeddedAttachments($mergedDescriptions);
+			$attachments->findEmbeddedAttachments($message);
 		}
 		
 		// return new project
@@ -167,28 +166,27 @@ class IssueEditor extends Issue {
 	public function update($editor, $editorID, $subject = null, $message = null, $enableSmilies = null, $enableHtml = null, $enableBBCodes = null, $attachments = null, $status = null, $priority = null, $solution = null, $hidden = null, $additionalFields = array()) {
 		$additionalFields['editor'] = $editor;
 		$additionalFields['editorID'] = intval($editorID);
+		$additionalFields['lastEditTime'] = TIME_NOW;
 		
-		$additionalFields['editor'] = $subject;
-		$additionalFields['editor'] = $message;
-		$additionalFields['status'] = intval($status);
-		$additionalFields['priority'] = intval($priority);
-		$additionalFields['solution'] = intval($solution);
-		$additionalFields['hidden'] = intval($hidden);
+		if ($subject != null) $additionalFields['editor'] = $subject;
+		if ($message != null) $additionalFields['editor'] = $message;
+		if ($status != null) $additionalFields['status'] = intval($status);
+		if ($priority != null) $additionalFields['priority'] = intval($priority);
+		if ($solution != null) $additionalFields['solution'] = intval($solution);
+		if ($hidden != null) $additionalFields['hidden'] = intval($hidden);
 		
 		if ($enableSmilies != null) $additionalFields['enableSmilies'] = intval($enableSmilies);
 		if ($enableHtml != null) $additionalFields['enableHtml'] = intval($enableHtml);
 		if ($enableBBCodes != null) $additionalFields['enableBBCodes'] = intval($enableBBCodes);
 		if ($attachments != null) $additionalFields['attachments'] = count($attachments->getAttachments());
-		$additionalFields['lastEditTime'] = TIME_NOW;
 		
 		// save data
 		$this->updateData($additionalFields);
 		
 		// update attachments
 		if ($attachments != null) {
-			if (count($descriptions)) {
-				$mergedDescriptions = implode(' ', $descriptions);
-				$attachments->findEmbeddedAttachments($mergedDescriptions);
+			if ($message != null) {
+				$attachments->findEmbeddedAttachments($message);
 			}
 		}
 	}
