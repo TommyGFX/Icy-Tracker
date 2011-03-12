@@ -319,6 +319,40 @@ class IssueEditor extends Issue {
 		$additionalFields['lastEditTime'] = TIME_NOW;
 		$this->updateData($fields);
 	}
+	
+	/**
+	 * Deletes this issue.
+	 */
+	public function delete() {
+		self::deleteData($this->issueID);
+	}
+	
+	/**
+	 * Deletes the issues with the given IDs.
+	 * 
+	 * @param	string	$issueIDs
+	 */
+	public static function deleteData($issueIDs) {
+		$issueIDs = implode(',', ArrayUtil::toIntegerArray(explode(',', $issueIDs)));
+		
+		// delete issue relations
+		$sql = "DELETE FROM it".IT_N."_issue_relation
+			WHERE parentID IN(".$issueIDs.")
+			OR childID IN(".$issueIDs.")";
+		WCF::getDB()->sendQuery($sql);
+		
+		// delete version relations
+		$sql = "DELETE FROM it".IT_N."_project_dependency 
+			WHERE issueID IN(".$issueIDs.")";
+		WCF::getDB()->sendQuery($sql);
+		
+		//TODO: delete comments --RouL
+		
+		// delete issues
+		$sql = "DELETE FROM it".IT_N."_issue 
+			WHERE issueID IN(".$issueIDs.")";
+		WCF::getDB()->sendQuery($sql);
+	}
 }
 
 ?>
