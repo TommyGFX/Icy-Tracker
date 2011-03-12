@@ -6,12 +6,12 @@
 		<standalone>1</standalone>
 		<version>1.0.0 Dev</version> <!-- codename: Gennam -->
 		<date>2010-07-08</date>
-		<packageurl>http://roul.codingcorner.info/wiki/it/</packageurl>
+		<packageurl>http://codingcorner.info/cgit/wcf/info.codingcorner.it.git/</packageurl>
 	</packageinformation>
 	
 	<authorinformation>
 		<author>Markus Bartz</author>
-		<authorurl>http://roul.codingcorner.info/</authorurl>
+		<authorurl>http://codingcorner.info/</authorurl>
 	</authorinformation>
 	
 	<requiredpackages>
@@ -31,10 +31,10 @@
 		<requiredpackage minversion="1.1.2" file="requirements/com.woltlab.wcf.data.help.tar">com.woltlab.wcf.data.help</requiredpackage>		
 		
 		<!-- message -->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.tar">com.woltlab.wcf.data.message</requiredpackage>-->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.attachment.tar">com.woltlab.wcf.data.message.attachment</requiredpackage>-->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.bbcode.tar">com.woltlab.wcf.data.message.bbcode</requiredpackage>-->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.wysiwyg.tar">com.woltlab.wcf.form.message.wysiwyg</requiredpackage>-->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.tar">com.woltlab.wcf.data.message</requiredpackage>
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.attachment.tar">com.woltlab.wcf.data.message.attachment</requiredpackage>
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.bbcode.tar">com.woltlab.wcf.data.message.bbcode</requiredpackage>
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.wysiwyg.tar">com.woltlab.wcf.form.message.wysiwyg</requiredpackage>
 		
 		<!-- user profile -->
 		<requiredpackage minversion="1.1.3" file="requirements/com.woltlab.wcf.form.user.tar">com.woltlab.wcf.form.user</requiredpackage> <!-- com.woltlab.wcf.data.image.captcha.tar, com.woltlab.wcf.data.help -->
@@ -43,7 +43,7 @@
 		<!-- messages -->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.poll.tar">com.woltlab.wcf.data.message.poll</requiredpackage>-->
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.censorship.tar">com.woltlab.wcf.data.message.censorship</requiredpackage>-->
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.tar">com.woltlab.wcf.form.message</requiredpackage>-->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.tar">com.woltlab.wcf.form.message</requiredpackage>
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.search.tar">com.woltlab.wcf.data.message.search</requiredpackage>-->
 <!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.message.sidebar.tar">com.woltlab.wcf.message.sidebar</requiredpackage>-->
 	</requiredpackages>
