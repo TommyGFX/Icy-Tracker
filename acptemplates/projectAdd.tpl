@@ -7,6 +7,20 @@
 	onloadEvents.push(function() { tabMenu.showSubTabMenu("{$activeTabMenuItem}") });
 	//]]>
 </script>
+<script type="text/javascript" src="{@RELATIVE_ICT_DIR}acp/js/AccessList.class.js"></script>
+<script type="text/javascript">
+	//<![CDATA[
+	onloadEvents.push(function() {
+		// developer
+		var developer = new AccessList('developer', null);
+		
+		// add onsubmit event
+		document.getElementById('projectAddForm').onsubmit = function() { 
+			if (suggestion.selectedIndex != -1) return false;
+		};
+	});
+	//]]>
+</script>
 
 <div class="mainHeadline">
 	<img src="{@RELATIVE_ICT_DIR}icon/project{@$action|ucfirst}L.png" alt="" />
@@ -40,7 +54,7 @@
 		<ul><li><a href="index.php?page=ProjectList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}ict.acp.menu.link.content.project.view{/lang}"><img src="{@RELATIVE_ICT_DIR}icon/projectM.png" alt="" /> <span>{lang}ict.acp.menu.link.content.project.view{/lang}</span></a></li></ul>
 	</div>
 </div>
-<form method="post" action="index.php?form=Project{@$action|ucfirst}">
+<form method="post" action="index.php?form=Project{@$action|ucfirst}" id="projectAddForm">
 	<div class="tabMenu">
 		<ul>
 			<li id="general"><a onclick="tabMenu.showSubTabMenu('general');"><span>{lang}ict.acp.project.general{/lang}</span></a></li>
