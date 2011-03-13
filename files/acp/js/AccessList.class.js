@@ -9,7 +9,7 @@ var AccessList = Class.create();
 AccessList.prototype = {
 	initialize: function(name, data) {
 		// bindings
-		this._add.bindAsEventListener(this);
+		this.add = this._add.bindAsEventListener(this);
 		
 		// initialize variables
 		this.name = name;
@@ -17,9 +17,9 @@ AccessList.prototype = {
 		
 		// now do the "real" work
 		// observe button
-		var button = $(this.name + 'AddInput');
-		if (button) {
-			button.observe('click', this.add);
+		this.buttonAdd = $(this.name + 'AddButton');
+		if (this.buttonAdd) {
+			this.buttonAdd.observe('click', this.add);
 		}
 	},
 	
