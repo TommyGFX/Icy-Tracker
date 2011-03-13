@@ -83,9 +83,9 @@ AccessList.prototype = {
 	refresh: function() {
 		if (this.canvas != null) {
 			// clear canvas
-			for(var element = this.canvas.down(); element != null; element = this.canvas.down()) {
+			this.canvas.childElements().each(function(element) {
 				element.remove();
-			}
+			});
 			
 			// create list-container
 			var list = new Element('ul');
@@ -102,7 +102,7 @@ AccessList.prototype = {
 					'class': 'remove'
 				});
 				item.insert(btnRemove);
-				btnRemove.observe('click', this._remove.bindAsEventListener(this, entity.id));
+				btnRemove.observe('click', this._remove.bindAsEventListener(this, i));
 				var imgRemove = new Element('img', {
 					src: RELATIVE_WCF_DIR + 'icon/deleteS.png'
 				});
@@ -116,6 +116,33 @@ AccessList.prototype = {
 				name.insert(imgName);
 				name.insert(entity.name);
 			}
+		}
+	},
+	
+	submit: function(form) {
+		for (var i = 0; i < this.entities.length; i++) {
+			var entity = this.entities[i];
+			
+			var idField = new Element('input', {
+				type: 'hidden',
+				name: this.name + '[' + i + '][id]',
+				value: entity.id
+			});
+			form.insert(idField);
+			
+			var typeField = new Element('input', {
+				type: 'hidden',
+				name: this.name + '[' + i + '][type]',
+				value: entity.type
+			});
+			form.insert(typeField);
+			
+			var nameField = new Element('input', {
+				type: 'hidden',
+				name: this.name + '[' + i + '][name]',
+				value: entity.name
+			});
+			form.insert(nameField);
 		}
 	},
 	
@@ -137,7 +164,8 @@ AccessList.prototype = {
 		}
 	},
 	
-	_remove: function(e, id) {
-		alert('ID: ' + id);
+	_remove: function(e, item) {
+		this.entities.splice(item, 1);
+		this.refresh();
 	}
 };

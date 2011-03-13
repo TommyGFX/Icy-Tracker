@@ -18,6 +18,8 @@
 		document.getElementById('projectAddForm').onsubmit = function() { 
 			if (suggestion.selectedIndex != -1) return false;
 			if (developer.inputHasFocus) return false;
+			
+			developer.submit(this);
 		};
 	});
 	//]]>
