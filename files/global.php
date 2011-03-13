@@ -14,6 +14,6 @@ if (!count($packageDirs)) $packageDirs[] = ICT_DIR;
 $packageDirs[] = WCF_DIR;
 
 // starting ict core
-require_once(IT_DIR.'lib/system/ICTCore.class.php');
+require_once(ICT_DIR.'lib/system/ICTCore.class.php');
 new ICTCore();
 ?>

@@ -42,7 +42,7 @@
 								{if $child.additionalButtons|isset}{@$child.additionalButtons}{/if}
 							</div>
 							<h3 class="itemListTitle">
-								<img src="{@RELATIVE_IT_DIR}icon/projectS.png" alt="" title="{lang}ict.acp.project{/lang}" />	
+								<img src="{@RELATIVE_ICT_DIR}icon/projectS.png" alt="" title="{lang}ict.acp.project{/lang}" />	
 							
 								{if $this->user->getPermission('admin.project.canEditProject')}
 									<select name="showOrder[{@$project->projectID}]">

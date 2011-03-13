@@ -1,6 +1,6 @@
 <?php
 // ict imports
-require_once(IT_DIR.'lib/data/project/ProjectEditor.class.php');
+require_once(ICT_DIR.'lib/data/project/ProjectEditor.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/acp/form/ACPForm.class.php');

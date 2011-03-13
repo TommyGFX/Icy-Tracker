@@ -18,5 +18,5 @@ $packageDirs[] = WCF_DIR;
 
 // starting ict acp
 require_once(ICT_DIR.'lib/system/ICTACP.class.php');
-new ITACP();
+new ICTACP();
 ?>

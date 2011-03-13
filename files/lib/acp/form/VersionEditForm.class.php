@@ -56,7 +56,7 @@ class VersionEditForm extends VersionAddForm {
 		AbstractForm::save();
 		
 		// save version
-		$this->version->update($this->versionname, $this->additionalFields);
+		$this->version->update($this->versionname, null, $this->additionalFields);
 		
 		// reset cache
 		Project::resetCache();
