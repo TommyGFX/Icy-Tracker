@@ -1,19 +1,19 @@
 {include file='header'}
 <div class="mainHeadline">
-	<img src="{@RELATIVE_IT_DIR}icon/projectL.png" alt="" />
+	<img src="{@RELATIVE_ICT_DIR}icon/projectL.png" alt="" />
 	<div class="headlineContainer">
-		<h2>{lang}it.acp.project.list{/lang}</h2>
+		<h2>{lang}ict.acp.project.list{/lang}</h2>
 	</div>
 </div>
 
 {if $deletedProjectID}
-	<p class="success">{lang}it.acp.project.delete.success{/lang}</p>	
+	<p class="success">{lang}ict.acp.project.delete.success{/lang}</p>	
 {/if}
 
 {if $this->user->getPermission('admin.project.canAddProject')}
 	<div class="contentHeader">
 		<div class="largeButtons">
-			<ul><li><a href="index.php?form=ProjectAdd&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}it.acp.project.add{/lang}"><img src="{@RELATIVE_IT_DIR}icon/projectAddM.png" alt="" /> <span>{lang}it.acp.project.add{/lang}</span></a></li></ul>
+			<ul><li><a href="index.php?form=ProjectAdd&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}ict.acp.project.add{/lang}"><img src="{@RELATIVE_ICT_DIR}icon/projectAddM.png" alt="" /> <span>{lang}ict.acp.project.add{/lang}</span></a></li></ul>
 		</div>
 	</div>
 {/if}
@@ -29,20 +29,20 @@
 						<li>
 							<div class="buttons">
 								{if $this->user->getPermission('admin.project.canEditProject')}
-									<a href="index.php?form=ProjectEdit&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}it.acp.project.edit{/lang}" /></a>
+									<a href="index.php?form=ProjectEdit&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}ict.acp.project.edit{/lang}" /></a>
 								{else}
-									<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}it.acp.project.edit{/lang}" />
+									<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}ict.acp.project.edit{/lang}" />
 								{/if}
 								{if $this->user->getPermission('admin.project.canDeleteProject')}
-									<a onclick="return confirm('{lang}it.acp.project.delete.sure{/lang}')" href="index.php?action=ProjectDelete&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" title="{lang}it.acp.project.delete{/lang}" /></a>
+									<a onclick="return confirm('{lang}ict.acp.project.delete.sure{/lang}')" href="index.php?action=ProjectDelete&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" title="{lang}ict.acp.project.delete{/lang}" /></a>
 								{else}
-									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}it.acp.project.delete{/lang}" />
+									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}ict.acp.project.delete{/lang}" />
 								{/if}
 								
 								{if $child.additionalButtons|isset}{@$child.additionalButtons}{/if}
 							</div>
 							<h3 class="itemListTitle">
-								<img src="{@RELATIVE_IT_DIR}icon/projectS.png" alt="" title="{lang}it.acp.project{/lang}" />	
+								<img src="{@RELATIVE_IT_DIR}icon/projectS.png" alt="" title="{lang}ict.acp.project{/lang}" />	
 							
 								{if $this->user->getPermission('admin.project.canEditProject')}
 									<select name="showOrder[{@$project->projectID}]">

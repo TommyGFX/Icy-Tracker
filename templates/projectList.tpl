@@ -15,8 +15,8 @@
 						<h4>
 							<a href="index.php?page=Project&amp;projectID=2{@SID_ARG_2ND}">{lang}{$project->title}{/lang}</a>
 						</h4>
-						<p class="projectOwner"><strong>{lang}it.project.owner{/lang}:</strong> {$project->getOwner()->username}</p>
-						{if !$projectDescription|empty}<p class="projectDescription"><strong>{lang}it.project.description{/lang}:</strong> {@$projectDescription}</p>{/if}
+						<p class="projectOwner"><strong>{lang}ict.project.owner{/lang}:</strong> {$project->getOwner()->username}</p>
+						{if !$projectDescription|empty}<p class="projectDescription"><strong>{lang}ict.project.description{/lang}:</strong> {@$projectDescription}</p>{/if}
 					</div>
 				</div>
 			</li>

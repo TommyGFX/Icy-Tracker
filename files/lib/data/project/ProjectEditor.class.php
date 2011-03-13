@@ -1,6 +1,6 @@
 <?php
-// it imports
-require_once(IT_DIR.'lib/data/project/Project.class.php');
+// ict imports
+require_once(ICT_DIR.'lib/data/project/Project.class.php');
 
 /**
  * ProjectEditor provides functions to edit the data of a project.
@@ -8,7 +8,7 @@ require_once(IT_DIR.'lib/data/project/Project.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	lib.data.project
  * @category 	Icy Tracker
  */
@@ -21,7 +21,7 @@ class ProjectEditor extends Project {
 		if ($useCache) parent::__construct($projectID, $row, $cacheObject);
 		else {
 			$sql = "SELECT	*
-				FROM	it".IT_N."_project
+				FROM	ict".ICT_N."_project
 				WHERE	projectID = ".$projectID;
 			$row = WCF::getDB()->getFirstRow($sql);
 			parent::__construct(null, $row);
@@ -36,7 +36,7 @@ class ProjectEditor extends Project {
 		// TODO: implement ticket & version cleanup -- RouL
 		
 		// delete project
-		$sql = "DELETE FROM	it".IT_N."_project
+		$sql = "DELETE FROM	ict".ICT_N."_project
 			WHERE		projectID = ".$this->projectID;
 		WCF::getDB()->sendQuery($sql);
 		
@@ -48,7 +48,7 @@ class ProjectEditor extends Project {
 	 */
 	public function removeShowOrder() {
 		// unshift projects
-		$sql = "UPDATE	it".IT_N."_project
+		$sql = "UPDATE	ict".ICT_N."_project
 			SET	showOrder = showOrder - 1
 			WHERE 	showOrder > ".$this->showOrder;
 		WCF::getDB()->sendQuery($sql);
@@ -89,7 +89,7 @@ class ProjectEditor extends Project {
 		}
 		
 		if (!empty($updates)) {
-			$sql = "UPDATE	it".IT_N."_project
+			$sql = "UPDATE	ict".ICT_N."_project
 				SET	".$updates."
 				WHERE	projectID = ".$this->projectID;
 			WCF::getDB()->sendQuery($sql);
@@ -130,7 +130,7 @@ class ProjectEditor extends Project {
 	public function addShowOrder($showOrder = null) {
 		// shift projects
 		if ($showOrder !== null) {
-			$sql = "UPDATE	it".IT_N."_project
+			$sql = "UPDATE	ict".ICT_N."_project
 				SET		showOrder = showOrder + 1
 				WHERE	showOrder >= ".$showOrder;
 			WCF::getDB()->sendQuery($sql);
@@ -138,13 +138,13 @@ class ProjectEditor extends Project {
 		
 		// get final showOrder
 		$sql = "SELECT 	IFNULL(MAX(showOrder), 0) + 1 AS showOrder
-			FROM	it".IT_N."_project
+			FROM	ict".ICT_N."_project
 			".($showOrder ? "WHERE showOrder <= ".$showOrder : '');
 		$row = WCF::getDB()->getFirstRow($sql);
 		$showOrder = $row['showOrder'];
 		
 		// save showOrder
-		$sql = "UPDATE	it".IT_N."_project
+		$sql = "UPDATE	ict".ICT_N."_project
 			SET		showOrder = ".$showOrder."
 			WHERE	projectID = ".$this->projectID;
 		WCF::getDB()->sendQuery($sql);
@@ -170,7 +170,7 @@ class ProjectEditor extends Project {
 			else $values .= ",'".escapeString($value)."'";
 		}
 		
-		$sql = "INSERT INTO	it".IT_N."_project
+		$sql = "INSERT INTO	ict".ICT_N."_project
 			(
 				title,
 				description,

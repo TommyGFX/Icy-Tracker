@@ -11,7 +11,7 @@
 				</ul>
 			</div>
 		</div>
-		<p class="copyright">{lang}it.global.copyright{/lang}</p>
+		<p class="copyright">{lang}ict.global.copyright{/lang}</p>
 	</div>
 </div>
 {if !$this->user->userID && !LOGIN_USE_CAPTCHA}
@@ -24,7 +24,7 @@
 				{@SID_INPUT_TAG}
 				<input tabindex="4" type="image" class="inputImage" src="{icon}submitS.png{/icon}" alt="{lang}wcf.global.button.submit{/lang}" />
 			</div>
-			<p><label><input tabindex="3" type="checkbox" id="useCookies" name="useCookies" value="1" /> {lang}it.header.login.useCookies{/lang}</label></p>
+			<p><label><input tabindex="3" type="checkbox" id="useCookies" name="useCookies" value="1" /> {lang}ict.header.login.useCookies{/lang}</label></p>
 		</form>
 	</div>
 {/if}

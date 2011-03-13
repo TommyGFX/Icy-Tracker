@@ -5,12 +5,12 @@ require_once(WCF_DIR.'lib/acp/package/PackageInstallationQueue.class.php');
 require_once(WCF_DIR.'lib/data/feed/FeedReaderSource.class.php');
 
 /**
- * Shows the welcome page in it admin control panel.
+ * Shows the welcome page in ict admin control panel.
  * 
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	acp.page
  * @category 	Icy Tracker
  */

@@ -18,11 +18,11 @@
 			<option name="issue_default_priority">
 				<categoryname>tracker.issues</categoryname>
 				<optiontype>select</optiontype>
-				<selectoptions><![CDATA[1:it.issue.priority.critical
-2:it.issue.priority.high
-3:it.issue.priority.normal
-4:it.issue.priority.low
-5:it.issue.priority.no_priority]]></selectoptions>
+				<selectoptions><![CDATA[1:ict.issue.priority.critical
+2:ict.issue.priority.high
+3:ict.issue.priority.normal
+4:ict.issue.priority.low
+5:ict.issue.priority.no_priority]]></selectoptions>
 				<defaultvalue>3</defaultvalue>
 			</option>
 			<!-- /tracker.issues -->

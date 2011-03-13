@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/acp-menu.xsd">
 	<import>
-		<acpmenuitem name="it.acp.menu.link.content.project">
+		<acpmenuitem name="ict.acp.menu.link.content.project">
 			<parent>wcf.acp.menu.link.content</parent>
 			<showorder>1</showorder>
 		</acpmenuitem>
 		
-		<acpmenuitem name="it.acp.menu.link.content.project.view">
-			<parent>it.acp.menu.link.content.project</parent>
+		<acpmenuitem name="ict.acp.menu.link.content.project.view">
+			<parent>ict.acp.menu.link.content.project</parent>
 			<showorder>1</showorder>
 			<link>index.php?page=ProjectList</link>
 			<icon>icon/projectM.png</icon>
 			<permissions>admin.project.canEditProject,admin.project.canDeleteProject,admin.project.canAddVersion,admin.project.canEditVersion,admin.project.canDeleteVersion</permissions> 
 		</acpmenuitem>
 		
-		<acpmenuitem name="it.acp.menu.link.content.project.add">
-			<parent>it.acp.menu.link.content.project</parent>
+		<acpmenuitem name="ict.acp.menu.link.content.project.add">
+			<parent>ict.acp.menu.link.content.project</parent>
 			<showorder>2</showorder>
 			<link>index.php?form=ProjectAdd</link>
 			<permissions>admin.project.canAddProject</permissions> 

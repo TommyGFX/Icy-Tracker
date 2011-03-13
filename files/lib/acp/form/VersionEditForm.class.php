@@ -1,5 +1,5 @@
 <?php
-require_once(IT_DIR.'lib/acp/form/VersionAddForm.class.php');
+require_once(ICT_DIR.'lib/acp/form/VersionAddForm.class.php');
 
 /**
  * Shows the version edit form.
@@ -7,12 +7,12 @@ require_once(IT_DIR.'lib/acp/form/VersionAddForm.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	acp.form
  * @category 	Icy Tracker
  */
 class VersionEditForm extends VersionAddForm {
-	public $activeMenuItem = 'it.acp.menu.link.content.project.view';
+	public $activeMenuItem = 'ict.acp.menu.link.content.project.view';
 	public $neededPermissions = 'admin.project.canEditVersion';
 	
 	public $versionID = 0;
@@ -39,7 +39,7 @@ class VersionEditForm extends VersionAddForm {
 		}
 		
 		$sql = "SELECT	COUNT(*) AS count
-			FROM	it".IT_N."_project_version
+			FROM	ict".ICT_N."_project_version
 			WHERE	version = '".escapeString($this->versionname)."'
 			AND		projectID = ".$this->projectID."
 			AND		versionID <> ".$this->versionID;

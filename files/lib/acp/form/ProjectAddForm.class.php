@@ -1,5 +1,5 @@
 <?php
-// it imports
+// ict imports
 require_once(IT_DIR.'lib/data/project/ProjectEditor.class.php');
 
 // wcf imports
@@ -12,14 +12,14 @@ require_once(WCF_DIR.'lib/data/user/User.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	acp.form
  * @category 	Icy Tracker
  */
 class ProjectAddForm extends ACPForm {
 	// system
 	public $templateName = 'projectAdd';
-	public $activeMenuItem = 'it.acp.menu.link.content.project.add';
+	public $activeMenuItem = 'ict.acp.menu.link.content.project.add';
 	public $neededPermissions = 'admin.project.canAddProject';
 	
 	public $project;
@@ -75,7 +75,7 @@ class ProjectAddForm extends ACPForm {
 		}
 		
 		$sql = "SELECT	COUNT(*) AS count
-			FROM	it".IT_N."_project
+			FROM	ict".ICT_N."_project
 			WHERE	title = '".escapeString($this->title)."'";
 		$row = WCF::getDB()->getFirstRow($sql);
 		if ($row['count']) {

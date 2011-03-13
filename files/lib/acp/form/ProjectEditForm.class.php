@@ -1,5 +1,5 @@
 <?php
-require_once(IT_DIR.'lib/acp/form/ProjectAddForm.class.php');
+require_once(ICT_DIR.'lib/acp/form/ProjectAddForm.class.php');
 
 /**
  * Shows the project edit form.
@@ -7,12 +7,12 @@ require_once(IT_DIR.'lib/acp/form/ProjectAddForm.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	acp.form
  * @category 	Icy Tracker
  */
 class ProjectEditForm extends ProjectAddForm {
-	public $activeMenuItem = 'it.acp.menu.link.content.project';
+	public $activeMenuItem = 'ict.acp.menu.link.content.project';
 	public $neededPermissions = 'admin.project.canEditProject';
 	
 	public $projectID = 0;
@@ -39,7 +39,7 @@ class ProjectEditForm extends ProjectAddForm {
 		}
 		
 		$sql = "SELECT	COUNT(*) AS count
-			FROM	it".IT_N."_project
+			FROM	ict".ICT_N."_project
 			WHERE	title = '".escapeString($this->title)."'
 			AND		projectID <> ".$this->projectID;
 		$row = WCF::getDB()->getFirstRow($sql);

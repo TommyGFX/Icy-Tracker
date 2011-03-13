@@ -1,6 +1,6 @@
 <?php
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
-require_once(IT_DIR.'lib/data/project/Version.class.php');
+require_once(ICT_DIR.'lib/data/project/Version.class.php');
 
 /**
  * Represents a project in the tracker.
@@ -8,7 +8,7 @@ require_once(IT_DIR.'lib/data/project/Version.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	lib.data.project
  * @category 	Icy Tracker
  */
@@ -32,7 +32,7 @@ class Project extends DatabaseObject {
 		
 //		if ($projectID !== null) {
 //			$sql = "SELECT	*
-//				FROM	it".IT_N."_project
+//				FROM	ict".ICT_N."_project
 //				WHERE	projectID = ".$projectID;
 //			$row = WCF::getDB()->getFirstRow($sql);
 //		}

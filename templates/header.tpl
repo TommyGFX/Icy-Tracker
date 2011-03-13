@@ -9,23 +9,23 @@
 	<div id="userPanel" class="userPanel">
 		<div class="userPanelInner">
 			<p id="userNote">
-				{if $this->user->userID != 0}{lang}it.header.userNote.user{/lang}{else}{lang}it.header.userNote.guest{/lang}{/if}
+				{if $this->user->userID != 0}{lang}ict.header.userNote.user{/lang}{else}{lang}ict.header.userNote.guest{/lang}{/if}
 			</p>
 			<div id="userMenu">
 				<ul>
 					{if $this->user->userID != 0}
-						<li id="userMenuLogout"><a href="index.php?action=UserLogout&amp;t={@SECURITY_TOKEN}{@SID_ARG_2ND}"><img src="{icon}logoutS.png{/icon}" alt="" /> <span>{lang}it.header.userMenu.logout{/lang}</span></a></li>
-						<li id="userMenuProfileEdit"><a href="index.php?form=UserProfileEdit{@SID_ARG_2ND}"><img src="{icon}editS.png{/icon}" alt="" /> <span>{lang}it.header.userMenu.profile{/lang}</span></a></li>
+						<li id="userMenuLogout"><a href="index.php?action=UserLogout&amp;t={@SECURITY_TOKEN}{@SID_ARG_2ND}"><img src="{icon}logoutS.png{/icon}" alt="" /> <span>{lang}ict.header.userMenu.logout{/lang}</span></a></li>
+						<li id="userMenuProfileEdit"><a href="index.php?form=UserProfileEdit{@SID_ARG_2ND}"><img src="{icon}editS.png{/icon}" alt="" /> <span>{lang}ict.header.userMenu.profile{/lang}</span></a></li>
 
 						{if $additionalUserMenuItems|isset}{@$additionalUserMenuItems}{/if}
 
 						{if $this->user->getPermission('admin.general.canUseAcp')}
-							<li id="userMenuACP"><a href="acp/index.php?packageID={@PACKAGE_ID}"><img src="{icon}acpS.png{/icon}" alt="" /> <span>{lang}it.header.userMenu.acp{/lang}</span></a></li>
+							<li id="userMenuACP"><a href="acp/index.php?packageID={@PACKAGE_ID}"><img src="{icon}acpS.png{/icon}" alt="" /> <span>{lang}ict.header.userMenu.acp{/lang}</span></a></li>
 						{/if}
 					{else}
-						<li id="userMenuLogin" class="options"><a href="index.php?form=UserLogin{@SID_ARG_2ND}" id="loginButton"><img src="{icon}loginS.png{/icon}" alt="" id="loginButtonImage" /> <span>{lang}it.header.userMenu.login{/lang}</span></a></li>
+						<li id="userMenuLogin" class="options"><a href="index.php?form=UserLogin{@SID_ARG_2ND}" id="loginButton"><img src="{icon}loginS.png{/icon}" alt="" id="loginButtonImage" /> <span>{lang}ict.header.userMenu.login{/lang}</span></a></li>
 
-						{if !REGISTER_DISABLED}<li id="userMenuRegistration"><a href="index.php?page=Register{@SID_ARG_2ND}"><img src="{icon}registerS.png{/icon}" alt="" /> <span>{lang}it.header.userMenu.register{/lang}</span></a></li>{/if}
+						{if !REGISTER_DISABLED}<li id="userMenuRegistration"><a href="index.php?page=Register{@SID_ARG_2ND}"><img src="{icon}registerS.png{/icon}" alt="" /> <span>{lang}ict.header.userMenu.register{/lang}</span></a></li>{/if}
 
 						{if $additionalUserMenuItems|isset}{@$additionalUserMenuItems}{/if}
 
@@ -89,7 +89,7 @@
 		 * $searchScript=search script; default=index.php?form=Search
 		 * $searchFieldName=name of the search input field; default=q
 		 * $searchFieldValue=default value of the search input field; default=content of $query
-		 * $searchFieldTitle=title of search input field; default=language variable it.header.search.query
+		 * $searchFieldTitle=title of search input field; default=language variable ict.header.search.query
 		 * $searchFieldOptions=special search options for popup menu; default=empty
 		 * $searchExtendedLink=link to extended search form; default=index.php?form=Search{@SID_ARG_2ND}
 		 * $searchHiddenFields=optional hidden fields; default=empty
@@ -99,7 +99,7 @@
 		{if !$searchScript|isset}{assign var='searchScript' value='index.php?form=Search'}{/if}
 		{if !$searchFieldName|isset}{assign var='searchFieldName' value='q'}{/if}
 		{if !$searchFieldValue|isset && $query|isset}{assign var='searchFieldValue' value=$query}{/if}
-		{if !$searchFieldTitle|isset}{assign var='searchFieldTitle' value='{lang}it.header.search.query{/lang}'}{/if}
+		{if !$searchFieldTitle|isset}{assign var='searchFieldTitle' value='{lang}ict.header.search.query{/lang}'}{/if}
 		{if !$searchFieldOptions|isset}{assign var='searchFieldOptions' value=''}{/if}
 		{if !$searchExtendedLink|isset}{assign var='searchExtendedLink' value='index.php?form=Search'|concat:SID_ARG_2ND}{/if}
 		{if !$searchShowExtendedLink|isset}{assign var='searchShowExtendedLink' value=true}{/if}
@@ -131,7 +131,7 @@
 								<div class="pageMenu smallFont">
 									<ul>
 										{@$searchFieldOptions}
-										{if $searchShowExtendedLink}<li><a href="{@$searchExtendedLink}{if !$searchFieldValue|empty}&amp;defaultQuery={$searchFieldValue|rawurlencode}{/if}">{lang}it.header.search.extended{/lang}</a></li>{/if}
+										{if $searchShowExtendedLink}<li><a href="{@$searchExtendedLink}{if !$searchFieldValue|empty}&amp;defaultQuery={$searchFieldValue|rawurlencode}{/if}">{lang}ict.header.search.extended{/lang}</a></li>{/if}
 									</ul>
 								</div>
 							</div>
@@ -140,7 +140,7 @@
 
 					{if $searchShowExtendedLink}
 						<noscript>
-							<p><a href="{@$searchExtendedLink}">{lang}it.header.search.extended{/lang}</a></p>
+							<p><a href="{@$searchExtendedLink}">{lang}ict.header.search.extended{/lang}</a></p>
 						</noscript>
 					{/if}
 				</div>
@@ -155,7 +155,7 @@
 					</a>
 				{elseif $this->getStyle()->getVariable('page.logo.image.application.use') == 1}
 					<a href="index.php?page=Index{@SID_ARG_2ND}" class="pageLogo">
-						<img src="{@RELATIVE_IT_DIR}images/it-header-logo.png" title="{lang}{PAGE_TITLE}{/lang}" alt="" />
+						<img src="{@RELATIVE_ICT_DIR}images/ict-header-logo.png" title="{lang}{PAGE_TITLE}{/lang}" alt="" />
 					</a>
 				{/if}
 			</div>
@@ -177,7 +177,7 @@
 	{/if}
 	{if OFFLINE == 1 && $this->user->getPermission('user.tracker.canViewTrackerOffline')}
 		<div class="warning">
-			{lang}it.global.offline{/lang}
+			{lang}ict.global.offline{/lang}
 			<p>{if OFFLINE_MESSAGE_ALLOW_HTML}{@OFFLINE_MESSAGE}{else}{@OFFLINE_MESSAGE|htmlspecialchars|nl2br}{/if}</p>
 		</div>
 	{/if}

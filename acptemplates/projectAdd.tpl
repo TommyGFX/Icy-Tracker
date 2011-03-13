@@ -2,9 +2,9 @@
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Suggestion.class.js"></script>
 
 <div class="mainHeadline">
-	<img src="{@RELATIVE_IT_DIR}icon/project{@$action|ucfirst}L.png" alt="" />
+	<img src="{@RELATIVE_ICT_DIR}icon/project{@$action|ucfirst}L.png" alt="" />
 	<div class="headlineContainer">
-		<h2>{lang}it.acp.project.{@$action}{/lang}</h2>
+		<h2>{lang}ict.acp.project.{@$action}{/lang}</h2>
 		{if $projectID|isset}<p>{lang}{$project->title}{/lang}</p>{/if}
 	</div>
 </div>
@@ -14,7 +14,7 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{lang}it.acp.project.{@$action}.success{/lang}</p>
+	<p class="success">{lang}ict.acp.project.{@$action}.success{/lang}</p>
 {/if}
 
 <script type="text/javascript">
@@ -30,29 +30,29 @@
 
 <div class="contentHeader">
 	<div class="largeButtons">
-		<ul><li><a href="index.php?page=ProjectList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}it.acp.menu.link.content.project.view{/lang}"><img src="{@RELATIVE_IT_DIR}icon/projectM.png" alt="" /> <span>{lang}it.acp.menu.link.content.project.view{/lang}</span></a></li></ul>
+		<ul><li><a href="index.php?page=ProjectList&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}ict.acp.menu.link.content.project.view{/lang}"><img src="{@RELATIVE_ICT_DIR}icon/projectM.png" alt="" /> <span>{lang}ict.acp.menu.link.content.project.view{/lang}</span></a></li></ul>
 	</div>
 </div>
 <form method="post" action="index.php?form=Project{@$action|ucfirst}">
 	<div class="border content">
 		<div class="container-1">
 			<fieldset>
-				<legend>{lang}it.acp.project.general{/lang}</legend>
+				<legend>{lang}ict.acp.project.general{/lang}</legend>
 				<div id="titleDiv" class="formElement{if $errorField == 'title'} formError{/if}">
 					<div class="formFieldLabel">
-						<label for="title">{lang}it.acp.project.title{/lang}</label>
+						<label for="title">{lang}ict.acp.project.title{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="title" name="title" value="{$title}" />
 						{if $errorField == 'title'}
 							<p class="innerError">
 								{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-								{if $errorType == 'notUnique'}{lang}it.acp.project.error.title.notUnique{/lang}{/if}
+								{if $errorType == 'notUnique'}{lang}ict.acp.project.error.title.notUnique{/lang}{/if}
 							</p>
 						{/if}
 					</div>
 					<div class="formFieldDesc hidden" id="titleHelpMessage">
-						{lang}it.acp.project.title.description{/lang}
+						{lang}ict.acp.project.title.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">
@@ -63,13 +63,13 @@
 
 				<div id="descriptionDiv" class="formElement">
 					<div class="formFieldLabel">
-						<label for="description">{lang}it.acp.project.description{/lang}</label>
+						<label for="description">{lang}ict.acp.project.description{/lang}</label>
 					</div>
 					<div class="formField">
 						<textarea id="description" name="description" cols="40" rows="10">{$description}</textarea>
 					</div>
 					<div class="formFieldDesc hidden" id="descriptionHelpMessage">
-						{lang}it.acp.project.description.description{/lang}
+						{lang}ict.acp.project.description.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">
@@ -80,13 +80,13 @@
 
 				<div id="imageDiv" class="formElement">
 					<div class="formFieldLabel">
-						<label for="image">{lang}it.acp.project.image{/lang}</label>
+						<label for="image">{lang}ict.acp.project.image{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="image" name="image" value="{$image}" />
 					</div>
 					<div class="formFieldDesc hidden" id="imageHelpMessage">
-						{lang}it.acp.project.image.description{/lang}
+						{lang}ict.acp.project.image.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">
@@ -97,7 +97,7 @@
 
 				<div id="ownernameDiv" class="formElement{if $errorField == 'ownername'} formError{/if}">
 					<div class="formFieldLabel">
-						<label for="ownername">{lang}it.acp.project.ownername{/lang}</label>
+						<label for="ownername">{lang}ict.acp.project.ownername{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="ownername" name="ownername" value="{$ownername}" />
@@ -116,7 +116,7 @@
 						{/if}
 					</div>
 					<div class="formFieldDesc hidden" id="ownernameHelpMessage">
-						{lang}it.acp.project.ownername.description{/lang}
+						{lang}ict.acp.project.ownername.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">
@@ -127,13 +127,13 @@
 
 				<div id="showOrderDiv" class="formElement">
 					<div class="formFieldLabel">
-						<label for="showOrder">{lang}it.acp.project.showOrder{/lang}</label>
+						<label for="showOrder">{lang}ict.acp.project.showOrder{/lang}</label>
 					</div>
 					<div class="formField">
 						<input type="text" class="inputText" id="showOrder" name="showOrder" value="{$showOrder}" />
 					</div>
 					<div class="formFieldDesc hidden" id="showOrderHelpMessage">
-						{lang}it.acp.project.showOrder.description{/lang}
+						{lang}ict.acp.project.showOrder.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">

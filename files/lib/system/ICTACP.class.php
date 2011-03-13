@@ -7,16 +7,16 @@ require_once(WCF_DIR.'lib/system/WCFACP.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	system
  * @category 	Icy Tracker
  */
-class ITACP extends WCFACP {
+class ICTACP extends WCFACP {
 	/**
 	 * @see WCF::getOptionsFilename()
 	 */
 	protected function getOptionsFilename() {
-		return IT_DIR.'options.inc.php';
+		return ICT_DIR.'options.inc.php';
 	}
 	
 	/**
@@ -48,7 +48,7 @@ class ITACP extends WCFACP {
 		parent::assignDefaultTemplateVariables();
 		
 		self::getTPL()->assign(array(
-			'additionalHeaderButtons' => '<li><a href="'.RELATIVE_IT_DIR.'index.php?page=Index"><img src="'.RELATIVE_IT_DIR.'icon/indexS.png" alt="" /> <span>'.WCF::getLanguage()->get('it.acp.jumpToTracker').'</span></a></li>',
+			'additionalHeaderButtons' => '<li><a href="'.RELATIVE_ICT_DIR.'index.php?page=Index"><img src="'.RELATIVE_ICT_DIR.'icon/indexS.png" alt="" /> <span>'.WCF::getLanguage()->get('ict.acp.jumpToTracker').'</span></a></li>',
 			'pageTitle' => WCF::getLanguage()->get(StringUtil::encodeHTML(PAGE_TITLE)) . ' - ' . StringUtil::encodeHTML(PACKAGE_NAME . ' ' . PACKAGE_VERSION)
 		));
 	}
@@ -58,15 +58,15 @@ class ITACP extends WCFACP {
 	 */
 	protected function loadDefaultCacheResources() {
 		parent::loadDefaultCacheResources();
-		$this->loadDefaultITCacheResources();
+		$this->loadDefaultICTCacheResources();
 	}
 	
 	/**
 	 * Loads default cache resources of icy tracker acp.
 	 * Can be called statically from other applications or plugins.
 	 */
-	public static function loadDefaultITCacheResources() {
-		WCF::getCache()->addResource('project', IT_DIR.'cache/cache.project.php', IT_DIR.'lib/system/cache/CacheBuilderProject.class.php');
+	public static function loadDefaultICTCacheResources() {
+		WCF::getCache()->addResource('project', ICT_DIR.'cache/cache.project.php', ICT_DIR.'lib/system/cache/CacheBuilderProject.class.php');
 	}
 }
 ?>

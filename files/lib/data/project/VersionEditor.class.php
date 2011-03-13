@@ -1,6 +1,6 @@
 <?php
-// it imports
-require_once(IT_DIR.'lib/data/project/Version.class.php');
+// ict imports
+require_once(ICT_DIR.'lib/data/project/Version.class.php');
 
 /**
  * VersionEditor provides functions to edit the data of a project version.
@@ -21,7 +21,7 @@ class VersionEditor extends Version {
 		if ($useCache) parent::__construct($versionID, $row, $cacheObject);
 		else {
 			$sql = "SELECT	*
-				FROM	it".IT_N."_project_version
+				FROM	ict".ICT_N."_project_version
 				WHERE	versionID = ".$versionID;
 			$row = WCF::getDB()->getFirstRow($sql);
 			parent::__construct(null, $row);
@@ -35,7 +35,7 @@ class VersionEditor extends Version {
 		// TODO: cleanup? (tickets) -- RouL
 		
 		// delete version
-		$sql = "DELETE FROM	it".IT_N."_project_version
+		$sql = "DELETE FROM	ict".ICT_N."_project_version
 			WHERE		versionID = ".$this->versionID;
 		WCF::getDB()->sendQuery($sql);
 	}
@@ -70,7 +70,7 @@ class VersionEditor extends Version {
 		}
 		
 		if (!empty($updates)) {
-			$sql = "UPDATE	it".IT_N."_project_version
+			$sql = "UPDATE	ict".ICT_N."_project_version
 				SET	".$updates."
 				WHERE	versionID = ".$this->versionID;
 			WCF::getDB()->sendQuery($sql);
@@ -116,7 +116,7 @@ class VersionEditor extends Version {
 			else $values .= ",'".escapeString($value)."'";
 		}
 		
-		$sql = "INSERT INTO	it".IT_N."_project_version
+		$sql = "INSERT INTO	ict".ICT_N."_project_version
 			(
 				projectID,
 				version
@@ -137,7 +137,7 @@ class VersionEditor extends Version {
 	 * Publishes this version.
 	 */
 	public function publish() {
-		$sql = "UPDATE	it".IT_N."_project_version
+		$sql = "UPDATE	ict".ICT_N."_project_version
 			SET		published = 1
 			WHERE	versionID = ".$this->versionID;
 		WCF::getDB()->sendQuery($sql);
@@ -147,7 +147,7 @@ class VersionEditor extends Version {
 	 * Un-publishes this version.
 	 */
 	public function unpublish() {
-		$sql = "UPDATE	it".IT_N."_project_version
+		$sql = "UPDATE	ict".ICT_N."_project_version
 			SET		published = 0
 			WHERE	versionID = ".$this->versionID;
 		WCF::getDB()->sendQuery($sql);

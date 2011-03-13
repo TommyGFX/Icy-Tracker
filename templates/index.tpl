@@ -1,6 +1,6 @@
 {include file="documentHeader"}
 <head>
-	<title>{lang}it.index.title{/lang} - {lang}{PAGE_TITLE}{/lang}</title>
+	<title>{lang}ict.index.title{/lang} - {lang}{PAGE_TITLE}{/lang}</title>
 	
 	{include file='headInclude' sandbox=false}
 </head>

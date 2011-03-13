@@ -11,8 +11,8 @@
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/PopupMenuList.class.js"></script>
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/AjaxRequest.class.js"></script>
 
-<!-- it styles -->
-<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_IT_DIR}style/icyTracker.css" />
+<!-- ict styles -->
+<link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_ICT_DIR}style/icyTracker.css" />
 
 {if $specialStyles|isset}
 	<!-- special styles -->
@@ -39,7 +39,7 @@
 	var SID_ARG_2ND	= '{@SID_ARG_2ND_NOT_ENCODED}';
 	var SECURITY_TOKEN = '{@SECURITY_TOKEN}';
 	var RELATIVE_WCF_DIR = '{@RELATIVE_WCF_DIR}';
-	var RELATIVE_IT_DIR = '{@RELATIVE_IT_DIR}';
+	var RELATIVE_ICT_DIR = '{@RELATIVE_ICT_DIR}';
 	var LANG_DELETE_CONFIRM = '{lang}wcf.global.button.delete.confirm{/lang}';
 	//]]>
 </script>

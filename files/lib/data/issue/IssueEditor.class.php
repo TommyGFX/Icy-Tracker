@@ -1,5 +1,6 @@
 <?php
-require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
+// it imports
+require_once(ICT_DIR.'lib/data/issue/Issue.class.php');
 
 /**
  * Editor class for issues.
@@ -7,7 +8,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	lib.data.issue
  * @category 	Icy Tracker
  * 
@@ -93,7 +94,7 @@ class IssueEditor extends Issue {
 			else $values .= ",'".escapeString($value)."'";
 		}
 		
-		$sql = "INSERT INTO	it".IT_N."_issue
+		$sql = "INSERT INTO	ict".ICT_N."_issue
 			(
 				projectID,
 				userID,
@@ -139,7 +140,7 @@ class IssueEditor extends Issue {
 		}
 		
 		if (!empty($updates)) {
-			$sql = "UPDATE	it".IT_N."_issue
+			$sql = "UPDATE	ict".ICT_N."_issue
 				SET	".$updates."
 				WHERE	issueID = ".$this->issueID;
 			WCF::getDB()->sendQuery($sql);
@@ -336,20 +337,20 @@ class IssueEditor extends Issue {
 		$issueIDs = implode(',', ArrayUtil::toIntegerArray(explode(',', $issueIDs)));
 		
 		// delete issue relations
-		$sql = "DELETE FROM it".IT_N."_issue_relation
+		$sql = "DELETE FROM ict".ICT_N."_issue_relation
 			WHERE parentID IN(".$issueIDs.")
 			OR childID IN(".$issueIDs.")";
 		WCF::getDB()->sendQuery($sql);
 		
 		// delete version relations
-		$sql = "DELETE FROM it".IT_N."_project_dependency 
+		$sql = "DELETE FROM ict".ICT_N."_project_dependency 
 			WHERE issueID IN(".$issueIDs.")";
 		WCF::getDB()->sendQuery($sql);
 		
 		//TODO: delete comments --RouL
 		
 		// delete issues
-		$sql = "DELETE FROM it".IT_N."_issue 
+		$sql = "DELETE FROM ict".ICT_N."_issue 
 			WHERE issueID IN(".$issueIDs.")";
 		WCF::getDB()->sendQuery($sql);
 	}

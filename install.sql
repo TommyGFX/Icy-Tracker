@@ -1,6 +1,6 @@
 -- Projects
-DROP TABLE IF EXISTS it1_1_project;
-CREATE TABLE it1_1_project (
+DROP TABLE IF EXISTS ict1_1_project;
+CREATE TABLE ict1_1_project (
   projectID int(10) unsigned NOT NULL AUTO_INCREMENT,
   title varchar(255) NOT NULL,
   description mediumtext NOT NULL,
@@ -13,8 +13,8 @@ CREATE TABLE it1_1_project (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- Project versions
-DROP TABLE IF EXISTS it1_1_project_version;
-CREATE TABLE it1_1_project_version (
+DROP TABLE IF EXISTS ict1_1_project_version;
+CREATE TABLE ict1_1_project_version (
   versionID int(10) unsigned NOT NULL AUTO_INCREMENT,
   projectID int(10) unsigned NOT NULL,
   version varchar(255) NOT NULL,
@@ -25,8 +25,8 @@ CREATE TABLE it1_1_project_version (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Issues
-DROP TABLE IF EXISTS it1_1_issue;
-CREATE TABLE it1_1_issue (
+DROP TABLE IF EXISTS ict1_1_issue;
+CREATE TABLE ict1_1_issue (
   issueID int(10) unsigned NOT NULL AUTO_INCREMENT,
   projectID int(10) unsigned NOT NULL,
   userID int(10) unsigned NOT NULL,
@@ -58,16 +58,16 @@ CREATE TABLE it1_1_issue (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Issues affected versions
-DROP TABLE IF EXISTS it1_1_issue_version;
-CREATE TABLE it1_1_issue_version (
+DROP TABLE IF EXISTS ict1_1_issue_version;
+CREATE TABLE ict1_1_issue_version (
   issueID int(10) unsigned NOT NULL,
   versionID int(10) unsigned NOT NULL,
   PRIMARY KEY (issueID,versionID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Issues relations
-DROP TABLE IF EXISTS it1_1_issue_relation;
-CREATE TABLE it1_1_issue_relation (
+DROP TABLE IF EXISTS ict1_1_issue_relation;
+CREATE TABLE ict1_1_issue_relation (
   parentID int(10) unsigned NOT NULL,
   relation tinyint(1) unsigned NOT NULL,
   childID int(10) unsigned NOT NULL,
@@ -75,8 +75,8 @@ CREATE TABLE it1_1_issue_relation (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Issues comments
-DROP TABLE IF EXISTS it1_1_issue_comment;
-CREATE TABLE it1_1_issue_comment (
+DROP TABLE IF EXISTS ict1_1_issue_comment;
+CREATE TABLE ict1_1_issue_comment (
   commentID int(10) unsigned NOT NULL AUTO_INCREMENT,
   issueID int(10) unsigned NOT NULL,
   userID int(10) unsigned NOT NULL,

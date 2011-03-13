@@ -1,7 +1,7 @@
 <?php
-// it imports
-require_once(IT_DIR.'lib/data/project/Project.class.php');
-require_once(IT_DIR.'lib/data/project/Version.class.php');
+// ict imports
+require_once(ICT_DIR.'lib/data/project/Project.class.php');
+require_once(ICT_DIR.'lib/data/project/Version.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/page/SortablePage.class.php');
@@ -12,7 +12,7 @@ require_once(WCF_DIR.'lib/page/SortablePage.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	acp.page
  * @category 	Icy Tracker
  */
@@ -54,7 +54,7 @@ class ProjectViewPage extends SortablePage {
 	protected function readVersions() {
 		if ($this->items) {
 			$sql = "SELECT		versionID
-				FROM		it".IT_N."_project_version
+				FROM		ict".ICT_N."_project_version
 				WHERE		projectID = ".$this->projectID."
 				ORDER BY	".$this->sortField." ".$this->sortOrder;
 			$result = WCF::getDB()->sendQuery($sql, $this->itemsPerPage, ($this->pageNo - 1) * $this->itemsPerPage);
@@ -82,6 +82,7 @@ class ProjectViewPage extends SortablePage {
 	public function countItems() {
 		parent::countItems();
 		
+		//XXX: debug content
 //		echo "<pre>";
 //		$versions = $this->project->getVersions();
 //		var_dump($versions);
@@ -111,7 +112,7 @@ class ProjectViewPage extends SortablePage {
 	 */
 	public function show() {
 		// enable menu item
-		WCFACP::getMenu()->setActiveMenuItem('it.acp.menu.link.content.project.view');
+		WCFACP::getMenu()->setActiveMenuItem('ict.acp.menu.link.content.project.view');
 		
 		// check permission
 		WCF::getUser()->checkPermission(array('admin.project.canEditProject', 'admin.project.canDeleteProject', 'admin.project.canAddVersion', 'admin.project.canEditVersion', 'admin.project.canDeleteVersion'));

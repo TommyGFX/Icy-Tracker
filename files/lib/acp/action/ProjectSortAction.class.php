@@ -1,5 +1,5 @@
 <?php
-require_once(IT_DIR.'lib/data/project/Project.class.php');
+require_once(ICT_DIR.'lib/data/project/Project.class.php');
 require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
 require_once(WCF_DIR.'lib/system/exception/IllegalLinkException.class.php');
 
@@ -9,7 +9,7 @@ require_once(WCF_DIR.'lib/system/exception/IllegalLinkException.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	acp.action
  * @category 	Icy Tracker
  */
@@ -47,7 +47,7 @@ class ProjectSortAction extends AbstractAction {
 			}
 			
 			// update showOrder
-			$sql = "UPDATE	it".IT_N."_project
+			$sql = "UPDATE	ict".ICT_N."_project
 				SET		showOrder = ".$showOrder."
 				WHERE	projectID = ".$projectID;
 			WCF::getDB()->sendQuery($sql);

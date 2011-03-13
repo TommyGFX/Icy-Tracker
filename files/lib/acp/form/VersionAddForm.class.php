@@ -1,7 +1,7 @@
 <?php
-// it imports
-require_once(IT_DIR.'lib/data/project/Project.class.php');
-require_once(IT_DIR.'lib/data/project/VersionEditor.class.php');
+// ict imports
+require_once(ICT_DIR.'lib/data/project/Project.class.php');
+require_once(ICT_DIR.'lib/data/project/VersionEditor.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/acp/form/ACPForm.class.php');
@@ -13,14 +13,14 @@ require_once(WCF_DIR.'lib/data/user/User.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	acp.form
  * @category 	Icy Tracker
  */
 class VersionAddForm extends ACPForm {
 	// system
 	public $templateName = 'versionAdd';
-	public $activeMenuItem = 'it.acp.menu.link.content.project.view';
+	public $activeMenuItem = 'ict.acp.menu.link.content.project.view';
 	public $neededPermissions = 'admin.project.canAddVersion';
 	
 	public $projectID = 0;
@@ -75,7 +75,7 @@ class VersionAddForm extends ACPForm {
 		}
 		
 		$sql = "SELECT	COUNT(*) AS count
-			FROM	it".IT_N."_project_version
+			FROM	ict".ICT_N."_project_version
 			WHERE	version = '".escapeString($this->versionname)."'
 			AND		projectID = ".$this->projectID;
 		$row = WCF::getDB()->getFirstRow($sql);

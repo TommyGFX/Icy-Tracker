@@ -2,8 +2,8 @@
 // wcf imports
 require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
 
-// it imports
-require_once(IT_DIR.'lib/data/project/Project.class.php');
+// ict imports
+require_once(ICT_DIR.'lib/data/project/Project.class.php');
 
 /**
  * Shows a list of all projects.
@@ -11,7 +11,7 @@ require_once(IT_DIR.'lib/data/project/Project.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	acp.page
  * @category 	Icy Tracker
  */
@@ -56,7 +56,7 @@ class ProjectListPage extends AbstractPage {
 	 */
 	public function show() {
 		// enable menu item
-		WCFACP::getMenu()->setActiveMenuItem('it.acp.menu.link.content.project.view');
+		WCFACP::getMenu()->setActiveMenuItem('ict.acp.menu.link.content.project.view');
 		
 		// check permission
 		WCF::getUser()->checkPermission(array('admin.project.canEditProject', 'admin.project.canDeleteProject', 'admin.project.canAddVersion', 'admin.project.canEditVersion', 'admin.project.canDeleteVersion'));

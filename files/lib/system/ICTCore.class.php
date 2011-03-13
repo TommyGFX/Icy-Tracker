@@ -11,11 +11,11 @@ require_once(WCF_DIR.'lib/system/style/StyleManager.class.php');
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
  * @license		Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- * @package		info.codingcorner.it
+ * @package		info.codingcorner.ict
  * @subpackage	system
  * @category 	Icy Tracker
  */
-class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, UserProfileMenuContainer {
+class ICTCore extends WCF implements PageMenuContainer, UserCPMenuContainer, UserProfileMenuContainer {
 	protected static $pageMenuObj = null;
 	protected static $userCPMenuObj = null;
 	protected static $userProfileMenuObj = null;
@@ -72,15 +72,15 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 	 */
 	protected function loadDefaultCacheResources() {
 		parent::loadDefaultCacheResources();
-		$this->loadDefaultITCacheResources();
+		$this->loadDefaultICTCacheResources();
 	}
 	
 	/**
 	 * Loads default cache resources of icy tracker.
 	 * Can be called statically from other applications or plugins.
 	 */
-	public static function loadDefaultITCacheResources() {
-		WCF::getCache()->addResource('project', IT_DIR.'cache/cache.project.php', IT_DIR.'lib/system/cache/CacheBuilderProject.class.php');
+	public static function loadDefaultICTCacheResources() {
+		WCF::getCache()->addResource('project', ICT_DIR.'cache/cache.project.php', ICT_DIR.'lib/system/cache/CacheBuilderProject.class.php');
 		WCF::getCache()->addResource('bbcodes', WCF_DIR.'cache/cache.bbcodes.php', WCF_DIR.'lib/system/cache/CacheBuilderBBCodes.class.php');
 		WCF::getCache()->addResource('smileys', WCF_DIR.'cache/cache.smileys.php', WCF_DIR.'lib/system/cache/CacheBuilderSmileys.class.php');
 		WCF::getCache()->addResource('cronjobs-'.PACKAGE_ID, WCF_DIR.'cache/cache.cronjobs-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderCronjobs.class.php');
@@ -93,7 +93,7 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 	protected static function initPageMenu() {
 		require_once(WCF_DIR.'lib/page/util/menu/PageMenu.class.php');
 		self::$pageMenuObj = new PageMenu();
-		if (PageMenu::getActiveMenuItem() == '') PageMenu::setActiveMenuItem('it.header.menu.tracker');
+		if (PageMenu::getActiveMenuItem() == '') PageMenu::setActiveMenuItem('ict.header.menu.tracker');
 	}
 	
 	/**
@@ -108,7 +108,7 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 	 * @see WCF::getOptionsFilename()
 	 */
 	protected function getOptionsFilename() {
-		return IT_DIR.'options.inc.php';
+		return ICT_DIR.'options.inc.php';
 	}
 	
 	/**
@@ -154,8 +154,8 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, User
 	 */
 	protected function initSession() {
 		// start session
-		//require_once(IT_DIR.'lib/system/session/ITSessionFactory.class.php');
-		//$factory = new ITSessionFactory();
+		//require_once(ICT_DIR.'lib/system/session/ICTSessionFactory.class.php');
+		//$factory = new ICTSessionFactory();
 		require_once(WCF_DIR.'lib/system/session/CookieSessionFactory.class.php');
 		$factory = new CookieSessionFactory();
 		self::$sessionObj = $factory->get();
