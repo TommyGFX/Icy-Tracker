@@ -2,6 +2,7 @@
 // wcf imports
 require_once(WCF_DIR.'lib/page/util/menu/PageMenuContainer.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/UserCPMenuContainer.class.php');
+require_once(WCF_DIR.'lib/page/util/menu/UserProfileMenuContainer.class.php');
 require_once(WCF_DIR.'lib/system/style/StyleManager.class.php');
 
 /**
@@ -14,9 +15,11 @@ require_once(WCF_DIR.'lib/system/style/StyleManager.class.php');
  * @subpackage	system
  * @category 	Icy Tracker
  */
-class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer {
+class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer, UserProfileMenuContainer {
 	protected static $pageMenuObj = null;
 	protected static $userCPMenuObj = null;
+	protected static $userProfileMenuObj = null;
+	
 	public static $availablePagesDuringOfflineMode = array(
 		'page' => array('Captcha', 'LegalNotice'),
 		'form' => array('UserLogin'),
@@ -78,8 +81,8 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer {
 	 */
 	public static function loadDefaultITCacheResources() {
 		WCF::getCache()->addResource('project', IT_DIR.'cache/cache.project.php', IT_DIR.'lib/system/cache/CacheBuilderProject.class.php');
-//		WCF::getCache()->addResource('bbcodes', WCF_DIR.'cache/cache.bbcodes.php', WCF_DIR.'lib/system/cache/CacheBuilderBBCodes.class.php');
-//		WCF::getCache()->addResource('smileys', WCF_DIR.'cache/cache.smileys.php', WCF_DIR.'lib/system/cache/CacheBuilderSmileys.class.php');
+		WCF::getCache()->addResource('bbcodes', WCF_DIR.'cache/cache.bbcodes.php', WCF_DIR.'lib/system/cache/CacheBuilderBBCodes.class.php');
+		WCF::getCache()->addResource('smileys', WCF_DIR.'cache/cache.smileys.php', WCF_DIR.'lib/system/cache/CacheBuilderSmileys.class.php');
 		WCF::getCache()->addResource('cronjobs-'.PACKAGE_ID, WCF_DIR.'cache/cache.cronjobs-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderCronjobs.class.php');
 		WCF::getCache()->addResource('help-'.PACKAGE_ID, WCF_DIR.'cache/cache.help-'.PACKAGE_ID.'.php', WCF_DIR.'lib/system/cache/CacheBuilderHelp.class.php');
 	}
@@ -168,6 +171,25 @@ class ITCore extends WCF implements PageMenuContainer, UserCPMenuContainer {
 		self::getTPL()->assign(array(
 			'timezone' => DateUtil::getTimezone(),
 		));
+	}
+
+	/**
+	 * Initialises the user profile menu.
+	 */
+	protected static function initUserProfileMenu() {
+		require_once(WCF_DIR.'lib/page/util/menu/UserProfileMenu.class.php');
+		self::$userProfileMenuObj = UserProfileMenu::getInstance();
+	}
+	
+	/**
+	 * @see UserProfileMenuContainer::getUserProfileMenu()
+	 */
+	public static final function getUserProfileMenu() {
+		if (self::$userProfileMenuObj === null) {
+			self::initUserProfileMenu();
+		}
+		
+		return self::$userProfileMenuObj;
 	}
 }
 ?>

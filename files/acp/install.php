@@ -56,4 +56,10 @@ $sql = "UPDATE 	wcf".WCF_N."_group_option_value
 		AND optionValue = '0'";
 WCF::getDB()->sendQuery($sql);
 
+// refresh all style files
+require_once(WCF_DIR.'lib/data/style/StyleEditor.class.php');
+$sql = "SELECT * FROM wcf".WCF_N."_style";
+$style = new StyleEditor(null, WCF::getDB()->getFirstRow($sql));
+$style->writeStyleFile();
+
 ?>
