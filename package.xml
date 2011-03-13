@@ -42,7 +42,7 @@
 		
 		<!-- messages -->
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.poll.tar">com.woltlab.wcf.data.message.poll</requiredpackage>
-<!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.censorship.tar">com.woltlab.wcf.data.message.censorship</requiredpackage>-->
+		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.censorship.tar">com.woltlab.wcf.data.message.censorship</requiredpackage>
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.tar">com.woltlab.wcf.form.message</requiredpackage>
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.search.tar">com.woltlab.wcf.data.message.search</requiredpackage>-->
 <!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.message.sidebar.tar">com.woltlab.wcf.message.sidebar</requiredpackage>-->
