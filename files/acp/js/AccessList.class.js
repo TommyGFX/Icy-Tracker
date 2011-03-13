@@ -34,6 +34,10 @@ AccessList.prototype = {
 			this.listInput.observe('blur', this.lostFocus);
 			this.listInput.observe('keyup', this.keyup);
 		}
+		
+		this.canvas = $(this.name);
+		
+		this.refresh();
 	},
 	
 	_add: function() {
@@ -71,6 +75,46 @@ AccessList.prototype = {
 				}
 				
 				this.listInput.value = '';
+				this.refresh();
+			}
+		}
+	},
+	
+	refresh: function() {
+		if (this.canvas != null) {
+			// clear canvas
+			for(var element = this.canvas.down(); element != null; element = this.canvas.down()) {
+				element.remove();
+			}
+			
+			// create list-container
+			var list = new Element('ul');
+			this.canvas.insert(list);
+			
+			// create list-content
+			for (var i = 0; i < this.entities.length; i++) {
+				var entity = this.entities[i];
+				
+				var item = new Element('li');
+				list.insert(item);
+				
+				var btnRemove = new Element('a', {
+					'class': 'remove'
+				});
+				item.insert(btnRemove);
+				btnRemove.observe('click', this._remove.bindAsEventListener(this, entity.id));
+				var imgRemove = new Element('img', {
+					src: RELATIVE_WCF_DIR + 'icon/deleteS.png'
+				});
+				btnRemove.insert(imgRemove);
+				
+				var name = new Element('a');
+				item.insert(name);
+				var imgName = new Element('img', {
+					src: RELATIVE_WCF_DIR + 'icon/' + entity.type + 'S.png'
+				});
+				name.insert(imgName);
+				name.insert(entity.name);
 			}
 		}
 	},
@@ -91,5 +135,9 @@ AccessList.prototype = {
 		if (keyCode == Event.KEY_RETURN) {
 			this.add();
 		}
+	},
+	
+	_remove: function(e, id) {
+		alert('ID: ' + id);
 	}
 };

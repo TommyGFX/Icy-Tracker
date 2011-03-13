@@ -187,7 +187,7 @@
 				<div class="formFieldLabel" id="developerTitle">
 					{lang}ict.acp.project.developer.title{/lang}
 				</div>
-				<div class="formField"><div id="developer" class="accessRights"></div></div>
+				<div class="formField"><div id="developer" class="accessRights container-4"></div></div>
 			</div>
 			<div class="formElement">
 				<div class="formField">	
