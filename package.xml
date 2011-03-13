@@ -21,7 +21,7 @@
 		<requiredpackage minversion="1.0.3" file="requirements/com.woltlab.wcf.data.feed.reader.tar">com.woltlab.wcf.data.feed.reader</requiredpackage> <!-- com.woltlab.wcf.data.cronjobs -->
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.image.tar">com.woltlab.wcf.data.image</requiredpackage>
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.image.captcha.tar">com.woltlab.wcf.data.image.captcha</requiredpackage>
-<!--		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.imageViewer.tar">com.woltlab.wcf.imageViewer</requiredpackage>-->
+		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.imageViewer.tar">com.woltlab.wcf.imageViewer</requiredpackage>
 		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.acp.sysinfoxmlexport.tar">com.woltlab.wcf.acp.sysinfoxmlexport</requiredpackage>
 		
 		<!-- page system -->
