@@ -21,6 +21,7 @@ class ProjectAddForm extends ACPForm {
 	public $templateName = 'projectAdd';
 	public $activeMenuItem = 'ict.acp.menu.link.content.project.add';
 	public $neededPermissions = 'admin.project.canAddProject';
+	public $activeTabMenuItem = 'general';
 	
 	public $project;
 	
@@ -51,6 +52,8 @@ class ProjectAddForm extends ACPForm {
 		if (isset($_POST['image'])) $this->image = StringUtil::trim($_POST['image']);
 		if (!empty($_POST['showOrder'])) $this->showOrder = $_POST['showOrder'];
 		if (!empty($_POST['ownername'])) $this->ownername = StringUtil::trim($_POST['ownername']);
+		
+		if (isset($_POST['activeTabMenuItem'])) $this->activeTabMenuItem = $_POST['activeTabMenuItem'];
 	}
 
 	/**
@@ -137,6 +140,7 @@ class ProjectAddForm extends ACPForm {
 			'image' => $this->image,
 			'ownername' => $this->ownername,
 			'showOrder' => $this->showOrder,
+			'activeTabMenuItem' => $this->activeTabMenuItem,
 			'action' => 'add',
 		));
 	}

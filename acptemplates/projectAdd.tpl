@@ -1,5 +1,12 @@
 {include file='header'}
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Suggestion.class.js"></script>
+<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/TabMenu.class.js"></script>
+<script type="text/javascript">
+	//<![CDATA[
+	var tabMenu = new TabMenu();
+	onloadEvents.push(function() { tabMenu.showSubTabMenu("{$activeTabMenuItem}") });
+	//]]>
+</script>
 
 <div class="mainHeadline">
 	<img src="{@RELATIVE_ICT_DIR}icon/project{@$action|ucfirst}L.png" alt="" />
@@ -34,7 +41,18 @@
 	</div>
 </div>
 <form method="post" action="index.php?form=Project{@$action|ucfirst}">
-	<div class="border content">
+	<div class="tabMenu">
+		<ul>
+			<li id="general"><a onclick="tabMenu.showSubTabMenu('general');"><span>{lang}ict.acp.project.general{/lang}</span></a></li>
+			<li id="developer"><a onclick="tabMenu.showSubTabMenu('developer');"><span>{lang}ict.acp.project.developer{/lang}</span></a></li>
+			{if $additionalTabs|isset}{@$additionalTabs}{/if}
+		</ul>
+	</div>
+	<div class="subTabMenu">
+		<div class="containerHead"><div> </div></div>
+	</div>
+	
+	<div class="border tabMenuContent hidden" id="general-content">
 		<div class="container-1">
 			<fieldset>
 				<legend>{lang}ict.acp.project.general{/lang}</legend>
@@ -104,7 +122,7 @@
 						<script type="text/javascript">
 							//<![CDATA[
 							suggestion.setSource('index.php?page=UserSuggest{@SID_ARG_2ND_NOT_ENCODED}');
-							suggestion.enableIcon(false);
+							suggestion.enableIcon(true);
 							suggestion.init('ownername');
 							//]]>
 						</script>
@@ -143,7 +161,36 @@
 				</script>
 			</fieldset>
 
-			{if $additionalFields|isset}{@$additionalFields}{/if}
+			{if $additionalGeneralFields|isset}{@$additionalGeneralFields}{/if}
+		</div>
+	</div>
+	
+	<div class="border tabMenuContent hidden" id="developer-content">
+		<div class="container-1">
+			<fieldset>
+				<legend>{lang}ict.acp.project.developer{/lang}</legend>
+				
+				<div class="formElement">
+					<div class="formFieldLabel" id="developerListTitle">
+						{lang}ict.acp.project.developerList.title{/lang}
+					</div>
+					<div class="formField"><div id="developerList" class="jsList"></div></div>
+				</div>
+				<div class="formElement">
+					<div class="formField">	
+						<input id="developerAddInput" type="text" name="" value="" class="inputText jsListInput" />
+						<script type="text/javascript">
+							//<![CDATA[
+							suggestion.enableIcon(true);
+							suggestion.init('developerAddInput');
+							//]]>
+						</script>
+						<input id="developerAddButton" type="button" value="{lang}ict.acp.project.developer.add{/lang}" />
+					</div>
+				</div>
+			</fieldset>
+			
+			{if $additionalDeveloperFields|isset}{@$additionalDeveloperFields}{/if}
 		</div>
 	</div>
 
@@ -153,6 +200,7 @@
 		<input type="hidden" name="packageID" value="{@PACKAGE_ID}" />
  		{@SID_INPUT_TAG}
  		{if $projectID|isset}<input type="hidden" name="projectID" value="{@$projectID}" />{/if}
+ 		<input type="hidden" id="activeTabMenuItem" name="activeTabMenuItem" value="{$activeTabMenuItem}" />
  	</div>
 </form>
 
