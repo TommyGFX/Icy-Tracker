@@ -12,11 +12,12 @@
 	//<![CDATA[
 	onloadEvents.push(function() {
 		// developer
-		var developer = new AccessList('developer', null);
+		var developer = new AccessList('developer', new Array());
 		
 		// add onsubmit event
 		document.getElementById('projectAddForm').onsubmit = function() { 
 			if (suggestion.selectedIndex != -1) return false;
+			if (developer.inputHasFocus) return false;
 		};
 	});
 	//]]>
