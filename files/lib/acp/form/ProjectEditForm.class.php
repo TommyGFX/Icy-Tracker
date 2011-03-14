@@ -90,21 +90,7 @@ class ProjectEditForm extends ProjectAddForm {
 			$this->image = $this->project->image;
 			$this->ownerID = $this->project->ownerID;
 			$this->showOrder = $this->project->showOrder;
-			
-			$sql = "SELECT		user.userID AS entityID, user.username AS entityName
-				FROM		ict".ICT_N."_project_developer developer
-				INNER JOIN	wcf".WCF_N."_user user
-				ON			(user.userID = developer.userID)
-				WHERE		projectID = ".$this->projectID."
-				ORDER BY	entityName";
-			$result = WCF::getDB()->sendQuery($sql);
-			while ($row = WCF::getDB()->fetchArray($result)) {
-				$this->developers[] = array(
-					'id' =>$row['entityID'],
-					'name' => $row['entityName'],
-					'type' => 'user',
-				);
-			}
+			$this->developers = $this->project->getDevelopers();
 		}
 	}
 	

@@ -1,6 +1,8 @@
 <?php
 // ict imports
 require_once(ICT_DIR.'lib/data/project/Project.class.php');
+require_once(ICT_DIR.'lib/data/project/VersionEditor.class.php');
+require_once(ICT_DIR.'lib/data/issue/IssueEditor.class.php');
 
 /**
  * ProjectEditor provides functions to edit the data of a project.
@@ -33,8 +35,6 @@ class ProjectEditor extends Project {
 	 */
 	public function delete() {
 		self::deleteData($this->projectID);
-		
-		$this->removeShowOrder();
 	}
 	
 	/**
@@ -45,17 +45,55 @@ class ProjectEditor extends Project {
 	public static function deleteData($projectIDs) {
 		$projectIDs = implode(',', ArrayUtil::toIntegerArray(explode(',', $projectIDs)));
 		
+		// delete issues
+		$sql = "SELECT	issueID
+			FROM	ict".ICT_N."_issue
+			WHERE	projectID IN (".$projectIDs.")";
+		$result = WCF::getDB()->sendQuery($sql);
+		$issueIDs = array();
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			$issueIDs[] = $row['issueID'];
+		}
+		if (count($issueIDs)) {
+			IssueEditor::deleteData(implode(',', $issueIDs));
+		}
+		
+		// delete versions
+		$sql = "SELECT	versionID
+			FROM	ict".ICT_N."_project_version
+			WHERE	projectID IN (".$projectIDs.")";
+		$result = WCF::getDB()->sendQuery($sql);
+		$versionIDs = array();
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			$versionIDs[] = $row['versionID'];
+		}
+		if (count($versionIDs)) {
+			VersionEditor::deleteData(implode(',', $versionIDs));
+		}
+		
 		// delete developers
 		$sql = "DELETE FROM ict".ICT_N."_project_developer
 			WHERE projectID IN(".$projectIDs.")";
 		WCF::getDB()->sendQuery($sql);
 		
-		// TODO: implement issue & version cleanup -- RouL
-		
 		// delete projects
 		$sql = "DELETE FROM ict".ICT_N."_project
 			WHERE projectID IN(".$projectIDs.")";
 		WCF::getDB()->sendQuery($sql);
+		
+		// cleanup showorder
+		$sql = "SELECT		projectID
+			FROM		ict".ICT_N."_project
+			ORDER BY	showOrder";
+		$result = WCF::getDB()->sendQuery($sql);
+		$i = 0;
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			$i++;
+			$sql = "UPDATE	ict".ICT_N."_project
+				SET		showOrder = ".$i."
+				WHERE	projectID = ".$row['projectID'];
+			WCF::getDB()->sendQuery($sql);
+		}
 	}
 	
 	/**
@@ -66,8 +104,8 @@ class ProjectEditor extends Project {
 	public function removeShowOrder() {
 		// unshift projects
 		$sql = "UPDATE	ict".ICT_N."_project
-			SET	showOrder = showOrder - 1
-			WHERE 	showOrder > ".$this->showOrder;
+			SET		showOrder = showOrder - 1
+			WHERE	showOrder > ".$this->showOrder;
 		WCF::getDB()->sendQuery($sql);
 	}
 	
@@ -143,6 +181,8 @@ class ProjectEditor extends Project {
 	 * Adds a project to a specific position in the project order.
 	 * 
 	 * @param	integer	$showOrder
+	 * 
+	 * @todo	debug this. showOrder starts with 2 after adding projects --RouL
 	 */
 	public function addShowOrder($showOrder = null) {
 		// shift projects

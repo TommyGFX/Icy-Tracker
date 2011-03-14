@@ -7,7 +7,7 @@ require_once(ICT_DIR.'lib/data/project/Version.class.php');
 require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
 
 /**
- * Caches all project, the order of projects and project versions.
+ * Caches all project, the order of projects, project versions and developerNames + "developer assignment".
  * 
  * @author		Markus Bartz
  * @copyright	2011 Markus Bartz
@@ -21,7 +21,14 @@ class CacheBuilderProject implements CacheBuilder {
 	 * @see CacheBuilder::getData()
 	 */
 	public function getData($cacheResource) {
-		$data = array('projects' => array(), 'projectStructure' => array(), 'versions' => array(), 'projectToVersions' => array());
+		$data = array(
+			'projects' => array(),
+			'projectStructure' => array(),
+			'versions' => array(),
+			'projectToVersions' => array(),
+			'developers' => array(),
+			'projectToDevelopers' => array(),
+		);
 		
 		// projects and projectStructure
 		$sql = "SELECT		*
@@ -34,13 +41,34 @@ class CacheBuilderProject implements CacheBuilder {
 		}
 		
 		// versions
-		$sql = "SELECT		*
-			FROM		ict".ICT_N."_project_version
+		// TODO: maybe we need a separate project-cache fo each project --RouL
+		$sql = "SELECT		version.*, COUNT(DISTINCT issue.issueID) AS solutions, COUNT(DISTINCT issue_version.issueID) AS relations
+			FROM		ict".ICT_N."_project_version version
+			LEFT JOIN	ict".ICT_N."_issue issue
+			ON			(issue.solvedVersionID = version.versionID)
+			LEFT JOIN	ict".ICT_N."_issue_version issue_version
+			ON			(issue_version.versionID = version.versionID)
+			GROUP BY	version.versionID
 			ORDER BY	projectID, version";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$data['versions'][$row['versionID']] = new Version(null, $row);
 			$data['projectToVersions'][$row['projectID']][] = $row['versionID'];
+		}
+		
+		// developers (only names)
+		$sql = "SELECT		developer.projectID, user.username AS entityName, user.userID AS entityID
+			FROM		ict".ICT_N."_project_developer developer
+			LEFT JOIN	wcf".WCF_N."_user user
+			ON			(user.userID = developer.userID)
+			WHERE		user.userID IS NOT NULL
+			ORDER BY	user.username, developer.projectID";
+		$result = WCF::getDB()->sendQuery($sql);
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			$data['developers'][$row['entityID']]['id'] = $row['entityID'];
+			$data['developers'][$row['entityID']]['name'] = $row['entityName'];
+			$data['developers'][$row['entityID']]['type'] = 'user';
+			$data['projectToDevelopers'][$row['projectID']][] = $row['entityID'];
 		}
 		
 		return $data;

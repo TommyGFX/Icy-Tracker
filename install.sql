@@ -37,6 +37,7 @@ DROP TABLE IF EXISTS ict1_1_issue;
 CREATE TABLE ict1_1_issue (
   issueID int(10) unsigned NOT NULL AUTO_INCREMENT,
   projectID int(10) unsigned NOT NULL,
+  username varchar(255) NOT NULL,
   userID int(10) unsigned NOT NULL,
   agent varchar(255) NOT NULL DEFAULT '',
   agentID int(10) NOT NULL DEFAULT 0,
@@ -47,7 +48,6 @@ CREATE TABLE ict1_1_issue (
   closed tinyint(1) unsigned NOT NULL DEFAULT 0,
   solvedVersionID int(10) unsigned NOT NULL DEFAULT 0,
   hidden tinyint(1) NOT NULL DEFAULT 0,
-  username varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   message mediumtext NOT NULL,
   `time` int(10) NOT NULL,
@@ -62,6 +62,7 @@ CREATE TABLE ict1_1_issue (
   PRIMARY KEY (issueID),
   KEY projectID (projectID),
   KEY closed (projectID,closed),
+  KEY solvedVersionID (solvedVersionID),
   FULLTEXT KEY `subject` (`subject`,message)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

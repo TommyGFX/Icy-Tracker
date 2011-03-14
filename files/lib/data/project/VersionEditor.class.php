@@ -20,9 +20,14 @@ class VersionEditor extends Version {
 	public function __construct($versionID, $row = null, $cacheObject = null, $useCache = true) {
 		if ($useCache) parent::__construct($versionID, $row, $cacheObject);
 		else {
-			$sql = "SELECT	*
-				FROM	ict".ICT_N."_project_version
-				WHERE	versionID = ".$versionID;
+			$sql = "SELECT		version.*, COUNT(DISTINCT issue.issueID) AS solutions, COUNT(DISTINCT issue_version.issueID) AS relations
+				FROM		ict".ICT_N."_project_version version
+				LEFT JOIN	ict".ICT_N."_issue issue
+				ON			(issue.solvedVersionID = version.versionID)
+				LEFT JOIN	ict".ICT_N."_issue_version issue_version
+				ON			(issue_version.versionID = version.versionID)
+				WHERE		version.versionID = ".$versionID."
+				GROUP BY	version.versionID";
 			$row = WCF::getDB()->getFirstRow($sql);
 			parent::__construct(null, $row);
 		}
@@ -30,13 +35,24 @@ class VersionEditor extends Version {
 	
 	/**
 	 * Deletes this version.
+	 * 
+	 * Don't delete versions that have relations or solutions!
 	 */
 	public function delete() {
-		// TODO: cleanup? (tickets) -- RouL
+		self::deleteData($this->versionID);
+	}
+	
+	/**
+	 * Deletes the versions with the given IDs.
+	 * 
+	 * @param	string	$versionIDs
+	 */
+	public static function deleteData($versionIDs) {
+		$versionIDs = implode(',', ArrayUtil::toIntegerArray(explode(',', $versionIDs)));
 		
-		// delete version
+		// delete versions
 		$sql = "DELETE FROM	ict".ICT_N."_project_version
-			WHERE		versionID = ".$this->versionID;
+			WHERE versionID IN(".$versionIDs.")";
 		WCF::getDB()->sendQuery($sql);
 	}
 	
@@ -136,21 +152,17 @@ class VersionEditor extends Version {
 	/**
 	 * Publishes this version.
 	 */
-	public function publish() {
-		$sql = "UPDATE	ict".ICT_N."_project_version
-			SET		published = 1
-			WHERE	versionID = ".$this->versionID;
-		WCF::getDB()->sendQuery($sql);
+	public function publish($additionalFields = array()) {
+		$additionalFields['published'] = 1;
+		$this->updateData($additionalFields);
 	}
 	
 	/**
 	 * Un-publishes this version.
 	 */
-	public function unpublish() {
-		$sql = "UPDATE	ict".ICT_N."_project_version
-			SET		published = 0
-			WHERE	versionID = ".$this->versionID;
-		WCF::getDB()->sendQuery($sql);
+	public function unpublish($additionalFields = array()) {
+		$additionalFields['published'] = 0;
+		$this->updateData($additionalFields);
 	}
 }
 ?>

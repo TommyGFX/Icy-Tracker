@@ -15,8 +15,11 @@ require_once(ICT_DIR.'lib/data/project/Version.class.php');
 class Project extends DatabaseObject {
 	protected static $projects = null;
 	protected static $projectToVersions = null;
+	protected static $projectToDevelopers = null;
+	protected static $developerData = null;
 	protected $owner = null;
 	protected $versions = null;
+	protected $developers = null;
 	
 	/**
 	 * Creates a new Project object.
@@ -30,13 +33,6 @@ class Project extends DatabaseObject {
 		if ($row != null) parent::__construct($row);
 		if ($cacheObject != null) parent::__construct($cacheObject->data);
 		
-//		if ($projectID !== null) {
-//			$sql = "SELECT	*
-//				FROM	ict".ICT_N."_project
-//				WHERE	projectID = ".$projectID;
-//			$row = WCF::getDB()->getFirstRow($sql);
-//		}
-//		parent::__construct($row);
 	}
 
 	/**
@@ -103,6 +99,31 @@ class Project extends DatabaseObject {
 			}
 		}
 		return $this->versions;
+	}
+	
+	/**
+	 * Gets all developer entities.
+	 * 
+	 * @return	array<array>
+	 */
+	public function getDevelopers() {
+		if ($this->developers == null) {
+			if (self::$projectToDevelopers === null) {
+				self::$projectToDevelopers = WCF::getCache()->get('project', 'projectToDevelopers');
+			}
+			if (self::$developerData === null) {
+				self::$developerData = WCF::getCache()->get('project', 'developers');
+			}
+			
+			$this->developers = array();
+			if (isset(self::$projectToDevelopers[$this->projectID])) {
+				$developerIDs = self::$projectToDevelopers[$this->projectID];
+				foreach ($developerIDs as $developerID) {
+					$this->developers[] = self::$developerData[$developerID];
+				}
+			}
+		}
+		return $this->developers;
 	}
 }
 ?>

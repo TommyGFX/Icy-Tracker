@@ -19,7 +19,10 @@ class VersionDeleteAction extends AbstractVersionAction {
 	 * Deletes the version.
 	 */
 	public function action() {
-		$this->version->delete();
+		if ($this->version->solutions == 0 && $this->version->relations == 0) {
+			$this->version->delete();
+		}
+		else throw new IllegalLinkException();
 	}
 }
 ?>

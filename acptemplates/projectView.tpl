@@ -70,7 +70,7 @@
 							
 							<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}ict.acp.project.version.edit{/lang}" />
 						{/if}
-						{if $this->user->getPermission('admin.project.canDeleteVersion')}
+						{if $this->user->getPermission('admin.project.canDeleteVersion') && $version->solutions == 0 && $version->relations == 0}
 							<a onclick="return confirm('{lang}ict.acp.project.version.delete.sure{/lang}')" href="index.php?action=VersionDelete&amp;versionID={@$version->versionID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" title="{lang}ict.acp.project.version.delete{/lang}" /></a>
 						{else}
 							<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}ict.acp.project.version.delete{/lang}" />

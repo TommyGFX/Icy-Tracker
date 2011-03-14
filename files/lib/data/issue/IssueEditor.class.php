@@ -336,6 +336,8 @@ class IssueEditor extends Issue {
 	public static function deleteData($issueIDs) {
 		$issueIDs = implode(',', ArrayUtil::toIntegerArray(explode(',', $issueIDs)));
 		
+		//TODO: delete comments --RouL
+		
 		// delete issue relations
 		$sql = "DELETE FROM ict".ICT_N."_issue_relation
 			WHERE parentID IN(".$issueIDs.")
@@ -343,11 +345,9 @@ class IssueEditor extends Issue {
 		WCF::getDB()->sendQuery($sql);
 		
 		// delete version relations
-		$sql = "DELETE FROM ict".ICT_N."_project_dependency 
+		$sql = "DELETE FROM ict".ICT_N."_issue_version
 			WHERE issueID IN(".$issueIDs.")";
 		WCF::getDB()->sendQuery($sql);
-		
-		//TODO: delete comments --RouL
 		
 		// delete issues
 		$sql = "DELETE FROM ict".ICT_N."_issue 
