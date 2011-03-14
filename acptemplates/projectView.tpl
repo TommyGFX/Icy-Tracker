@@ -12,7 +12,7 @@
 <fieldset>
 	<legend>{lang}ict.acp.project.details{/lang}</legend>
 	<div class="formElement">
-		<p class="formFieldLabel">{lang}ict.acp.project.ownername{/lang}</p>
+		<p class="formFieldLabel">{lang}ict.acp.project.owner{/lang}</p>
 		<p class="formField">{$project->getOwner()->username}</p>
 	</div>
 	

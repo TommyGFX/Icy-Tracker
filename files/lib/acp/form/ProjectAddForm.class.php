@@ -36,7 +36,6 @@ class ProjectAddForm extends ACPForm {
 	public $title = '';
 	public $description = '';
 	public $image = '';
-	public $ownername = '';
 	public $owner = null;
 	public $ownerID = 0;
 	public $showOrder = '';
@@ -52,7 +51,7 @@ class ProjectAddForm extends ACPForm {
 		if (isset($_POST['description'])) $this->description = StringUtil::trim($_POST['description']);
 		if (isset($_POST['image'])) $this->image = StringUtil::trim($_POST['image']);
 		if (!empty($_POST['showOrder'])) $this->showOrder = $_POST['showOrder'];
-		if (!empty($_POST['ownername'])) $this->ownername = StringUtil::trim($_POST['ownername']);
+		if (isset($_POST['ownerID'])) $this->ownerID = intval($_POST['ownerID']);
 		if (isset($_POST['developer']) && is_array($_POST['developer'])) $this->developers = $_POST['developer'];
 		
 		if (isset($_POST['activeTabMenuItem'])) $this->activeTabMenuItem = $_POST['activeTabMenuItem'];
@@ -95,16 +94,14 @@ class ProjectAddForm extends ACPForm {
 	 * Validates the projects owner.
 	 */
 	public function validateOwner() {
-		if (empty($this->ownername)) {
-			throw new UserInputException('ownername');
+		if (empty($this->ownerID) || $this->ownerID == 0) {
+			throw new UserInputException('ownerID');
 		}
 		
-		$this->owner = new User(null, null, $username = $this->ownername);
+		$this->owner = new User($this->ownerID);
 		if (!$this->owner->userID) {
-			throw new UserInputException('ownername', 'notValid');
+			throw new UserInputException('ownerID');
 		}
-		
-		$this->ownerID = $this->owner->userID;
 	}
 	
 	/**
@@ -151,7 +148,7 @@ class ProjectAddForm extends ACPForm {
 		
 		// reset values
 		$this->ownerID = 0;
-		$this->title = $this->description = $this->image = $this->ownername = $this->showOrder = '';
+		$this->title = $this->description = $this->image = $this->showOrder = '';
 		$this->developers = $this->additionalFields = array();
 		$this->owner = null;
 		
@@ -172,7 +169,7 @@ class ProjectAddForm extends ACPForm {
 			'title' => $this->title,
 			'description' => $this->description,
 			'image' => $this->image,
-			'ownername' => $this->ownername,
+			'ownerID' => $this->ownerID,
 			'showOrder' => $this->showOrder,
 			'developers' => $this->developers,
 			'activeTabMenuItem' => $this->activeTabMenuItem,

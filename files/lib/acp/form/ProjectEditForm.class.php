@@ -88,7 +88,7 @@ class ProjectEditForm extends ProjectAddForm {
 			$this->title = $this->project->title;
 			$this->description = $this->project->description;
 			$this->image = $this->project->image;
-			$this->ownername = $this->project->getOwner()->username;
+			$this->ownerID = $this->project->ownerID;
 			$this->showOrder = $this->project->showOrder;
 			
 			$sql = "SELECT		user.userID AS entityID, user.username AS entityName

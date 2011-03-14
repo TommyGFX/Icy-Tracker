@@ -54,6 +54,9 @@
 		<item name="ict.acp.project.description"><![CDATA[Beschreibung]]></item>
 		<item name="ict.acp.project.description.description"><![CDATA[Hier kannst du eine Beschreibung für das Projekt festlegen.]]></item>
 		<item name="ict.acp.project.details"><![CDATA[Projektdetails]]></item>
+		<item name="ict.acp.project.developer"><![CDATA[Entwickler]]></item>
+		<item name="ict.acp.project.developer.add"><![CDATA[Hinzufügen]]></item>
+		<item name="ict.acp.project.developer.title"><![CDATA[Benutzernamen]]></item>
 		<item name="ict.acp.project.edit"><![CDATA[Projekt bearbeiten]]></item>
 		<item name="ict.acp.project.edit.success"><![CDATA[Deine Änderungen wurden erfolgreich gespeichert.]]></item>
 		<item name="ict.acp.project.error.title.notUnique"><![CDATA[Es existiert bereits ein Projekt mit diesem Namen.]]></item>
@@ -61,8 +64,8 @@
 		<item name="ict.acp.project.image"><![CDATA[Bild]]></item>
 		<item name="ict.acp.project.image.description"><![CDATA[Hier kannst du die URL eines Bildes für das Projekt angeben.]]></item>
 		<item name="ict.acp.project.list"><![CDATA[Projekte]]></item>
-		<item name="ict.acp.project.ownername"><![CDATA[Projektleiter]]></item>
-		<item name="ict.acp.project.ownername.description"><![CDATA[Gib hier hier den Projektleiter für das Projekt an.]]></item>
+		<item name="ict.acp.project.owner"><![CDATA[Projektleiter]]></item>
+		<item name="ict.acp.project.ownerID.description"><![CDATA[Gib hier hier den Projektleiter für das Projekt an.]]></item>
 		<item name="ict.acp.project.showOrder"><![CDATA[Reihenfolge]]></item>
 		<item name="ict.acp.project.showOrder.description"><![CDATA[Hier kannst du eine Ordnungsnummer angeben. Diese Nummer gibt an, wie das Projekt in Bezug auf andere Projekte sortiert werden soll.]]></item>
 		<item name="ict.acp.project.title"><![CDATA[Projektname]]></item>

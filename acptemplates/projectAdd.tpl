@@ -130,36 +130,6 @@
 				//]]>
 			</script>
 
-			<div id="ownernameDiv" class="formElement{if $errorField == 'ownername'} formError{/if}">
-				<div class="formFieldLabel">
-					<label for="ownername">{lang}ict.acp.project.ownername{/lang}</label>
-				</div>
-				<div class="formField">
-					<input type="text" class="inputText" id="ownername" name="ownername" value="{$ownername}" />
-					<script type="text/javascript">
-						//<![CDATA[
-						suggestion.setSource('index.php?page=UserSuggest{@SID_ARG_2ND_NOT_ENCODED}');
-						suggestion.enableIcon(true);
-						suggestion.init('ownername');
-						//]]>
-					</script>
-					{if $errorField == 'ownername'}
-						<p class="innerError">
-							{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-							{if $errorType == 'notValid'}{lang username=$ownername}wcf.user.error.username.notFound{/lang}{/if}
-						</p>
-					{/if}
-				</div>
-				<div class="formFieldDesc hidden" id="ownernameHelpMessage">
-					{lang}ict.acp.project.ownername.description{/lang}
-				</div>
-			</div>
-			<script type="text/javascript">
-				//<![CDATA[
-				inlineHelp.register('ownername');
-				//]]>
-			</script>
-
 			<div id="showOrderDiv" class="formElement">
 				<div class="formFieldLabel">
 					<label for="showOrder">{lang}ict.acp.project.showOrder{/lang}</label>
@@ -203,6 +173,57 @@
 					<input id="developerAddButton" type="button" value="{lang}ict.acp.project.developer.add{/lang}" />
 				</div>
 			</div>
+			<div class="formElement{if $errorField == 'ownerID'} formError{/if}" id="ownerIDDiv">
+				<div class="formFieldLabel">
+					<label for="ownerID">{lang}ict.acp.project.owner{/lang}</label>
+				</div>
+				<div class="formField">
+					<select name="ownerID" id="ownerID">
+						<option value="0">&nbsp;</option>
+					</select>
+					{if $errorField == 'ownerID'}
+						<p class="innerError">
+							{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+						</p>
+					{/if}
+				</div>
+				<div class="formFieldDesc hidden" id="ownerIDHelpMessage">
+					<p>{lang}ict.acp.project.ownerID.description{/lang}</p>
+				</div>
+			</div>
+			<script type="text/javascript">
+				//<![CDATA[
+				inlineHelp.register('ownerID');
+				
+				var activeOwnerID = {if $ownerID|isset && $ownerID > 0}{@$ownerID}{else}null{/if};
+				$('developer').observe('access:refresh', function(e) {
+					var select = $('ownerID');
+					if (activeOwnerID == null) activeOwnerID = select.value;
+					select.childElements().each(function(element) {
+						element.remove();
+					});
+					var emptyElement = new Element('option', {
+						value: 0
+					}).insert('&nbsp;');
+					select.insert(emptyElement);
+					
+					var developers = $('developer').accessList.entities;
+					developers.each(function(developer) {
+						if (developer.type = 'user') {
+							var element = new Element('option', {
+								value: developer.id
+							}).update(developer.name);
+							if (developer.id == activeOwnerID) {
+								element.writeAttribute('selected');
+							}
+							select.insert(element);
+						}
+					});
+					
+					activeOwnerID = null;
+				});
+				//]]>
+			</script>
 			
 			{if $additionalDeveloperFields|isset}{@$additionalDeveloperFields}{/if}
 		</div>

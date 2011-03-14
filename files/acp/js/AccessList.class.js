@@ -36,6 +36,9 @@ AccessList.prototype = {
 		}
 		
 		this.canvas = $(this.name);
+		if (this.canvas != null) {
+			this.canvas.accessList = this;
+		}
 		
 		this.refresh();
 	},
@@ -82,6 +85,8 @@ AccessList.prototype = {
 	
 	refresh: function() {
 		if (this.canvas != null) {
+			this.canvas.fire('access:refresh');
+			
 			// clear canvas
 			this.canvas.childElements().each(function(element) {
 				element.remove();
