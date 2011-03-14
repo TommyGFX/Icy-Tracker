@@ -209,7 +209,7 @@
 					
 					var developers = $('developer').accessList.entities;
 					developers.each(function(developer) {
-						if (developer.type = 'user') {
+						if (developer.type == 'user') {
 							var element = new Element('option', {
 								value: developer.id
 							}).update(developer.name);
