@@ -5,8 +5,7 @@
  * @todo		add group support, create a separate package for this stuff --RouL
  */
 
-var AccessList = Class.create();
-AccessList.prototype = {
+var AccessList = Class.create({
 	initialize: function(name, entities) {
 		// bindings
 		this.add = this._add.bindAsEventListener(this);
@@ -173,4 +172,4 @@ AccessList.prototype = {
 		this.entities.splice(item, 1);
 		this.refresh();
 	}
-};
+});
