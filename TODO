@@ -10,16 +10,4 @@ options
 
 groupoptions
 ============
-user
-----
-canReopenIssue
-canAddComment
 
-mod
----
-canAssignIssue
-canChangeStatus (?)
-canHideIssue
-canViewHiddenIssue
-canEditIssue
-canAddRelation
