@@ -40,6 +40,7 @@ class ProjectAddForm extends ACPForm {
 	public $owner = null;
 	public $ownerID = 0;
 	public $showOrder = '';
+	public $developers = array();
 	
 	/**
 	 * @see Form::readFormParameters()
@@ -52,6 +53,7 @@ class ProjectAddForm extends ACPForm {
 		if (isset($_POST['image'])) $this->image = StringUtil::trim($_POST['image']);
 		if (!empty($_POST['showOrder'])) $this->showOrder = $_POST['showOrder'];
 		if (!empty($_POST['ownername'])) $this->ownername = StringUtil::trim($_POST['ownername']);
+		if (isset($_POST['developer']) && is_array($_POST['developer'])) $this->developers = $_POST['developer'];
 		
 		if (isset($_POST['activeTabMenuItem'])) $this->activeTabMenuItem = $_POST['activeTabMenuItem'];
 	}
@@ -67,6 +69,9 @@ class ProjectAddForm extends ACPForm {
 		
 		// owner
 		$this->validateOwner();
+		
+		// developers
+		$this->validateDevelopers();
 	}
 	
 	/**
@@ -103,6 +108,26 @@ class ProjectAddForm extends ACPForm {
 	}
 	
 	/**
+	 * Validates the assigned developers.
+	 */
+	public function validateDevelopers() {
+		foreach ($this->developers as $developer) {
+			if (!isset($developer['type']) || $developer['type'] != 'user') {
+				throw new UserInputException();
+			}
+			
+			if (!isset($developer['id'])) {
+				throw new UserInputException();
+			}
+			
+			$user = new User(intval($developer['id']));
+			if (!$user->userID) {
+				throw new UserInputException();
+			}
+		}
+	}
+	
+	/**
 	 * @see Form::save()
 	 */
 	public function save() {
@@ -111,6 +136,15 @@ class ProjectAddForm extends ACPForm {
 		// save project
 		$this->project = ProjectEditor::create($this->title, $this->description, $this->image, $this->ownerID, intval($this->showOrder), $this->additionalFields);
 		
+		// save developer
+		if (count($this->developers)) {
+			$developers = array();
+			foreach ($this->developers as $developer) {
+				$developers[] = $developer['id'];
+			}
+			$this->project->addDevelopers($developers);
+		}
+		
 		// reset cache
 		Project::resetCache();
 		$this->saved();
@@ -118,7 +152,7 @@ class ProjectAddForm extends ACPForm {
 		// reset values
 		$this->ownerID = 0;
 		$this->title = $this->description = $this->image = $this->ownername = $this->showOrder = '';
-		$this->additionalFields = array();
+		$this->developers = $this->additionalFields = array();
 		$this->owner = null;
 		
 		// show success message
@@ -140,6 +174,7 @@ class ProjectAddForm extends ACPForm {
 			'image' => $this->image,
 			'ownername' => $this->ownername,
 			'showOrder' => $this->showOrder,
+			'developers' => $this->developers,
 			'activeTabMenuItem' => $this->activeTabMenuItem,
 			'action' => 'add',
 		));

@@ -24,6 +24,14 @@ CREATE TABLE ict1_1_project_version (
   KEY projectID (projectID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- Project developers
+DROP TABLE IF EXISTS ict1_1_project_developer;
+CREATE TABLE ict1_1_project_developer (
+  projectID int(10) NOT NULL,
+  userID int(10) NOT NULL,
+  PRIMARY KEY (projectID,userID)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 -- Issues
 DROP TABLE IF EXISTS ict1_1_issue;
 CREATE TABLE ict1_1_issue (

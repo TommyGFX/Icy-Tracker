@@ -32,19 +32,36 @@ class ProjectEditor extends Project {
 	 * Deletes this project.
 	 */
 	public function delete() {
-		// empty project
-		// TODO: implement ticket & version cleanup -- RouL
-		
-		// delete project
-		$sql = "DELETE FROM	ict".ICT_N."_project
-			WHERE		projectID = ".$this->projectID;
-		WCF::getDB()->sendQuery($sql);
+		self::deleteData($this->projectID);
 		
 		$this->removeShowOrder();
 	}
 	
 	/**
+	 * Deletes the projects with the given IDs.
+	 * 
+	 * @param	string	$projectIDs
+	 */
+	public static function deleteData($projectIDs) {
+		$projectIDs = implode(',', ArrayUtil::toIntegerArray(explode(',', $projectIDs)));
+		
+		// delete developers
+		$sql = "DELETE FROM ict".ICT_N."_project_developer
+			WHERE projectID IN(".$projectIDs.")";
+		WCF::getDB()->sendQuery($sql);
+		
+		// TODO: implement issue & version cleanup -- RouL
+		
+		// delete projects
+		$sql = "DELETE FROM ict".ICT_N."_project
+			WHERE projectID IN(".$projectIDs.")";
+		WCF::getDB()->sendQuery($sql);
+	}
+	
+	/**
 	 * Removes a projects showOrder from project order.
+	 * 
+	 * @todo	put this into ProjectEditor::deleteData()
 	 */
 	public function removeShowOrder() {
 		// unshift projects
@@ -147,6 +164,32 @@ class ProjectEditor extends Project {
 		$sql = "UPDATE	ict".ICT_N."_project
 			SET		showOrder = ".$showOrder."
 			WHERE	projectID = ".$this->projectID;
+		WCF::getDB()->sendQuery($sql);
+	}
+	
+	/**
+	 * Adds developers to this project.
+	 * 
+	 * @param	array	$userIDs
+	 */
+	public function addDevelopers($userIDs) {
+		if (count($userIDs)) {
+			$userIDs = ArrayUtil::toIntegerArray($userIDs);
+			
+			$sql = "INSERT INTO	ict".ICT_N."_project_developer (
+					projectID,
+					userID
+				) VALUES (".$this->projectID.", ".implode("), (".$this->projectID.", ", $userIDs).")";
+			WCF::getDB()->sendQuery($sql);
+		}
+	}
+	
+	/**
+	 * Deletes all developers for this project.
+	 */
+	public function clearDevelopers() {
+		$sql = "DELETE FROM	ict".ICT_N."_project_developer
+			WHERE		projectID = ".$this->projectID;
 		WCF::getDB()->sendQuery($sql);
 	}
 	

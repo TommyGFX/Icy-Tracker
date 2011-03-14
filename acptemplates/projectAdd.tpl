@@ -10,12 +10,23 @@
 <script type="text/javascript" src="{@RELATIVE_ICT_DIR}acp/js/AccessList.class.js"></script>
 <script type="text/javascript">
 	//<![CDATA[
+	
+	var developers = new Array();
+	{assign var=i value=0}
+	{foreach from=$developers item=developer}
+		developers[{@$i}] = new Object();
+		developers[{@$i}]['name'] = '{@$developer.name|encodeJS}';
+		developers[{@$i}]['type'] = '{@$developer.type}';
+		developers[{@$i}]['id'] = '{@$developer.id}';
+		{assign var=i value=$i+1}
+	{/foreach}
+	
 	onloadEvents.push(function() {
 		// developer
-		var developer = new AccessList('developer', new Array());
+		var developer = new AccessList('developer', developers);
 		
 		// add onsubmit event
-		document.getElementById('projectAddForm').onsubmit = function() { 
+		$('projectAddForm').onsubmit = function() { 
 			if (suggestion.selectedIndex != -1) return false;
 			if (developer.inputHasFocus) return false;
 			
@@ -40,17 +51,6 @@
 {if $success|isset}
 	<p class="success">{lang}ict.acp.project.{@$action}.success{/lang}</p>
 {/if}
-
-<script type="text/javascript">
-	//<![CDATA[
-	onloadEvents.push(function() {
-		// add onsubmit event
-		document.forms[0].onsubmit = function() {
-			if (suggestion.selectedIndex != -1) return false;
-		};
-	});
-	//]]>
-</script>
 
 <div class="contentHeader">
 	<div class="largeButtons">

@@ -59,6 +59,16 @@ class ProjectEditForm extends ProjectAddForm {
 		$this->project->removeShowOrder();
 		$this->project->addShowOrder(($this->showOrder ? $this->showOrder : null));
 		
+		// save developer
+		$this->project->clearDevelopers();
+		if (count($this->developers)) {
+			$developers = array();
+			foreach ($this->developers as $developer) {
+				$developers[] = $developer['id'];
+			}
+			$this->project->addDevelopers($developers);
+		}
+		
 		// reset cache
 		Project::resetCache();
 		$this->saved();
@@ -80,6 +90,21 @@ class ProjectEditForm extends ProjectAddForm {
 			$this->image = $this->project->image;
 			$this->ownername = $this->project->getOwner()->username;
 			$this->showOrder = $this->project->showOrder;
+			
+			$sql = "SELECT		user.userID AS entityID, user.username AS entityName
+				FROM		ict".ICT_N."_project_developer developer
+				INNER JOIN	wcf".WCF_N."_user user
+				ON			(user.userID = developer.userID)
+				WHERE		projectID = ".$this->projectID."
+				ORDER BY	entityName";
+			$result = WCF::getDB()->sendQuery($sql);
+			while ($row = WCF::getDB()->fetchArray($result)) {
+				$this->developers[] = array(
+					'id' =>$row['entityID'],
+					'name' => $row['entityName'],
+					'type' => 'user',
+				);
+			}
 		}
 	}
 	
