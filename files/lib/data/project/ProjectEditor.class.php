@@ -181,22 +181,20 @@ class ProjectEditor extends Project {
 	 * Adds a project to a specific position in the project order.
 	 * 
 	 * @param	integer	$showOrder
-	 * 
-	 * @todo	debug this. showOrder starts with 2 after adding projects --RouL
 	 */
 	public function addShowOrder($showOrder = null) {
 		// shift projects
 		if ($showOrder !== null) {
 			$sql = "UPDATE	ict".ICT_N."_project
 				SET		showOrder = showOrder + 1
-				WHERE	showOrder >= ".$showOrder;
+				WHERE	showOrder >= ".intval($showOrder);
 			WCF::getDB()->sendQuery($sql);
 		}
 		
 		// get final showOrder
 		$sql = "SELECT 	IFNULL(MAX(showOrder), 0) + 1 AS showOrder
 			FROM	ict".ICT_N."_project
-			".($showOrder ? "WHERE showOrder <= ".$showOrder : '');
+			".($showOrder !== null ? "WHERE showOrder <= ".intval($showOrder) : '');
 		$row = WCF::getDB()->getFirstRow($sql);
 		$showOrder = $row['showOrder'];
 		

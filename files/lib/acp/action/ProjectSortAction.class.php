@@ -47,6 +47,7 @@ class ProjectSortAction extends AbstractAction {
 			}
 			
 			// update showOrder
+			//TODO: we have to check and reorder the numbers! --RouL
 			$sql = "UPDATE	ict".ICT_N."_project
 				SET		showOrder = ".$showOrder."
 				WHERE	projectID = ".$projectID;

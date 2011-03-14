@@ -38,7 +38,7 @@ class ProjectAddForm extends ACPForm {
 	public $image = '';
 	public $owner = null;
 	public $ownerID = 0;
-	public $showOrder = '';
+	public $showOrder = null;
 	public $developers = array();
 	
 	/**
@@ -131,7 +131,7 @@ class ProjectAddForm extends ACPForm {
 		parent::save();
 		
 		// save project
-		$this->project = ProjectEditor::create($this->title, $this->description, $this->image, $this->ownerID, intval($this->showOrder), $this->additionalFields);
+		$this->project = ProjectEditor::create($this->title, $this->description, $this->image, $this->ownerID, $this->showOrder, $this->additionalFields);
 		
 		// save developer
 		if (count($this->developers)) {
