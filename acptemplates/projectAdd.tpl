@@ -7,7 +7,7 @@
 	onloadEvents.push(function() { tabMenu.showSubTabMenu("{$activeTabMenuItem}") });
 	//]]>
 </script>
-<script type="text/javascript" src="{@RELATIVE_ICT_DIR}acp/js/AccessList.class.js"></script>
+<script type="text/javascript" src="{@RELATIVE_WCF_DIR}acp/js/AccessList.class.js"></script>
 <script type="text/javascript">
 	//<![CDATA[
 	

@@ -46,6 +46,9 @@
 		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.form.message.tar">com.woltlab.wcf.form.message</requiredpackage>
 <!--		<requiredpackage minversion="1.1.0" file="requirements/com.woltlab.wcf.data.message.search.tar">com.woltlab.wcf.data.message.search</requiredpackage>-->
 <!-- 		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.message.sidebar.tar">com.woltlab.wcf.message.sidebar</requiredpackage> -->
+		
+		<!-- own libraries -->
+		<requiredpackage minversion="1.0.0 Beta 1" file="requirements/info.codingcorner.wcf.lib.accessLists.tar">info.codingcorner.wcf.lib.accessLists</requiredpackage>
 	</requiredpackages>
 	
 	<excludedpackages>
