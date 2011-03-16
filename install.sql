@@ -28,8 +28,18 @@ CREATE TABLE ict1_1_project_version (
 DROP TABLE IF EXISTS ict1_1_project_developer;
 CREATE TABLE ict1_1_project_developer (
   projectID int(10) NOT NULL,
-  userID int(10) NOT NULL,
-  PRIMARY KEY (projectID,userID)
+  entityID int(10) NOT NULL,
+  entityType varchar(255) NOT NULL,
+  PRIMARY KEY (projectID,entityID,entityType)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- Project users
+DROP TABLE IF EXISTS ict1_1_project_access;
+CREATE TABLE ict1_1_project_access (
+  projectID int(10) NOT NULL,
+  entityID int(10) NOT NULL,
+  entityType varchar(255) NOT NULL,
+  PRIMARY KEY (projectID,entityID,entityType)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Issues

@@ -17,9 +17,12 @@ class Project extends DatabaseObject {
 	protected static $projectToVersions = null;
 	protected static $projectToDevelopers = null;
 	protected static $developerData = null;
+	protected static $projectToAccess = null;
+	protected static $accessData = null;
 	protected $owner = null;
 	protected $versions = null;
 	protected $developers = null;
+	protected $access = null;
 	
 	/**
 	 * Creates a new Project object.
@@ -106,7 +109,7 @@ class Project extends DatabaseObject {
 	 * 
 	 * @return	array<array>
 	 */
-	public function getDevelopers() {
+	public function getDeveloperEntities() {
 		if ($this->developers == null) {
 			if (self::$projectToDevelopers === null) {
 				self::$projectToDevelopers = WCF::getCache()->get('project', 'projectToDevelopers');
@@ -117,13 +120,38 @@ class Project extends DatabaseObject {
 			
 			$this->developers = array();
 			if (isset(self::$projectToDevelopers[$this->projectID])) {
-				$developerIDs = self::$projectToDevelopers[$this->projectID];
-				foreach ($developerIDs as $developerID) {
-					$this->developers[] = self::$developerData[$developerID];
+				$entityRefs = self::$projectToDevelopers[$this->projectID];
+				foreach ($entityRefs as $entityRef) {
+					$this->developers[] = self::$developerData[$entityRef['type']][$entityRef['id']];
 				}
 			}
 		}
 		return $this->developers;
+	}
+	
+	/**
+	 * Gets all access entities.
+	 * 
+	 * @return	array<array>
+	 */
+	public function getAccessEntities() {
+		if ($this->access == null) {
+			if (self::$projectToAccess === null) {
+				self::$projectToAccess = WCF::getCache()->get('project', 'projectToAccess');
+			}
+			if (self::$accessData === null) {
+				self::$accessData = WCF::getCache()->get('project', 'access');
+			}
+			
+			$this->access = array();
+			if (isset(self::$projectToAccess[$this->projectID])) {
+				$entityRefs = self::$projectToAccess[$this->projectID];
+				foreach ($entityRefs as $entityRef) {
+					$this->access[] = self::$accessData[$entityRef['type']][$entityRef['id']];
+				}
+			}
+		}
+		return $this->access;
 	}
 }
 ?>

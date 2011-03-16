@@ -76,6 +76,11 @@ class ProjectEditor extends Project {
 			WHERE projectID IN(".$projectIDs.")";
 		WCF::getDB()->sendQuery($sql);
 		
+		// delete users
+		$sql = "DELETE FROM ict".ICT_N."_project_user
+			WHERE projectID IN(".$projectIDs.")";
+		WCF::getDB()->sendQuery($sql);
+		
 		// delete projects
 		$sql = "DELETE FROM ict".ICT_N."_project
 			WHERE projectID IN(".$projectIDs.")";
@@ -98,8 +103,6 @@ class ProjectEditor extends Project {
 	
 	/**
 	 * Removes a projects showOrder from project order.
-	 * 
-	 * @todo	put this into ProjectEditor::deleteData()
 	 */
 	public function removeShowOrder() {
 		// unshift projects
@@ -206,18 +209,43 @@ class ProjectEditor extends Project {
 	}
 	
 	/**
-	 * Adds developers to this project.
+	 * Adds developers access entities to this project.
 	 * 
-	 * @param	array	$userIDs
+	 * @param	array	$entities
 	 */
-	public function addDevelopers($userIDs) {
-		if (count($userIDs)) {
-			$userIDs = ArrayUtil::toIntegerArray($userIDs);
+	public function addDeveloperEntities($entities) {
+		if (count($entities)) {
+			$rows = array();
+			foreach ($entities as $entity) {
+				$rows[] = "(".$this->projectID.", ".intval($entity['id']).", '".escapeString($entity['type'])."')";
+			}
 			
 			$sql = "INSERT INTO	ict".ICT_N."_project_developer (
 					projectID,
-					userID
-				) VALUES (".$this->projectID.", ".implode("), (".$this->projectID.", ", $userIDs).")";
+					entityID,
+					entityType
+				) VALUES ".implode(', ', $rows);
+			WCF::getDB()->sendQuery($sql);
+		}
+			}
+	
+	/**
+	 * Adds access entities to this project.
+	 * 
+	 * @param	array	$entities
+	 */
+	public function addAccessEntities($entities) {
+		if (count($entities)) {
+			$rows = array();
+			foreach ($entities as $entity) {
+				$rows[] = "(".$this->projectID.", ".intval($entity['id']).", '".escapeString($entity['type'])."')";
+			}
+			
+			$sql = "INSERT INTO	ict".ICT_N."_project_access (
+					projectID,
+					entityID,
+					entityType
+				) VALUES ".implode(', ', $rows);
 			WCF::getDB()->sendQuery($sql);
 		}
 	}
@@ -227,6 +255,15 @@ class ProjectEditor extends Project {
 	 */
 	public function clearDevelopers() {
 		$sql = "DELETE FROM	ict".ICT_N."_project_developer
+			WHERE		projectID = ".$this->projectID;
+		WCF::getDB()->sendQuery($sql);
+	}
+	
+	/**
+	 * Deletes all access entities for this project.
+	 */
+	public function clearAccess() {
+		$sql = "DELETE FROM	ict".ICT_N."_project_access
 			WHERE		projectID = ".$this->projectID;
 		WCF::getDB()->sendQuery($sql);
 	}

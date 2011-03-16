@@ -4,7 +4,9 @@ require_once(ICT_DIR.'lib/data/project/ProjectEditor.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/acp/form/ACPForm.class.php');
+require_once(WCF_DIR.'lib/acp/page/AccessEntitiesSuggestPage.class.php');
 require_once(WCF_DIR.'lib/data/user/User.class.php');
+require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
 
 /**
  * Shows the project add form.
@@ -39,7 +41,8 @@ class ProjectAddForm extends ACPForm {
 	public $owner = null;
 	public $ownerID = 0;
 	public $showOrder = null;
-	public $developers = array();
+	public $developerEntities = array();
+	public $accessEntities = array();
 	
 	/**
 	 * @see Form::readFormParameters()
@@ -52,7 +55,8 @@ class ProjectAddForm extends ACPForm {
 		if (isset($_POST['image'])) $this->image = StringUtil::trim($_POST['image']);
 		if (!empty($_POST['showOrder'])) $this->showOrder = $_POST['showOrder'];
 		if (isset($_POST['ownerID'])) $this->ownerID = intval($_POST['ownerID']);
-		if (isset($_POST['developer']) && is_array($_POST['developer'])) $this->developers = $_POST['developer'];
+		if (isset($_POST['developerEntities']) && is_array($_POST['developerEntities'])) $this->developerEntities = $_POST['developerEntities'];
+		if (isset($_POST['accessEntities']) && is_array($_POST['accessEntities'])) $this->accessEntities = $_POST['accessEntities'];
 		
 		if (isset($_POST['activeTabMenuItem'])) $this->activeTabMenuItem = $_POST['activeTabMenuItem'];
 	}
@@ -69,8 +73,11 @@ class ProjectAddForm extends ACPForm {
 		// owner
 		$this->validateOwner();
 		
-		// developers
-		$this->validateDevelopers();
+		// developer access entities
+		$this->validateAccessEntities($this->developerEntities, AccessEntitiesSuggestPage::FILTER_USER);
+		
+		// access entities
+		$this->validateAccessEntities($this->accessEntities);
 	}
 	
 	/**
@@ -105,21 +112,49 @@ class ProjectAddForm extends ACPForm {
 	}
 	
 	/**
-	 * Validates the assigned developers.
+	 * Validates access entities.
 	 */
-	public function validateDevelopers() {
-		foreach ($this->developers as $developer) {
-			if (!isset($developer['type']) || $developer['type'] != 'user') {
+	public function validateAccessEntities($accessEntities, $filter = AccessEntitiesSuggestPage::FILTER_ALL) {
+		foreach ($accessEntities as $entity) {
+			switch ($filter) {
+				case AccessEntitiesSuggestPage::FILTER_USER:
+					if (!isset($entity['type']) || $entity['type'] != 'user') {
+						throw new UserInputException();
+					}
+					break;
+					
+				case AccessEntitiesSuggestPage::FILTER_GROUP:
+					if (!isset($entity['type']) || $entity['type'] != 'group') {
+						throw new UserInputException();
+					}
+					break;
+					
+				case AccessEntitiesSuggestPage::FILTER_ALL:
+				default:
+					if (!isset($entity['type']) || ($entity['type'] != 'user' && $entity['type'] != 'group')) {
+						throw new UserInputException();
+					}
+					break;
+			}
+			
+			if (!isset($entity['id'])) {
 				throw new UserInputException();
 			}
 			
-			if (!isset($developer['id'])) {
-				throw new UserInputException();
-			}
-			
-			$user = new User(intval($developer['id']));
-			if (!$user->userID) {
-				throw new UserInputException();
+			switch ($entity['type']) {
+				case 'user':
+					$user = new User(intval($entity['id']));
+					if (!$user->userID) {
+						throw new UserInputException();
+					}
+					break;
+					
+				case 'group':
+					$user = new Group(intval($entity['id']));
+					if (!$user->groupID) {
+						throw new UserInputException();
+					}
+					break;
 			}
 		}
 	}
@@ -134,12 +169,13 @@ class ProjectAddForm extends ACPForm {
 		$this->project = ProjectEditor::create($this->title, $this->description, $this->image, $this->ownerID, $this->showOrder, $this->additionalFields);
 		
 		// save developer
-		if (count($this->developers)) {
-			$developers = array();
-			foreach ($this->developers as $developer) {
-				$developers[] = $developer['id'];
-			}
-			$this->project->addDevelopers($developers);
+		if (count($this->developerEntities)) {
+			$this->project->addDeveloperEntities($this->developerEntities);
+		}
+		
+		// save access
+		if (count($this->accessEntities)) {
+			$this->project->addAccessEntities($this->accessEntities);
 		}
 		
 		// reset cache
@@ -149,7 +185,7 @@ class ProjectAddForm extends ACPForm {
 		// reset values
 		$this->ownerID = 0;
 		$this->title = $this->description = $this->image = $this->showOrder = '';
-		$this->developers = $this->additionalFields = array();
+		$this->developerEntities = $this->accessEntities = $this->additionalFields = array();
 		$this->owner = null;
 		
 		// show success message
@@ -171,7 +207,8 @@ class ProjectAddForm extends ACPForm {
 			'image' => $this->image,
 			'ownerID' => $this->ownerID,
 			'showOrder' => $this->showOrder,
-			'developers' => $this->developers,
+			'developerEntities' => $this->developerEntities,
+			'accessEntities' => $this->accessEntities,
 			'activeTabMenuItem' => $this->activeTabMenuItem,
 			'action' => 'add',
 		));

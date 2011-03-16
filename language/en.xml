@@ -46,6 +46,9 @@
 	</category>
 	<category name="ict.acp.project">
 		<item name="ict.acp.project"><![CDATA[Project]]></item>
+		<item name="ict.acp.project.access"><![CDATA[Access for users and groups]]></item>
+		<item name="ict.acp.project.accessEntities.add"><![CDATA[Add]]></item>
+		<item name="ict.acp.project.accessEntities.title"><![CDATA[Group- and usernames]]></item>
 		<item name="ict.acp.project.add"><![CDATA[Add new Project]]></item>
 		<item name="ict.acp.project.add.success"><![CDATA[The new project has been saved successfully.]]></item>
 		<item name="ict.acp.project.delete"><![CDATA[Delete Project]]></item>
@@ -55,8 +58,8 @@
 		<item name="ict.acp.project.description.description"><![CDATA[Here you can enter a description for the project.]]></item>
 		<item name="ict.acp.project.details"><![CDATA[Projectdetails]]></item>
 		<item name="ict.acp.project.developer"><![CDATA[Developer]]></item>
-		<item name="ict.acp.project.developer.add"><![CDATA[Add]]></item>
-		<item name="ict.acp.project.developer.title"><![CDATA[Usernames]]></item>
+		<item name="ict.acp.project.developerEntities.add"><![CDATA[Add]]></item>
+		<item name="ict.acp.project.developerEntities.title"><![CDATA[Usernames]]></item>
 		<item name="ict.acp.project.edit"><![CDATA[Edit Project]]></item>
 		<item name="ict.acp.project.edit.success"><![CDATA[Your changes have been saved successfully.]]></item>
 		<item name="ict.acp.project.error.title.notUnique"><![CDATA[There is already a project with this name.]]></item>
@@ -65,7 +68,7 @@
 		<item name="ict.acp.project.image.description"><![CDATA[Here you can enter the URL to an image for your project.]]></item>
 		<item name="ict.acp.project.list"><![CDATA[Projects]]></item>
 		<item name="ict.acp.project.owner"><![CDATA[Project manager]]></item>
-		<item name="ict.acp.project.ownerID.description"><![CDATA[Enter the name of the project manager here.]]></item>
+		<item name="ict.acp.project.ownerID.description"><![CDATA[Enter the name of the project manager here.<br />You have to add the owner as developer first.]]></item>
 		<item name="ict.acp.project.showOrder"><![CDATA[Display order]]></item>
 		<item name="ict.acp.project.showOrder.description"><![CDATA[Enter a sort order number for this project here to change the sort order. ]]></item>
 		<item name="ict.acp.project.title"><![CDATA[Projectname]]></item>

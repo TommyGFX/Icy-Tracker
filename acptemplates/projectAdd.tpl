@@ -11,26 +11,68 @@
 <script type="text/javascript">
 	//<![CDATA[
 	
-	var developers = new Array();
+	var developerEntities = new Array();
 	{assign var=i value=0}
-	{foreach from=$developers item=developer}
-		developers[{@$i}] = new Object();
-		developers[{@$i}]['name'] = '{@$developer.name|encodeJS}';
-		developers[{@$i}]['type'] = '{@$developer.type}';
-		developers[{@$i}]['id'] = '{@$developer.id}';
+	{foreach from=$developerEntities item=developerEntity}
+		developerEntities[{@$i}] = new Object();
+		developerEntities[{@$i}]['name'] = '{@$developerEntity.name|encodeJS}';
+		developerEntities[{@$i}]['type'] = '{@$developerEntity.type}';
+		developerEntities[{@$i}]['id'] = '{@$developerEntity.id}';
+		{assign var=i value=$i+1}
+	{/foreach}
+	
+	var accessEntities = new Array();
+	{assign var=i value=0}
+	{foreach from=$accessEntities item=accessEntity}
+		accessEntities[{@$i}] = new Object();
+		accessEntities[{@$i}]['name'] = '{@$accessEntity.name|encodeJS}';
+		accessEntities[{@$i}]['type'] = '{@$accessEntity.type}';
+		accessEntities[{@$i}]['id'] = '{@$accessEntity.id}';
 		{assign var=i value=$i+1}
 	{/foreach}
 	
 	onloadEvents.push(function() {
+		// add observer for filling project owner-select
+		$('developerEntities').observe('access:refresh', function(e) {
+			var select = $('ownerID');
+			if (activeOwnerID == null) activeOwnerID = select.value;
+			select.childElements().each(function(element) {
+				element.remove();
+			});
+			var emptyElement = new Element('option', {
+				value: 0
+			}).insert('&nbsp;');
+			select.insert(emptyElement);
+			
+			var developers = Event.element(e).accessList.entities;
+			developers.each(function(developer) {
+				if (developer.type == 'user') {
+					var element = new Element('option', {
+						value: developer.id
+					}).update(developer.name);
+					if (developer.id == activeOwnerID) {
+						element.writeAttribute('selected');
+					}
+					select.insert(element);
+				}
+			});
+			
+			activeOwnerID = null;
+		});
+		
 		// developer
-		var developer = new AccessList('developer', developers, AccessList.FILTER_USER);
+		var developer = new AccessList('developerEntities', developerEntities, AccessList.FILTER_USER);
+		
+		// access
+		var access = new AccessList('accessEntities', accessEntities);
 		
 		// add onsubmit event
 		$('projectAddForm').onsubmit = function() { 
 			if (suggestion.selectedIndex != -1) return false;
-			if (developer.inputHasFocus) return false;
+			if (developer.inputHasFocus || access.inputHasFocus) return false;
 			
 			developer.submit(this);
+			access.submit(this);
 		};
 	});
 	//]]>
@@ -62,6 +104,7 @@
 		<ul>
 			<li id="general"><a onclick="tabMenu.showSubTabMenu('general');"><span>{lang}ict.acp.project.general{/lang}</span></a></li>
 			<li id="developers"><a onclick="tabMenu.showSubTabMenu('developers');"><span>{lang}ict.acp.project.developer{/lang}</span></a></li>
+			<li id="access"><a onclick="tabMenu.showSubTabMenu('access');"><span>{lang}ict.acp.project.access{/lang}</span></a></li>
 			{if $additionalTabs|isset}{@$additionalTabs}{/if}
 		</ul>
 	</div>
@@ -93,6 +136,31 @@
 			<script type="text/javascript">
 				//<![CDATA[
 				inlineHelp.register('title');
+				//]]>
+			</script>
+
+			<div class="formElement{if $errorField == 'ownerID'} formError{/if}" id="ownerIDDiv">
+				<div class="formFieldLabel">
+					<label for="ownerID">{lang}ict.acp.project.owner{/lang}</label>
+				</div>
+				<div class="formField">
+					<select name="ownerID" id="ownerID">
+						<option value="0">&nbsp;</option>
+					</select>
+					{if $errorField == 'ownerID'}
+						<p class="innerError">
+							{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+						</p>
+					{/if}
+				</div>
+				<div class="formFieldDesc hidden" id="ownerIDHelpMessage">
+					<p>{lang}ict.acp.project.ownerID.description{/lang}</p>
+				</div>
+			</div>
+			<script type="text/javascript">
+				//<![CDATA[
+				inlineHelp.register('ownerID');
+				var activeOwnerID = {if $ownerID|isset && $ownerID > 0}{@$ownerID}{else}null{/if};
 				//]]>
 			</script>
 
@@ -156,69 +224,40 @@
 			<h3 class="subHeadline">{lang}ict.acp.project.developer{/lang}</h3>
 			
 			<div class="formElement">
-				<div class="formFieldLabel" id="developerTitle">
-					{lang}ict.acp.project.developer.title{/lang}
+				<div class="formFieldLabel" id="developerEntitiesTitle">
+					{lang}ict.acp.project.developerEntities.title{/lang}
 				</div>
-				<div class="formField"><div id="developer" class="accessRights container-4"></div></div>
+				<div class="formField"><div id="developerEntities" class="accessRights container-4"></div></div>
 			</div>
 			<div class="formElement">
 				<div class="formField">	
-					<input id="developerAddInput" type="text" name="" value="" class="inputText accessRightsInput" />
-					<div id="optiondeveloperAddInput" class="pageMenu popupMenu"></div>
-					<input id="developerAddButton" type="button" value="{lang}ict.acp.project.developer.add{/lang}" />
+					<input id="developerEntitiesAddInput" type="text" name="" value="" class="inputText accessRightsInput" />
+					<div id="developerEntitiesAddInputSuggestions" class="pageMenu popupMenu"></div>
+					<input id="developerEntitiesAddButton" type="button" value="{lang}ict.acp.project.developerEntities.add{/lang}" />
 				</div>
 			</div>
-			<div class="formElement{if $errorField == 'ownerID'} formError{/if}" id="ownerIDDiv">
-				<div class="formFieldLabel">
-					<label for="ownerID">{lang}ict.acp.project.owner{/lang}</label>
+			
+			{if $additionalDeveloperFields|isset}{@$additionalDeveloperFields}{/if}
+		</div>
+	</div>
+	
+	<div class="border tabMenuContent hidden accessRightsContent" id="access-content">
+		<div class="container-1">
+			<h3 class="subHeadline">{lang}ict.acp.project.access{/lang}</h3>
+			
+			<div class="formElement">
+				<div class="formFieldLabel" id="developerTitle">
+					{lang}ict.acp.project.accessEntities.title{/lang}
 				</div>
-				<div class="formField">
-					<select name="ownerID" id="ownerID">
-						<option value="0">&nbsp;</option>
-					</select>
-					{if $errorField == 'ownerID'}
-						<p class="innerError">
-							{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-						</p>
-					{/if}
-				</div>
-				<div class="formFieldDesc hidden" id="ownerIDHelpMessage">
-					<p>{lang}ict.acp.project.ownerID.description{/lang}</p>
+				<div class="formField"><div id="accessEntities" class="accessRights container-4"></div></div>
+			</div>
+			<div class="formElement">
+				<div class="formField">	
+					<input id="accessEntitiesAddInput" type="text" name="" value="" class="inputText accessRightsInput" />
+					<div id="accessEntitiesAddInputSuggestions" class="pageMenu popupMenu"></div>
+					<input id="accessEntitiesAddButton" type="button" value="{lang}ict.acp.project.accessEntities.add{/lang}" />
 				</div>
 			</div>
-			<script type="text/javascript">
-				//<![CDATA[
-				inlineHelp.register('ownerID');
-				
-				var activeOwnerID = {if $ownerID|isset && $ownerID > 0}{@$ownerID}{else}null{/if};
-				$('developer').observe('access:refresh', function(e) {
-					var select = $('ownerID');
-					if (activeOwnerID == null) activeOwnerID = select.value;
-					select.childElements().each(function(element) {
-						element.remove();
-					});
-					var emptyElement = new Element('option', {
-						value: 0
-					}).insert('&nbsp;');
-					select.insert(emptyElement);
-					
-					var developers = $('developer').accessList.entities;
-					developers.each(function(developer) {
-						if (developer.type == 'user') {
-							var element = new Element('option', {
-								value: developer.id
-							}).update(developer.name);
-							if (developer.id == activeOwnerID) {
-								element.writeAttribute('selected');
-							}
-							select.insert(element);
-						}
-					});
-					
-					activeOwnerID = null;
-				});
-				//]]>
-			</script>
 			
 			{if $additionalDeveloperFields|isset}{@$additionalDeveloperFields}{/if}
 		</div>
