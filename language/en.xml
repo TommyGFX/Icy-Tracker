@@ -10,6 +10,7 @@
 		<item name="ict.acp.index.credits.designer"><![CDATA[Design]]></item>
 		<item name="ict.acp.index.credits.developedBy"><![CDATA[Software developed by]]></item>
 		<item name="ict.acp.index.credits.developer"><![CDATA[Development]]></item>
+		<item name="ict.acp.index.credits.license"><![CDATA[License]]></item>
 		<item name="ict.acp.index.credits.productManager"><![CDATA[Project management]]></item>
 		<item name="ict.acp.index.credits.translators"><![CDATA[Translation]]></item>
 		<item name="ict.acp.index.news"><![CDATA[News]]></item>

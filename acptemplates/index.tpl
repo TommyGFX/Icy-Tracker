@@ -255,11 +255,14 @@
 			<p class="formField"></p>
 		</div>*}
 		
-		<!-- Open Source License: License Element -->
+		<div class="formElement">
+			<p class="formFieldLabel">{lang}ict.acp.index.credits.license{/lang}</p>
+			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://creativecommons.org/licenses/by-nc-sa/3.0/"|rawurlencode}" class="externalURL">Creative Commons BY-NC-SA</a></p>
+		</div>
 		
 		<div class="formElement" style="margin-top: 10px">
 			<p class="formFieldLabel"></p>
-			<p class="formField">Copyright &copy; 2009 Markus Bartz. All rights reserved.</p> <!-- Open Source License: Some rights reserved. -->
+			<p class="formField">Copyright &copy; 2011 Markus Bartz. Some rights reserved.</p>
 		</div>
 	</div>
 </div>
