@@ -175,6 +175,10 @@ class ProjectAddForm extends ACPForm {
 			'activeTabMenuItem' => $this->activeTabMenuItem,
 			'action' => 'add',
 		));
+		WCF::getTPL()->append('specialStyles', '
+		<style type="text/css">
+			@import url("'.RELATIVE_WCF_DIR.'acp/style/accessList.css");
+		</style>');
 	}
 }
 ?>

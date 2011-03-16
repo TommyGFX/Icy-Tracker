@@ -23,7 +23,7 @@
 	
 	onloadEvents.push(function() {
 		// developer
-		var developer = new AccessList('developer', developers);
+		var developer = new AccessList('developer', developers, AccessList.FILTER_USER);
 		
 		// add onsubmit event
 		$('projectAddForm').onsubmit = function() { 
@@ -61,7 +61,7 @@
 	<div class="tabMenu">
 		<ul>
 			<li id="general"><a onclick="tabMenu.showSubTabMenu('general');"><span>{lang}ict.acp.project.general{/lang}</span></a></li>
-			<li id="permissions"><a onclick="tabMenu.showSubTabMenu('permissions');"><span>{lang}ict.acp.project.developer{/lang}</span></a></li>
+			<li id="developers"><a onclick="tabMenu.showSubTabMenu('developers');"><span>{lang}ict.acp.project.developer{/lang}</span></a></li>
 			{if $additionalTabs|isset}{@$additionalTabs}{/if}
 		</ul>
 	</div>
@@ -151,7 +151,7 @@
 		</div>
 	</div>
 	
-	<div class="border tabMenuContent hidden" id="permissions-content">
+	<div class="border tabMenuContent hidden accessRightsContent" id="developers-content">
 		<div class="container-1">
 			<h3 class="subHeadline">{lang}ict.acp.project.developer{/lang}</h3>
 			
@@ -164,12 +164,7 @@
 			<div class="formElement">
 				<div class="formField">	
 					<input id="developerAddInput" type="text" name="" value="" class="inputText accessRightsInput" />
-					<script type="text/javascript">
-						//<![CDATA[
-						suggestion.enableIcon(true);
-						suggestion.init('developerAddInput');
-						//]]>
-					</script>
+					<div id="optiondeveloperAddInput" class="pageMenu popupMenu"></div>
 					<input id="developerAddButton" type="button" value="{lang}ict.acp.project.developer.add{/lang}" />
 				</div>
 			</div>
