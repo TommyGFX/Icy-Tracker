@@ -16,6 +16,11 @@
 		<p class="formField">{$project->getOwner()->username}</p>
 	</div>
 	
+	<div class="formElement">
+		<p class="formFieldLabel">{lang}ict.acp.project.developer{/lang}</p>
+		<p class="formField">{implode from=$project->getDeveloperEntities() item=developerEntity}{$developerEntity.name}{/implode}</p>
+	</div>
+	
 	{if $additionalFields|isset}{@$additionalFields}{/if}
 </fieldset>
 
