@@ -204,9 +204,9 @@
 		<item name="wcf.acp.group.option.user.tracker.canAddComment.description"><![CDATA[Mitglieder dieser Benutzergruppe können Kommentare zu Vorgängen hinzufügen.]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canCreateBug"><![CDATA[Kann Fehler melden]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canCreateBug.description"><![CDATA[Mitglieder dieser Benutzergruppe können Fehler melden.]]></item>
-		<item name="wcf.acp.group.option.user.tracker.canCreateFeatureRequest"><![CDATA[Kann "Feature Request" anlegen]]></item>
+		<item name="wcf.acp.group.option.user.tracker.canCreateFeatureRequest"><![CDATA[Kann Vorschläge einreichen]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canCreateFeatureRequest.description"><![CDATA[Mitglieder dieser Benutzergruppe können "Feature Requests" anlegen.]]></item>
-		<item name="wcf.acp.group.option.user.tracker.canCreateTask"><![CDATA[Kann Aufgabe anlegen]]></item>
+		<item name="wcf.acp.group.option.user.tracker.canCreateTask"><![CDATA[Kann Aufgaben anlegen]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canCreateTask.description"><![CDATA[Mitglieder dieser Benutzergruppe können Aufgaben anlegen.]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canDeleteOwnComment"><![CDATA[Kann eigene Kommentare löschen]]></item>
 		<item name="wcf.acp.group.option.user.tracker.canDeleteOwnComment.description"><![CDATA[Mitglieder dieser Benutzergruppe können eigene Kommentare löschen.]]></item>
