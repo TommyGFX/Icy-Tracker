@@ -154,10 +154,8 @@ class ICTCore extends WCF implements PageMenuContainer, UserCPMenuContainer, Use
 	 */
 	protected function initSession() {
 		// start session
-		//require_once(ICT_DIR.'lib/system/session/ICTSessionFactory.class.php');
-		//$factory = new ICTSessionFactory();
-		require_once(WCF_DIR.'lib/system/session/CookieSessionFactory.class.php');
-		$factory = new CookieSessionFactory();
+		require_once(ICT_DIR.'lib/system/session/ICTSessionFactory.class.php');
+		$factory = new ICTSessionFactory();
 		self::$sessionObj = $factory->get();
 		self::$userObj = self::getSession()->getUser();
 	}
