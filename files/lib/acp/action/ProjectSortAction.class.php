@@ -22,7 +22,7 @@ class ProjectSortAction extends AbstractAction {
 	public function readParameters() {
 		parent::readParameters();
 		
-		if (isset($_POST['showOrder']) && is_array($_POST['showOrder'])) $this->showOrder = $_POST['showOrder'];
+		if (isset($_POST['projectListPositions']) && is_array($_POST['projectListPositions'])) $this->showOrder = $_POST['projectListPositions'];
 	}
 	
 	/**
@@ -36,7 +36,7 @@ class ProjectSortAction extends AbstractAction {
 		
 		foreach ($this->showOrder as $projectID => $showOrder) {
 			$projectID = intval($projectID);
-			$showOrder = intval($showOrder);
+			$showOrder = intval($showOrder[0]);
 			
 			// check project id
 			try {

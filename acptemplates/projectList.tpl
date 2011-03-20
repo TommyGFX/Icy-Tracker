@@ -1,4 +1,17 @@
 {include file='header'}
+<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/ItemListEditor.class.js"></script>
+<script type="text/javascript">
+	//<![CDATA[
+	function init() {
+		{if $projects|count > 0 && $projects|count < 50 && $this->user->getPermission('admin.project.canEditProject')}
+			new ItemListEditor('projectList', { itemTitleEdit: false, tree: true, treeTag: 'ol' });
+		{/if}
+	}
+	
+	// when the dom is fully loaded, execute these scripts
+	document.observe("dom:loaded", init);	
+	//]]>
+</script>
 <div class="mainHeadline">
 	<img src="{@RELATIVE_ICT_DIR}icon/projectL.png" alt="" />
 	<div class="headlineContainer">
@@ -26,7 +39,7 @@
 					{foreach from=$projects item=child}
 						{assign var="project" value=$child.project}
 						
-						<li>
+						<li id="item_{@$project->projectID}" class="deletable">
 							<div class="buttons">
 								{if $this->user->getPermission('admin.project.canEditProject')}
 									<a href="index.php?form=ProjectEdit&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}ict.acp.project.edit{/lang}" /></a>
@@ -34,7 +47,7 @@
 									<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}ict.acp.project.edit{/lang}" />
 								{/if}
 								{if $this->user->getPermission('admin.project.canDeleteProject')}
-									<a onclick="return confirm('{lang}ict.acp.project.delete.sure{/lang}')" href="index.php?action=ProjectDelete&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" title="{lang}ict.acp.project.delete{/lang}" /></a>
+									<a class="deleteButton" title="{lang}ict.acp.project.delete{/lang}" href="index.php?action=ProjectDelete&amp;projectID={@$project->projectID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" longdesc="{lang}ict.acp.project.delete.sure{/lang}" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}ict.acp.project.delete{/lang}" />
 								{/if}
@@ -45,7 +58,7 @@
 								<img src="{@RELATIVE_ICT_DIR}icon/projectS.png" alt="" title="{lang}ict.acp.project{/lang}" />	
 							
 								{if $this->user->getPermission('admin.project.canEditProject')}
-									<select name="showOrder[{@$project->projectID}]">
+									<select name="projectListPositions[{@$project->projectID}][0]">
 										{section name='showOrder' loop=$child.maxShowOrder}
 											<option value="{@$showOrder+1}"{if $showOrder+1 == $child.showOrder} selected="selected"{/if}>{@$showOrder+1}</option>
 										{/section}

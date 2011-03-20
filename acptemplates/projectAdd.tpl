@@ -1,15 +1,11 @@
 {include file='header'}
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Suggestion.class.js"></script>
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/TabMenu.class.js"></script>
-<script type="text/javascript">
-	//<![CDATA[
-	var tabMenu = new TabMenu();
-	onloadEvents.push(function() { tabMenu.showSubTabMenu("{$activeTabMenuItem}") });
-	//]]>
-</script>
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}acp/js/AccessList.class.js"></script>
 <script type="text/javascript">
 	//<![CDATA[
+	
+	var tabMenu = new TabMenu();
 	
 	// build language variables for setings
 	var language = {
@@ -59,7 +55,10 @@
 		});
 	{/foreach}
 	
-	onloadEvents.push(function() {
+	function init() {
+		
+		tabMenu.showSubTabMenu("{$activeTabMenuItem}")
+		
 		// add observer for filling project owner-select
 		$('developerEntities').observe('access:refresh', function(e) {
 			var select = $('ownerID');
@@ -113,7 +112,8 @@
 			developer.submit(this);
 			access.submit(this);
 		};
-	});
+	};
+	document.observe("dom:loaded", init);
 	//]]>
 </script>
 
