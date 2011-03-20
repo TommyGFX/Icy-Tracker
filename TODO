@@ -2,8 +2,6 @@ generic
 =======
 plan logging
 
-user-access to projects?!
-
 langvars
 ========
 
@@ -13,4 +11,7 @@ options
 groupoptions
 ============
 
-
+icons
+=====
+issueAddM.png
+issueAddL.png

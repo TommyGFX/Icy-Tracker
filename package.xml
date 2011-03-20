@@ -48,7 +48,7 @@
 <!-- 		<requiredpackage minversion="1.0.0" file="requirements/com.woltlab.wcf.message.sidebar.tar">com.woltlab.wcf.message.sidebar</requiredpackage> -->
 		
 		<!-- own libraries -->
-		<requiredpackage minversion="1.0.0 Beta 1" file="requirements/info.codingcorner.wcf.lib.accessLists.tar">info.codingcorner.wcf.lib.accessLists</requiredpackage>
+		<requiredpackage minversion="1.0.0 Beta 1" file="requirements/info.codingcorner.wcf.lib.dynamicLists.tar">info.codingcorner.wcf.lib.dynamicLists</requiredpackage>
 	</requiredpackages>
 	
 	<excludedpackages>

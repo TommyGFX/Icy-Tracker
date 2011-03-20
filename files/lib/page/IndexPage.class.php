@@ -52,7 +52,10 @@ class IndexPage extends AbstractPage {
 	public function renderProjects() {
 		if (count($this->projectStructure)) {
 			foreach ($this->projectStructure as $projectID) {
-				$this->projects[] = Project::getProject($projectID);
+				$project = new Project($projectID);
+				if ($project->canEnterProject()) {
+					$this->projects[] = $project;
+				}
 			}
 		}
 	}

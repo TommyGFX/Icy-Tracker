@@ -9,11 +9,11 @@
 			</category>
 			<category name="user.tracker.issues">
 				<parent>user.tracker</parent>
-				<showorder>2</showorder>
+				<showorder>3</showorder>
 			</category>
 			<category name="user.tracker.comments">
 				<parent>user.tracker</parent>
-				<showorder>3</showorder>
+				<showorder>4</showorder>
 			</category>
 			
 			<!-- developer -->
@@ -26,11 +26,11 @@
 			</category>
 			<category name="developer.tracker.issues">
 				<parent>developer.tracker</parent>
-				<showorder>1</showorder>
+				<showorder>2</showorder>
 			</category>
 			<category name="developer.tracker.comments">
 				<parent>developer.tracker</parent>
-				<showorder>2</showorder>
+				<showorder>3</showorder>
 			</category>
 			
 			<!-- admin -->
@@ -52,49 +52,61 @@
 				<defaultvalue>0</defaultvalue>
 				<showorder>1</showorder>
 			</option>
+			<option name="user.tracker.canViewProject">
+				<categoryname>user.tracker</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<showorder>2</showorder>
+			</option>
 			<!-- /user.tracker -->
 			
 			<!-- user.tracker.issues -->
-			<option name="user.issues.canCreateBug">
-				<categoryname>user.tracker.issues</categoryname>
+			<option name="user.tracker.canViewIssues">
+				<categoryname>user.tracer.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 				<showorder>1</showorder>
 			</option>
-			<option name="user.issues.canCreateFeatureRequest">
+			<option name="user.tracker.canCreateBug">
 				<categoryname>user.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 				<showorder>2</showorder>
 			</option>
-			<option name="user.issues.canCreateTask">
-				<categoryname>user.tracker.issues</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-				<showorder>3</showorder>
-			</option>
-			<option name="user.issues.canReopenIssue">
+			<option name="user.tracker.canCreateFeatureRequest">
 				<categoryname>user.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
+				<showorder>3</showorder>
+			</option>
+			<option name="user.tracker.canCreateTask">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
 				<showorder>4</showorder>
+			</option>
+			<option name="user.tracker.canReopenIssue">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<showorder>5</showorder>
 			</option>
 			<!-- /user.tracker.issues -->
 			
 			<!-- user.tracker.comments -->
-			<option name="user.comments.canAddComment">
+			<option name="user.tracker.canAddComment">
 				<categoryname>user.tracker.comments</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 				<showorder>1</showorder>
 			</option>
-			<option name="user.comments.canEditOwnComment">
+			<option name="user.tracker.canEditOwnComment">
 				<categoryname>user.tracker.comments</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 				<showorder>2</showorder>
 			</option>
-			<option name="user.comments.canDeleteOwnComment">
+			<option name="user.tracker.canDeleteOwnComment">
 				<categoryname>user.tracker.comments</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
@@ -102,57 +114,66 @@
 			</option>
 			<!-- /user.tracker.comments -->
 			
+			<!-- developer.tracker -->
+			<option name="developer.tracker.isGlobalDeveloper">
+				<categoryname>developer.tracker</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<showorder>1</showorder>
+			</option>
+			<!-- /developer.tracker -->
+			
 			<!-- dev.tracker.issues -->
-			<option name="developer.issues.canConfirmIssue">
+			<option name="developer.tracker.canConfirmIssue">
 				<categoryname>developer.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 				<showorder>1</showorder>
 			</option>
 			
-			<option name="developer.issues.canSetPriority">
+			<option name="developer.tracker.canSetPriority">
 				<categoryname>developer.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 				<showorder>2</showorder>
 			</option>
 			
-			<option name="developer.issues.canAssignIssue">
+			<option name="developer.tracker.canAssignIssue">
 				<categoryname>developer.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 				<showorder>3</showorder>
 			</option>
 			
-			<option name="developer.issues.canAddRelation">
+			<option name="developer.tracker.canAddRelation">
 				<categoryname>developer.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 				<showorder>4</showorder>
 			</option>
 			
-			<option name="developer.issues.canEditIssue">
+			<option name="developer.tracker.canEditIssue">
 				<categoryname>developer.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 				<showorder>5</showorder>
 			</option>
 			
-			<option name="developer.issues.canHideIssue">
+			<option name="developer.tracker.canHideIssue">
 				<categoryname>developer.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 				<showorder>6</showorder>
 			</option>
 			
-			<option name="developer.issues.canViewHiddenIssue">
+			<option name="developer.tracker.canViewHiddenIssue">
 				<categoryname>developer.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 				<showorder>7</showorder>
 			</option>
 			
-			<option name="developer.issues.canCloseIssue">
+			<option name="developer.tracker.canCloseIssue">
 				<categoryname>developer.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
@@ -161,13 +182,13 @@
 			<!-- /dev.tracker.issues -->
 			
 			<!-- developer.tracker.comments -->
-			<option name="developer.comments.canEditComment">
+			<option name="developer.tracker.canEditComment">
 				<categoryname>developer.tracker.comments</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
 				<showorder>1</showorder>
 			</option>
-			<option name="developer.comments.canDeleteComment">
+			<option name="developer.tracker.canDeleteComment">
 				<categoryname>developer.tracker.comments</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>

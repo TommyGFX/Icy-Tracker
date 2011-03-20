@@ -28,10 +28,6 @@ class CacheBuilderProject implements CacheBuilder {
 			'projectToVersions' => array(),
 			'developers' => array(),
 			'projectToDevelopers' => array(),
-			'developerToProject' => array(),
-			'access' => array(),
-			'projectToAccess' => array(),
-			'accessToProject' => array(),
 		);
 		
 		// projects and projectStructure
@@ -60,39 +56,17 @@ class CacheBuilderProject implements CacheBuilder {
 			$data['projectToVersions'][$row['projectID']][] = $row['versionID'];
 		}
 		
-		// developers (entities)
-		// TODO: put this into an extra cache
-		$sql = "SELECT		developer.projectID, developer.entityType, user.userID AS entityID, user.username AS entityName
+		// developers
+		$sql = "SELECT		developer.projectID, user.userID, user.username
 			FROM		ict".ICT_N."_project_developer developer
 			LEFT JOIN	wcf".WCF_N."_user user
 			ON			(developer.entityType = 'user' AND user.userID = developer.entityID)
 			WHERE		developer.entityType = 'user'
-			ORDER BY	entityName, developer.projectID";
+			ORDER BY	user.username, developer.projectID";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
-			$data['developers'][$row['entityType']][$row['entityID']]['id'] = $row['entityID'];
-			$data['developers'][$row['entityType']][$row['entityID']]['name'] = $row['entityName'];
-			$data['developers'][$row['entityType']][$row['entityID']]['type'] = $row['entityType'];
-			$data['developerToProject'][$row['entityType']][$row['entityID']][] = $row['projectID'];
-			$data['projectToDevelopers'][$row['projectID']][] = array('type' => $row['entityType'], 'id' => $row['entityID']);
-		}
-		
-		// access entities
-		// TODO: put this into an extra cache
-		$sql = "SELECT		project_access.projectID, project_access.entityType, IFNULL(user.userID, userGroup.groupID) AS entityID, IFNULL(user.username, userGroup.groupName) AS entityName
-			FROM		ict".ICT_N."_project_access project_access
-			LEFT JOIN	wcf".WCF_N."_user user
-			ON			(project_access.entityType = 'user' AND user.userID = project_access.entityID)
-			LEFT JOIN	wcf".WCF_N."_group userGroup
-			ON			(project_access.entityType = 'group' AND userGroup.groupID = project_access.entityID)
-			ORDER BY	entityName, project_access.projectID";
-		$result = WCF::getDB()->sendQuery($sql);
-		while ($row = WCF::getDB()->fetchArray($result)) {
-			$data['access'][$row['entityType']][$row['entityID']]['id'] = $row['entityID'];
-			$data['access'][$row['entityType']][$row['entityID']]['name'] = $row['entityName'];
-			$data['access'][$row['entityType']][$row['entityID']]['type'] = $row['entityType'];
-			$data['accessToProject'][$row['entityType']][$row['entityID']][] = $row['projectID'];
-			$data['projectToAccess'][$row['projectID']][] = array('type' => $row['entityType'], 'id' => $row['entityID']);
+			$data['developers'][$row['userID']] = $row['username'];
+			$data['projectToDevelopers'][$row['projectID']][] = $row['userID'];
 		}
 		
 		return $data;

@@ -11,24 +11,52 @@
 <script type="text/javascript">
 	//<![CDATA[
 	
+	// build language variables for setings
+	var language = {
+		{implode from=$developerSettings item=developerSetting}
+			'ict.acp.project.developer.settings.{@$developerSetting}': '{lang}ict.acp.project.developer.settings.{@$developerSetting}{/lang}'
+		{/implode}{if $developerSettings|count > 0 && $accessSettings|count > 0},{/if}
+		{implode from=$accessSettings item=accessSetting}
+			'ict.acp.project.access.settings.{@$accessSetting}': '{lang}ict.acp.project.access.settings.{@$accessSetting}{/lang}'
+		{/implode}
+	};
+	
+	var developerSettings = new Array();
+	{foreach from=$developerSettings item=developerSetting}
+		developerSettings.push('{@$developerSetting}');
+	{/foreach}
+	
+	var accessSettings = new Array();
+	{foreach from=$accessSettings item=accessSetting}
+		accessSettings.push('{@$accessSetting}');
+	{/foreach}
+	
 	var developerEntities = new Array();
-	{assign var=i value=0}
 	{foreach from=$developerEntities item=developerEntity}
-		developerEntities[{@$i}] = new Object();
-		developerEntities[{@$i}]['name'] = '{@$developerEntity.name|encodeJS}';
-		developerEntities[{@$i}]['type'] = '{@$developerEntity.type}';
-		developerEntities[{@$i}]['id'] = '{@$developerEntity.id}';
-		{assign var=i value=$i+1}
+		developerEntities.push({
+			name: '{@$developerEntity.name|encodeJS}',
+			type: '{@$developerEntity.type}',
+			id: '{@$developerEntity.id}',
+			settings: {
+				{implode from=$developerEntity.settings key=developerSetting item=developerValue}
+					'{@$developerSetting}': {@$developerValue}
+				{/implode}
+			}
+		});
 	{/foreach}
 	
 	var accessEntities = new Array();
-	{assign var=i value=0}
 	{foreach from=$accessEntities item=accessEntity}
-		accessEntities[{@$i}] = new Object();
-		accessEntities[{@$i}]['name'] = '{@$accessEntity.name|encodeJS}';
-		accessEntities[{@$i}]['type'] = '{@$accessEntity.type}';
-		accessEntities[{@$i}]['id'] = '{@$accessEntity.id}';
-		{assign var=i value=$i+1}
+		accessEntities.push({
+			name: '{@$accessEntity.name|encodeJS}',
+			type: '{@$accessEntity.type}',
+			id: '{@$accessEntity.id}',
+			settings: {
+				{implode from=$accessEntity.settings key=accessSetting item=accessValue}
+					'{@$accessSetting}': {@$accessValue}
+				{/implode}
+			}
+		});
 	{/foreach}
 	
 	onloadEvents.push(function() {
@@ -60,11 +88,22 @@
 			activeOwnerID = null;
 		});
 		
+		var settingsNameTemplate = new Template('{lang}wcf.acp.dynamiclist.permissionsFor{/lang}');
+		
 		// developer
-		var developer = new AccessList('developerEntities', developerEntities, AccessList.FILTER_USER);
+		var developer = new AccessList('developerEntities', developerEntities, {
+			filter: AccessList.FILTER_USER,
+			settings: developerSettings,
+			settingsLanguagePrefix: 'ict.acp.project.developer.settings.',
+			settingsForTemplate: settingsNameTemplate
+		});
 		
 		// access
-		var access = new AccessList('accessEntities', accessEntities);
+		var access = new AccessList('accessEntities', accessEntities, {
+			settings: accessSettings,
+			settingsLanguagePrefix: 'ict.acp.project.access.settings.',
+			settingsForTemplate: settingsNameTemplate
+		});
 		
 		// add onsubmit event
 		$('projectAddForm').onsubmit = function() { 
@@ -237,6 +276,19 @@
 				</div>
 			</div>
 			
+			<div class="formElement" style="display: none;">
+				<div class="formFieldLabel">
+					<div id="developerEntitiesSettingsTitle" class="accessRightsTitle"></div>
+				</div>
+				<div class="formField">
+					<div id="developerEntitiesHeader" class="accessRightsHeader">
+						<span class="deny">{lang}wcf.acp.dynamiclist.deny{/lang}</span>
+						<span class="allow">{lang}wcf.acp.dynamiclist.allow{/lang}</span>
+					</div>
+					<div id="developerEntitiesSettings" class="accessRights container-4"></div>
+				</div>
+			</div>
+			
 			{if $additionalDeveloperFields|isset}{@$additionalDeveloperFields}{/if}
 		</div>
 	</div>
@@ -259,7 +311,20 @@
 				</div>
 			</div>
 			
-			{if $additionalDeveloperFields|isset}{@$additionalDeveloperFields}{/if}
+			<div class="formElement" style="display: none;">
+				<div class="formFieldLabel">
+					<div id="accessEntitiesSettingsTitle" class="accessRightsTitle"></div>
+				</div>
+				<div class="formField">
+					<div id="accessEntitiesHeader" class="accessRightsHeader">
+						<span class="deny">{lang}wcf.acp.dynamiclist.deny{/lang}</span>
+						<span class="allow">{lang}wcf.acp.dynamiclist.allow{/lang}</span>
+					</div>
+					<div id="accessEntitiesSettings" class="accessRights container-4"></div>
+				</div>
+			</div>
+			
+			{if $additionalAccessFields|isset}{@$additionalAccessFields}{/if}
 		</div>
 	</div>
 

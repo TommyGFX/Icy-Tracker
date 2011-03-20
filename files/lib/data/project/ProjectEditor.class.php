@@ -77,7 +77,7 @@ class ProjectEditor extends Project {
 		WCF::getDB()->sendQuery($sql);
 		
 		// delete users
-		$sql = "DELETE FROM ict".ICT_N."_project_user
+		$sql = "DELETE FROM ict".ICT_N."_project_access
 			WHERE projectID IN(".$projectIDs.")";
 		WCF::getDB()->sendQuery($sql);
 		
@@ -209,45 +209,37 @@ class ProjectEditor extends Project {
 	}
 	
 	/**
-	 * Adds developers access entities to this project.
+	 * Adds entities of a given set to this project.
 	 * 
-	 * @param	array	$entities
-	 */
-	public function addDeveloperEntities($entities) {
-		if (count($entities)) {
-			$rows = array();
-			foreach ($entities as $entity) {
-				$rows[] = "(".$this->projectID.", ".intval($entity['id']).", '".escapeString($entity['type'])."')";
-			}
-			
-			$sql = "INSERT INTO	ict".ICT_N."_project_developer (
-					projectID,
-					entityID,
-					entityType
-				) VALUES ".implode(', ', $rows);
-			WCF::getDB()->sendQuery($sql);
-		}
-			}
-	
-	/**
-	 * Adds access entities to this project.
+	 * possible values for $set: access, developer
 	 * 
+	 * @param	string	$set
 	 * @param	array	$entities
+	 * @param	array	$settings
+	 * 
+	 * @throws	SystemException
 	 */
-	public function addAccessEntities($entities) {
-		if (count($entities)) {
-			$rows = array();
-			foreach ($entities as $entity) {
-				$rows[] = "(".$this->projectID.", ".intval($entity['id']).", '".escapeString($entity['type'])."')";
-			}
-			
-			$sql = "INSERT INTO	ict".ICT_N."_project_access (
-					projectID,
-					entityID,
-					entityType
-				) VALUES ".implode(', ', $rows);
-			WCF::getDB()->sendQuery($sql);
+	public function addEntities($set, $entities, $settings) {
+		if ($set != 'access' && $set != 'developer') {
+			throw new SystemException('Unknown entity-set "'.$set.'"');
 		}
+		
+		$rows = array();
+		foreach ($entities as $entity) {
+			$rowSettings = array();
+			foreach ($settings as $setting) {
+				$rowSettings[] = intval($entity['settings'][$setting]);
+			}
+			$rows[] = "(".$this->projectID.", ".intval($entity['id']).", '".escapeString($entity['type'])."', ".implode(', ', $rowSettings).")";
+		}
+		
+		$sql = "INSERT INTO	ict".ICT_N."_project_".$set." (
+				projectID,
+				entityID,
+				entityType,
+				".implode(', ', $settings)."
+			) VALUES ".implode(', ', $rows);
+		WCF::getDB()->sendQuery($sql);
 	}
 	
 	/**

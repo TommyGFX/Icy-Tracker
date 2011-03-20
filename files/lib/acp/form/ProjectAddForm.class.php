@@ -4,7 +4,6 @@ require_once(ICT_DIR.'lib/data/project/ProjectEditor.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/acp/form/ACPForm.class.php');
-require_once(WCF_DIR.'lib/acp/page/AccessEntitiesSuggestPage.class.php');
 require_once(WCF_DIR.'lib/data/user/User.class.php');
 require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
 
@@ -25,6 +24,14 @@ class ProjectAddForm extends ACPForm {
 	public $neededPermissions = 'admin.project.canAddProject';
 	public $activeTabMenuItem = 'general';
 	
+	public $developerSettings = array();
+	public $accessSettings = array();
+	
+	/**
+	 * project editor object
+	 * 
+	 * @var	ProjectEditor
+	 */
 	public $project;
 	
 	/**
@@ -74,10 +81,10 @@ class ProjectAddForm extends ACPForm {
 		$this->validateOwner();
 		
 		// developer access entities
-		$this->validateAccessEntities($this->developerEntities, AccessEntitiesSuggestPage::FILTER_USER);
+		DynamicListUtil::validateAccessEntities($this->developerEntities, $this->developerSettings, DynamicListUtil::ACCESS_FILTER_USER);
 		
 		// access entities
-		$this->validateAccessEntities($this->accessEntities);
+		DynamicListUtil::validateAccessEntities($this->accessEntities, $this->accessSettings);
 	}
 	
 	/**
@@ -112,54 +119,6 @@ class ProjectAddForm extends ACPForm {
 	}
 	
 	/**
-	 * Validates access entities.
-	 */
-	public function validateAccessEntities($accessEntities, $filter = AccessEntitiesSuggestPage::FILTER_ALL) {
-		foreach ($accessEntities as $entity) {
-			switch ($filter) {
-				case AccessEntitiesSuggestPage::FILTER_USER:
-					if (!isset($entity['type']) || $entity['type'] != 'user') {
-						throw new UserInputException();
-					}
-					break;
-					
-				case AccessEntitiesSuggestPage::FILTER_GROUP:
-					if (!isset($entity['type']) || $entity['type'] != 'group') {
-						throw new UserInputException();
-					}
-					break;
-					
-				case AccessEntitiesSuggestPage::FILTER_ALL:
-				default:
-					if (!isset($entity['type']) || ($entity['type'] != 'user' && $entity['type'] != 'group')) {
-						throw new UserInputException();
-					}
-					break;
-			}
-			
-			if (!isset($entity['id'])) {
-				throw new UserInputException();
-			}
-			
-			switch ($entity['type']) {
-				case 'user':
-					$user = new User(intval($entity['id']));
-					if (!$user->userID) {
-						throw new UserInputException();
-					}
-					break;
-					
-				case 'group':
-					$user = new Group(intval($entity['id']));
-					if (!$user->groupID) {
-						throw new UserInputException();
-					}
-					break;
-			}
-		}
-	}
-	
-	/**
 	 * @see Form::save()
 	 */
 	public function save() {
@@ -170,12 +129,12 @@ class ProjectAddForm extends ACPForm {
 		
 		// save developer
 		if (count($this->developerEntities)) {
-			$this->project->addDeveloperEntities($this->developerEntities);
+			$this->project->addEntities('developer', $this->developerEntities, $this->developerSettings);
 		}
 		
 		// save access
 		if (count($this->accessEntities)) {
-			$this->project->addAccessEntities($this->accessEntities);
+			$this->project->addEntities('access', $this->accessEntities, $this->accessSettings);
 		}
 		
 		// reset cache
@@ -196,6 +155,17 @@ class ProjectAddForm extends ACPForm {
 	}
 	
 	/**
+	 * @see Page::readData()
+	 */
+	public function readData() {
+		// get access entity settings
+		$this->developerSettings = DynamicListUtil::getAvailableEntitySettings('ict'.ICT_N.'_project_developer', array('projectID'));
+		$this->accessSettings = DynamicListUtil::getAvailableEntitySettings('ict'.ICT_N.'_project_access', array('projectID'));
+		
+		parent::readData();
+	}
+	
+	/**
 	 * @see Page::assignVariables()
 	 */
 	public function assignVariables() {
@@ -209,6 +179,8 @@ class ProjectAddForm extends ACPForm {
 			'showOrder' => $this->showOrder,
 			'developerEntities' => $this->developerEntities,
 			'accessEntities' => $this->accessEntities,
+			'developerSettings' => $this->developerSettings,
+			'accessSettings' => $this->accessSettings,
 			'activeTabMenuItem' => $this->activeTabMenuItem,
 			'action' => 'add',
 		));

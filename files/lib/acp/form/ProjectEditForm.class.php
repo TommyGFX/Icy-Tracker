@@ -62,13 +62,13 @@ class ProjectEditForm extends ProjectAddForm {
 		// save developer
 		$this->project->clearDevelopers();
 		if (count($this->developerEntities)) {
-			$this->project->addDeveloperEntities($this->developerEntities);
+			$this->project->addEntities('developer', $this->developerEntities, $this->developerSettings);
 		}
 		
 		// save access
 		$this->project->clearAccess();
 		if (count($this->accessEntities)) {
-			$this->project->addAccessEntities($this->accessEntities);
+			$this->project->addEntities('access', $this->accessEntities, $this->accessSettings);
 		}
 		
 		// reset cache
@@ -92,8 +92,8 @@ class ProjectEditForm extends ProjectAddForm {
 			$this->image = $this->project->image;
 			$this->ownerID = $this->project->ownerID;
 			$this->showOrder = $this->project->showOrder;
-			$this->developerEntities = $this->project->getDeveloperEntities();
-			$this->accessEntities = $this->project->getAccessEntities();
+			$this->developerEntities = $this->project->getEntities('developer');
+			$this->accessEntities = $this->project->getEntities('access');
 		}
 	}
 	

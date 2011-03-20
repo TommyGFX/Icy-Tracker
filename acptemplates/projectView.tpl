@@ -16,10 +16,12 @@
 		<p class="formField">{$project->getOwner()->username}</p>
 	</div>
 	
-	<div class="formElement">
-		<p class="formFieldLabel">{lang}ict.acp.project.developer{/lang}</p>
-		<p class="formField">{implode from=$project->getDeveloperEntities() item=developerEntity}{$developerEntity.name}{/implode}</p>
-	</div>
+	{if $project->getDeveloper()|count > 1}
+		<div class="formElement">
+			<p class="formFieldLabel">{lang}ict.acp.project.developer{/lang}</p>
+			<p class="formField">{implode from=$project->getDeveloper() item=developerEntity}{$developerEntity}{/implode}</p>
+		</div>
+	{/if}
 	
 	{if $additionalFields|isset}{@$additionalFields}{/if}
 </fieldset>

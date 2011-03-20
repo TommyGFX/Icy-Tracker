@@ -30,6 +30,16 @@ CREATE TABLE ict1_1_project_developer (
   projectID int(10) NOT NULL,
   entityID int(10) NOT NULL,
   entityType varchar(255) NOT NULL,
+  canConfirmIssue tinyint(1) NOT NULL DEFAULT -1,
+  canSetPriority tinyint(1) NOT NULL DEFAULT -1,
+  canAssignIssue tinyint(1) NOT NULL DEFAULT -1,
+  canAddRelation tinyint(1) NOT NULL DEFAULT -1,
+  canEditIssue tinyint(1) NOT NULL DEFAULT -1,
+  canHideIssue tinyint(1) NOT NULL DEFAULT -1,
+  canViewHiddenIssue tinyint(1) NOT NULL DEFAULT -1,
+  canCloseIssue tinyint(1) NOT NULL DEFAULT -1,
+  canEditComment tinyint(1) NOT NULL DEFAULT -1,
+  canDeleteComment tinyint(1) NOT NULL DEFAULT -1,
   PRIMARY KEY (projectID,entityID,entityType)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -39,6 +49,15 @@ CREATE TABLE ict1_1_project_access (
   projectID int(10) NOT NULL,
   entityID int(10) NOT NULL,
   entityType varchar(255) NOT NULL,
+  canViewProject tinyint(1) NOT NULL DEFAULT -1,
+  canViewIssues tinyint(1) NOT NULL DEFAULT -1,
+  canCreateBug tinyint(1) NOT NULL DEFAULT -1,
+  canCreateFeatureRequest tinyint(1) NOT NULL DEFAULT -1,
+  canCreateTask tinyint(1) NOT NULL DEFAULT -1,
+  canReopenIssue tinyint(1) NOT NULL DEFAULT -1,
+  canAddComment tinyint(1) NOT NULL DEFAULT -1,
+  canEditOwnComment tinyint(1) NOT NULL DEFAULT -1,
+  canDeleteOwnComment tinyint(1) NOT NULL DEFAULT -1,
   PRIMARY KEY (projectID,entityID,entityType)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
