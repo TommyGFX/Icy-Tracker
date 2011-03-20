@@ -111,8 +111,8 @@
 			
 			developer.submit(this);
 			access.submit(this);
-		};
-	};
+		}
+	}
 	document.observe("dom:loaded", init);
 	//]]>
 </script>
