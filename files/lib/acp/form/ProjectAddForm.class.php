@@ -6,6 +6,7 @@ require_once(ICT_DIR.'lib/data/project/ProjectEditor.class.php');
 require_once(WCF_DIR.'lib/acp/form/ACPForm.class.php');
 require_once(WCF_DIR.'lib/data/user/User.class.php');
 require_once(WCF_DIR.'lib/data/user/group/Group.class.php');
+require_once(WCF_DIR.'lib/system/session/Session.class.php');
 
 /**
  * Shows the project add form.
@@ -138,7 +139,7 @@ class ProjectAddForm extends ACPForm {
 		}
 		
 		// reset cache
-		Project::resetCache();
+		$this->resetCache();
 		$this->saved();
 		
 		// reset values
@@ -152,6 +153,16 @@ class ProjectAddForm extends ACPForm {
 			'project' => $this->project,
 			'success' => true
 		));
+	}
+	
+	/**
+	 * Resets the project cache and all sessions.
+	 */
+	protected function resetCache() {
+		Project::resetCache();
+		
+		// reset sessions
+		Session::resetSessions(array(), true, false);
 	}
 	
 	/**

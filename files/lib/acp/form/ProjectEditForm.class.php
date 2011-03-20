@@ -72,7 +72,7 @@ class ProjectEditForm extends ProjectAddForm {
 		}
 		
 		// reset cache
-		Project::resetCache();
+		$this->resetCache();
 		$this->saved();
 		
 		// show success message

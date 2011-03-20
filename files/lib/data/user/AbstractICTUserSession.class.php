@@ -48,7 +48,7 @@ class AbstractICTUserSession extends UserSession {
 	}
 	
 	/**
-	 * Checks whether the current user is a developer.
+	 * Checks whether the current user is a developer on the given project.
 	 * 
 	 * @param	integer	$projectID
 	 * 

@@ -62,7 +62,14 @@ class Project extends DatabaseObject {
 		// reset cache
 		WCF::getCache()->clearResource('project');
 		
+		// reset access cache
+		WCF::getCache()->clear(ICT_DIR . 'cache/', 'cache.projectPermissions-*', true);
+		
+		// clear variables
 		self::$projects = null;
+		self::$projectToVersions = null;
+		self::$projectToDevelopers = null;
+		self::$developerData = null;
 	}
 	
 	/**
@@ -183,50 +190,52 @@ class Project extends DatabaseObject {
 	}
 	
 	/**
-	 * Checks if the current user can enter this project.
+	 * Checks whether the current user has the given permission on this project.
+	 * 
+	 * @param	string	$permission
 	 * 
 	 * @return	boolean
 	 */
-	public function canEnterProject() {
-		/*
-		// check if global developer
-		if (WCF::getUser()->getPermission('developer.tracker.isGlobalDeveloper')) {
-			return true;
-		}
+	public function getPermission($permission) {
+		return (boolean) WCF::getUser()->getProjectPermission($permission, $this->projectID);
+	}
+	
+	/**
+	 * Checks whether the current user has the given developer permission on this project.
+	 * 
+	 * @param	string	$permission
+	 * 
+	 * @return	boolean
+	 */
+	public function getDeveloperPermission($permission) {
+		return (boolean) WCF::getUser()->getProjectDeveloperPermission($permission, $this->projectID);
+	}
+	
+	/**
+	 * Checks whether the current user has all of the given permissions on this project.
+	 * @see		Project::getPermission()
+	 * 
+	 * @param	string|array	$permissions
+	 * 
+	 * @throws	PermissionDeniedException
+	 */
+	public function checkPermission($permissions) {
+		if (!is_array($permissions)) $permissions = array($permissions);
 		
-		// check if developer in this project 
-		$developerEntities = $this->getDeveloperEntities();
-		foreach ($developerEntities as $developerEntity) {
-			switch ($developerEntity['type']) {
-				case 'user':
-					if ($developerEntity['id'] == WCF::getUser()->userID) {
-						return true;
-					}
-					break;
+		foreach ($permissions as $permission) {
+			if (!$this->getPermission($permission)) {
+				throw new PermissionDeniedException();
 			}
 		}
-		
-		// check if user access to this project 
-		$accessEntities = $this->getAccessEntities();
-		foreach ($accessEntities as $accessEntity) {
-			switch ($accessEntity['type']) {
-				case 'user':
-					if ($accessEntity['id'] == WCF::getUser()->userID) {
-						return true;
-					}
-					break;
-					
-				case 'group':
-					if (array_search($accessEntity['id'], WCF::getUser()->getGroupIDs())) {
-						return true;
-					}
-					break;
-			}
-		}
-		
-		return false;
-		*/
-		return true;
+	}
+	
+	/**
+	 * Checks whether the current user is a developer on this project.
+	 * 
+	 * @return	boolean
+	 */
+	public function isDeveloper() {
+		return WCF::getUser()->isDeveloper($this->projectID);
 	}
 	
 	/**
@@ -235,9 +244,10 @@ class Project extends DatabaseObject {
 	 * @throws	PermissionDeniedException
 	 */
 	public function enterProject() {
-		// check permission
-		if (!$this->canEnterProject()) {
-			throw new PermissionDeniedException();
+		// check if developer (developers have always access to the project)
+		if (!$this->isDeveloper()) {
+			// check permissions
+			$this->checkPermission(array('canViewProject', 'canViewIssues'));
 		}
 	}
 }

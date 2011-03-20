@@ -53,8 +53,10 @@ class IndexPage extends AbstractPage {
 		if (count($this->projectStructure)) {
 			foreach ($this->projectStructure as $projectID) {
 				$project = new Project($projectID);
-				if ($project->canEnterProject()) {
-					$this->projects[] = $project;
+				if ($project) {
+					if ($project->isDeveloper() || $project->getPermission('canViewProject')) {
+						$this->projects[] = $project;
+					}
 				}
 			}
 		}
