@@ -54,6 +54,8 @@ CREATE TABLE ict1_1_project_access (
   canCreateBug tinyint(1) NOT NULL DEFAULT -1,
   canCreateFeatureRequest tinyint(1) NOT NULL DEFAULT -1,
   canCreateTask tinyint(1) NOT NULL DEFAULT -1,
+  canUploadAttachment tinyint(1) NOT NULL DEFAULT -1,
+  canReopenOwnIssue tinyint(1) NOT NULL DEFAULT -1,
   canReopenIssue tinyint(1) NOT NULL DEFAULT -1,
   canAddComment tinyint(1) NOT NULL DEFAULT -1,
   canEditOwnComment tinyint(1) NOT NULL DEFAULT -1,

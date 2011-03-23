@@ -4,6 +4,16 @@ plan logging
 
 langvars
 ========
+ict.acp.project.access.settings.canReopenOwnIssue
+ict.acp.project.access.settings.canUploadAttachment
+wcf.acp.group.option.user.tracker.allowedAttachmentExtensions
+wcf.acp.group.option.user.tracker.allowedAttachmentExtensions.description
+wcf.acp.group.option.user.tracker.canUploadAttachment
+wcf.acp.group.option.user.tracker.canUploadAttachment.description
+wcf.acp.group.option.user.tracker.maxAttachmentCount
+wcf.acp.group.option.user.tracker.maxAttachmentCount.description
+wcf.acp.group.option.user.tracker.maxAttachmentSize
+wcf.acp.group.option.user.tracker.maxAttachmentSize.description
 
 options
 =======

@@ -85,11 +85,58 @@
 				<defaultvalue>0</defaultvalue>
 				<showorder>4</showorder>
 			</option>
+			<option name="user.tracker.maxTicketLength">
+				<categoryname>user.tracker.issue</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>10000</defaultvalue>
+				<showorder>5</showorder>
+			</option>
+			<option name="user.tracker.canUploadAttachment">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<enableoptions>user.tracker.maxAttachmentSize,user.tracker.allowedAttachmentExtensions,user.tracker.maxAttachmentCount</enableoptions>
+				<showorder>6</showorder>
+				<options>module_attachment</options>
+			</option>
+			<option name="user.tracker.maxAttachmentSize">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>200000</defaultvalue>
+				<showorder>7</showorder>
+				<options>module_attachment</options>
+			</option>
+			<option name="user.tracker.allowedAttachmentExtensions">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>textarea</optiontype>
+				<defaultvalue><![CDATA[jpeg
+jpg
+pdf
+png
+txt
+xml
+zip]]></defaultvalue>
+				<showorder>8</showorder>
+				<options>module_attachment</options>
+			</option>
+			<option name="user.tracker.maxAttachmentCount">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>5</defaultvalue>
+				<showorder>9</showorder>
+				<options>module_attachment</options>
+			</option>
+			<option name="user.tracker.canReopenOwnIssue">
+				<categoryname>user.tracker.issues</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<showorder>10</showorder>
+			</option>
 			<option name="user.tracker.canReopenIssue">
 				<categoryname>user.tracker.issues</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
-				<showorder>5</showorder>
+				<showorder>11</showorder>
 			</option>
 			<!-- /user.tracker.issues -->
 			
