@@ -47,6 +47,17 @@ class Issue extends DatabaseObject {
 	const RELATION_DUPLICATE = 2;
 	
 	/**
+	 * Valid issue types
+	 * 
+	 * @var	array<string>
+	 */
+	public static $validTypes = array(
+		'bug',
+		'featureRequest',
+		'task',
+	);
+	
+	/**
 	 * Creates a new Issue object.
 	 *
 	 * @param	integer	$issueID

@@ -12,6 +12,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
  * @category 	Icy Tracker
  */
 class Version extends DatabaseObject {
+	const VERSION_REGEXP = '!^(?:v\.? ?)?([0-9]+)(?:\.([0-9]+))?(?:\.([0-9]+))?(?:[-._]([0-9]+))?[- ._]?(?:(alpha|a|beta|b|dev|rc|final|gold|pl)[- ._]?([0-9]+)?)?$!i';
 	protected static $versions = null;
 	
 	/**

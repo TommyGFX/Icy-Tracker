@@ -1,0 +1,65 @@
+Valid versions
+==============
+prefix (optional)
+-----------------
+* v
+* v.
+
+version
+-------
+* 1
+* 1-1
+* 1_1
+* 1.0
+* 1.0-1
+* 1.0_1
+* 1.0.0
+* 1.0.0.0
+* 1.0.0-1
+* 1.0.0_1
+
+pattern: major[.minor.[revision]][((./-/_)build)]
+
+suffix (optional)
+-----------------
+* dev
+* dev 1
+* dev.1
+* dev-1
+* dev_1
+* a
+* a 1
+* a.1
+* a-1
+* a_1
+* alpha
+* alpha 1
+* alpha.1
+* alpha-1
+* alpha_1
+* b
+* b 1
+* b.1
+* b-1
+* b_1
+* beta
+* beta 1
+* beta.1
+* beta-1
+* beta_1
+* rc
+* rc 1
+* rc.1
+* rc-1
+* rc_1
+* final
+* gold
+* pl
+* pl 1
+* pl.1
+* pl-1
+* pl_1
+
+weight: a/alpha < b/beta < rc < final/gold/'no suffix' < pl
+
+The prefix and/or suffix can be separated from the version with a space, a hyphen, a dot or an underscore. Both are case insensitive.
